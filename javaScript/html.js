@@ -4,6 +4,10 @@ export function tarjetaPokemon(pokemon) {
     const tarjeta = document.createElement("div");
     tarjeta.classList.add("tarjeta-pokedex");//nombre de la clase
 
+    //toma el primer tipo del pokemon para poder asignar el color
+    const tipoPrincipal = pokemon.getTipos()[0];
+    tarjeta.classList.add(`tipo-${tipoPrincipal}`);
+
     //nombre del pokemon
     const nombre = document.createElement("h3");
     nombre.textContent = letra(pokemon.getNombre());//usa la funcion llamada "letra" para que la primera letra sea mayuscula
