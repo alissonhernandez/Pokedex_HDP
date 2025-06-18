@@ -1,0 +1,51 @@
+@import 'paleta';
+
+#pokedex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px;
+}
+
+.tarjeta-pokedex {
+  width: 160px;
+  height: 200px;
+  border-radius: 20px;
+  padding: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  img {
+    width: 80px;
+    height: 80px;
+    margin-top: 10px;
+  }
+
+  h3 {
+    font-size: 1.1em;
+    margin: 10px 0 5px;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  }
+
+  p {
+    font-size: 0.75em;
+    margin: 2px 0;
+  }
+}
+
+// colores segun su tipo
+@each $tipo, $color in $colores-tipos {
+  .tipo-#{$tipo} {
+    background-color: $color;
+  }
+}

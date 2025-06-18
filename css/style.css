@@ -1,0 +1,112 @@
+#pokedex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px;
+}
+
+.tarjeta-pokedex {
+  width: 160px;
+  height: 200px;
+  border-radius: 20px;
+  padding: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.tarjeta-pokedex:hover {
+  transform: scale(1.05);
+}
+.tarjeta-pokedex img {
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
+}
+.tarjeta-pokedex h3 {
+  font-size: 1.1em;
+  margin: 10px 0 5px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+.tarjeta-pokedex p {
+  font-size: 0.75em;
+  margin: 2px 0;
+}
+
+.tipo-fire {
+  background-color: #fa751d;
+}
+
+.tipo-water {
+  background-color: #6890f0;
+}
+
+.tipo-grass {
+  background-color: #73be4d;
+}
+
+.tipo-electric {
+  background-color: #f8d030;
+}
+
+.tipo-psychic {
+  background-color: #f85888;
+}
+
+.tipo-ice {
+  background-color: #98d8d8;
+}
+
+.tipo-dragon {
+  background-color: #7038f8;
+}
+
+.tipo-dark {
+  background-color: #705848;
+}
+
+.tipo-fairy {
+  background-color: #ee99ac;
+}
+
+.tipo-normal {
+  background-color: #a8a878;
+}
+
+.tipo-fighting {
+  background-color: #c03028;
+}
+
+.tipo-flying {
+  background-color: #a890f0;
+}
+
+.tipo-poison {
+  background-color: #a040a0;
+}
+
+.tipo-ground {
+  background-color: #e0c068;
+}
+
+.tipo-rock {
+  background-color: #b8a038;
+}
+
+.tipo-bug {
+  background-color: #a8b820;
+}
+
+.tipo-ghost {
+  background-color: #705898;
+}
+
+.tipo-steel {
+  background-color: #b8b8d0;
+}
+
+/*# sourceMappingURL=style.css.map */
