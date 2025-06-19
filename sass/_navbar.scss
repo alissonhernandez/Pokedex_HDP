@@ -1,10 +1,14 @@
+@use 'paleta' as *;
+@use 'margen' as *;
+@use 'texto' as *;
+
 @mixin navbar__img(){
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1rem 2rem;
-    background-color: #19405f;
-    color: white;
+    background-color: $azul;
+    color: $blanco;
     font-size: 1.25rem;
     position: relative;
         li {
@@ -27,7 +31,7 @@
     .nav_items{
         display: flex;
         gap: 2rem;
-        font-weight: 700
+        font-weight: $font-weight-bold;
     }
     .nav_link:hover{
         transform: scale(1.3);
