@@ -108,14 +108,11 @@
   background-color: #b8b8d0;
 }
 
-html, body {
+.pagina-pokedex {
   min-height: 100%;
   height: auto;
   overflow-y: auto;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
   background-image: url(../img/fondo.jpg);
   background-attachment: fixed;
   background-size: cover;
@@ -124,35 +121,30 @@ body {
   margin: 0;
   padding: 0;
 }
-
-.contenedor-fondo {
+.pagina-pokedex .contenedor-fondo {
   position: relative;
   width: 100%;
   min-height: 100vh;
 }
-
-.pikachu,
-.ash {
+.pagina-pokedex .pikachu,
+.pagina-pokedex .ash {
   position: fixed;
   width: auto;
   object-fit: contain;
   z-index: 0;
   pointer-events: none;
 }
-
-.pikachu {
+.pagina-pokedex .pikachu {
   height: 60vh;
   bottom: 0;
   left: 0;
 }
-
-.ash {
+.pagina-pokedex .ash {
   height: 100vh;
   bottom: 0;
   right: 0;
 }
-
-.contenedor-central {
+.pagina-pokedex .contenedor-central {
   max-width: 1000px;
   width: 90vw;
   margin: 60px auto;
