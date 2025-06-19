@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chewy&family=Concert+One&family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Princess+Sofia&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap");
 #pokedex {
   display: grid;
   grid-template-columns: repeat(3, 220px);
@@ -305,6 +306,103 @@
 }
 #filtros-tipos button.steel:hover {
   background-color: #9999bc;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #19405f;
+  color: white;
+  font-size: 1.25rem;
+  position: relative;
+  /*input[type="checkbox"],
+  label{
+      display: none;
+      color: $furia-suave;
+  }*/
+}
+.navbar li {
+  list-style: none;
+}
+.navbar a {
+  text-decoration: none;
+  color: inherit;
+}
+.navbar .logo {
+  height: 60px;
+}
+.navbar .logo img {
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+.navbar .logo:hover {
+  transform: scale(1.3);
+}
+.navbar .nav_items {
+  display: flex;
+  gap: 2rem;
+  font-weight: 700;
+}
+.navbar .nav_link:hover {
+  transform: scale(1.3);
+}
+
+.text-xs {
+  font-size: 0.75rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.text-base {
+  font-size: 1rem;
+}
+
+.text-lg {
+  font-size: 1.25rem;
+}
+
+.text-xl {
+  font-size: 1.5rem;
+}
+
+.text-xxl {
+  font-size: 2rem;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+.font-normal {
+  font-weight: 400;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-pokedex {
+  font-family: Concert One, Static;
+}
+
+.color-texto {
+  color: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Concert One, Static;
+}
+
+body {
+  background: #f9f9f9;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /*# sourceMappingURL=style.css.map */

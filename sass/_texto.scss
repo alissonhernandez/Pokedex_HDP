@@ -1,0 +1,30 @@
+@use 'paleta' as *;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chewy&family=Concert+One&family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Princess+Sofia&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap');
+//Tipo de letra
+$texto_pokedex: Concert One, Static;
+//Tamaño
+$font-size-xs:  0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.25rem;
+$font-size-xl: 1.5rem;
+$font-size-xxl: 2rem;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+
+.text-xs {font-size: $font-size-xs;}
+.text-sm { font-size: $font-size-sm; }
+.text-base { font-size: $font-size-base; }
+.text-lg { font-size: $font-size-lg; }
+.text-xl { font-size: $font-size-xl; }
+.text-xxl { font-size: $font-size-xxl; }
+
+.font-light { font-weight: $font-weight-light; }
+.font-normal { font-weight: $font-weight-normal; }
+.font-bold { font-weight: $font-weight-bold; }
+
+.font-pokedex { font-family: $texto_pokedex;}
+
+.color-texto {color: $blanco;}
