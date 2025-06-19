@@ -175,13 +175,13 @@
   pointer-events: none;
 }
 .pagina-pokedex .pikachu {
-  height: 45vh;
-  bottom: 0;
+  height: 50vh;
+  bottom: 80px;
   left: 0;
 }
 .pagina-pokedex .ash {
-  height: 80vh;
-  bottom: 0;
+  height: 70vh;
+  bottom: 60px;
   right: 0;
 }
 .pagina-pokedex .contenedor-central {
@@ -405,6 +405,12 @@
       display: none;
       color: $furia-suave;
   }*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;
 }
 .navbar li {
   list-style: none;

@@ -7,7 +7,7 @@ export class Pokedex {
     async dibujarPokedex(pokemones = null) {
         const contenedor = document.getElementById("pokedex");
         
-        contenedor.innerHTML = <div class="spinner"></div>;
+        contenedor.innerHTML = "<div class='spinner'></div>";
         
         if (!pokemones) {
             const cantidad = 150;
