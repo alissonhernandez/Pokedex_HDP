@@ -1,0 +1,43 @@
+@import 'paleta';
+
+// mixin para botones
+@mixin boton-tipo($tipo) {
+  background-color: map-get($colores-tipos, $tipo);
+  color: white;
+  &:hover {
+    background-color: darken(map-get($colores-tipos, $tipo), 10%);
+  }
+}
+
+#filtros-tipos {
+  margin: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+
+  button {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
+    text-transform: uppercase;
+
+    &.todos {
+      background-color: #444;
+      color: white;
+      &:hover {
+        background-color: #222;
+      }
+    }
+
+    // Aplicar estilos por tipo
+    @each $tipo, $color in $colores-tipos {
+      &.#{$tipo} {
+        @include boton-tipo($tipo);
+      }
+    }
+  }
+}
