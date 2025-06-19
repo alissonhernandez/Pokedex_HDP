@@ -6,6 +6,7 @@
   pointer-events: none;
   transition: transform 0.3s ease;
 }
+
 #cielo {
   position: absolute;
   top: 0;
@@ -17,28 +18,32 @@
   z-index: 6;
   transform: scale(1.2);
 }
+
 .parallax {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin-top: 70px;
   overflow: hidden;
+  box-sizing: border-box;
   background: linear-gradient(to bottom, #cce7ff, #f9f9f9);
 }
+
 .arboles {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  z-index: 2; /* encima del texto */
+  z-index: 2;
   pointer-events: none;
 }
 
 .bienvenida {
   margin-bottom: 0;
   position: relative;
-  background-color: #229351; /* verde suave */
+  background-color: #229351;
   height: 100vh;
   overflow: hidden;
   display: flex;
@@ -61,5 +66,3 @@
   margin: 0 auto;
   padding: 0 1rem;
 }
-
-

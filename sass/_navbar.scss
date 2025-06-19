@@ -2,52 +2,55 @@
 @use 'margen' as *;
 @use 'texto' as *;
 
-@mixin navbar__img(){
+@mixin navbar__img() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: $azul;
+  color: $blanco;
+  font-size: 1.25rem;
+  font-weight: $font-weight-bold;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 1000;
+  box-sizing: border-box;
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .logo {
+    height: 60px;
+
+    img {
+      height: 100%;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+
+  .nav_items {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-    background-color: $azul;
-    color: $blanco;
-    font-size: 1.25rem;
-    position: relative;
-        li {
-        list-style: none;
-    }
-    a{
-        text-decoration: none;
-        color: inherit;
-    }
-    .logo{
-        height: 60px;
-        img{
-            height: 100%;
-            transition: transform 0.3s ease-in-out;
-        }
-        &:hover{
-            transform: scale(1.3);
-        }
-    }
-    .nav_items{
-        display: flex;
-        gap: 2rem;
-        font-weight: $font-weight-bold;
-    }
-    .nav_link:hover{
-        transform: scale(1.3);
-    }
-    /*input[type="checkbox"],
-    label{
-        display: none;
-        color: $furia-suave;
-    }*/
+    gap: 2rem;
+  }
+
+  .nav_link:hover {
+    transform: scale(1.3);
+  }
 }
+
 .navbar{
     @include navbar__img();
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    box-sizing: border-box;
 }

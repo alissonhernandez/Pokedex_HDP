@@ -399,16 +399,12 @@
   background-color: #19405f;
   color: #ffffff;
   font-size: 1.25rem;
-  position: relative;
-  /*input[type="checkbox"],
-  label{
-      display: none;
-      color: $furia-suave;
-  }*/
+  font-weight: 700;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  height: 70px;
   z-index: 1000;
   box-sizing: border-box;
 }
@@ -432,7 +428,6 @@
 .navbar .nav_items {
   display: flex;
   gap: 2rem;
-  font-weight: 700;
 }
 .navbar .nav_link:hover {
   transform: scale(1.3);
@@ -541,7 +536,9 @@ footer .footer-content .copyright p {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin-top: 70px;
   overflow: hidden;
+  box-sizing: border-box;
   background: linear-gradient(to bottom, #cce7ff, #f9f9f9);
 }
 
@@ -550,14 +547,14 @@ footer .footer-content .copyright p {
   bottom: 0;
   left: 0;
   width: 100%;
-  z-index: 2; /* encima del texto */
+  z-index: 2;
   pointer-events: none;
 }
 
 .bienvenida {
   margin-bottom: 0;
   position: relative;
-  background-color: #229351; /* verde suave */
+  background-color: #229351;
   height: 100vh;
   overflow: hidden;
   display: flex;
