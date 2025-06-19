@@ -12,7 +12,7 @@ const tiposPokemon = [
 ];
 
 async function obtenerPokemonPorTipo(tipo) {
-  const respuesta = await fetch(`https://pokeapi.co/api/v2/type/${tipo}`);
+  const respuesta = await fetch(`https://pokeapi.co/api/v2/type/${tipo}`); 
   const data = await respuesta.json();
 
   const lista = data.pokemon.slice(0, 50).map(p => p.pokemon);
@@ -71,3 +71,14 @@ function crearBotonesFiltro() {
 
 // Llamar la funcion para botones
 crearBotonesFiltro();
+
+// Boton flotante para subir
+const botonFlotante = document.createElement("button");
+botonFlotante.innerHTML = `<img src="../img/subir.png" alt="Subir" style="width: 30px;">`;
+botonFlotante.classList.add("boton-subir");
+document.body.appendChild(botonFlotante);
+
+// Comportamiento al hacer click
+botonFlotante.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
