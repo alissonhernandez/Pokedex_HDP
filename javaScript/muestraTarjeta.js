@@ -1,5 +1,5 @@
 import { obtenerPokemones } from './pokemonService.js';
-import { tarjetaBreve } from './html.js';
+import { muestratarjeta } from './html.js';
 
 export async function mostrarTarjetasBreves(limit = 150) {
   const contenedor = document.getElementById("muestraTarjeta");
@@ -17,7 +17,7 @@ export async function mostrarTarjetasBreves(limit = 150) {
   });
 
   tiposUnicos.forEach(pokemon => {
-    const card = tarjetaBreve(pokemon);
+    const card = muestratarjeta(pokemon);
     contenedor.appendChild(card);
   });
 }
