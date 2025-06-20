@@ -65,18 +65,22 @@
 }
 
 .contenedor-muestra {
-  @include contenedor();
+  position: relative;
+  min-height: 100vh; // permite crecer si hay más tarjetas
+  display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem; // separa el botón de las tarjetas
+  gap: 2rem;
   padding-bottom: 4rem;
+  overflow-y: visible;
 }
+
 .paisaje {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
 }
 
