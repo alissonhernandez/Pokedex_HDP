@@ -66,6 +66,10 @@
 
 .contenedor-muestra {
   @include contenedor();
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem; // separa el botón de las tarjetas
+  padding-bottom: 4rem;
 }
 .paisaje {
   position: absolute;
@@ -78,7 +82,13 @@
 
 .boton {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  text-align: center;
+  color: $blanco;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 .btn {
@@ -89,4 +99,51 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.contenedor-tarjeta{
+  height: 100%;
+  width: 100%;
+}
+
+#muestraTarjeta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  z-index: 1;
+  position: relative;
+}
+
+.tarjeta-breve {
+  width: 140px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 1rem;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.tarjeta-breve:hover {
+  transform: scale(1.05);
+}
+
+.tarjeta-breve h3 {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  text-transform: capitalize;
+}
+
+.tarjeta-breve img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
