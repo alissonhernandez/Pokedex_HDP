@@ -142,7 +142,7 @@ export function muestratarjeta(pokemon) {
     tarjeta.classList.add("tarjeta-breve");
 
     const tipoPrincipal = pokemon.getTipos()[0];
-    tarjeta.classList.add(tipo-${tipoPrincipal});
+    tarjeta.classList.add(`tipo-${tipoPrincipal}`);
 
     const nombre = document.createElement("h3");
     nombre.textContent = letra(pokemon.getNombre());
