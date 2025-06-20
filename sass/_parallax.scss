@@ -1,6 +1,19 @@
 @use 'texto' as *;
 @use 'paleta' as *;
-.parallax img {
+
+.contenedor-parallax {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: linear-gradient(to bottom, $cielo, $blanco);
+  height: 100vh;
+}
+
+.contenedor-parallax img {
   position: absolute;
   width: 100%;
   height: auto;
@@ -21,18 +34,6 @@
   transform: scale(1.2);
 }
 
-.parallax {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 800px;
-  margin-top: 70px;
-  overflow: hidden;
-  box-sizing: border-box;
-  background: linear-gradient(to bottom, $cielo, $blanco);
-}
-
 .arboles {
   position: absolute;
   bottom: 0;
@@ -42,11 +43,11 @@
   pointer-events: none;
 }
 
-.bienvenida {
+.contenedor-bienvenida {
   margin-bottom: 0;
   position: relative;
   background-color: $verde;
-  height: 800px;
+  height: 100vh;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -60,8 +61,8 @@
   transition: transform 0.2s ease-out;
 }
 
-.bienvenida h1,
-.bienvenida p {
+.contenedor-bienvenida h1,
+.contenedor-bienvenida p {
   font-size: $font-size-xxl;
   color: $blanco;
   max-width: 800px;

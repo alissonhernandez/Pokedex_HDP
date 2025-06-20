@@ -671,7 +671,7 @@
 
 body {
   background: #ffffff;
-  min-height: 1200px;
+  height: 1200px;
   overflow-x: hidden;
 }
 
@@ -739,7 +739,19 @@ footer .footer-contenido .copyright p {
   }
 }
 
-.parallax img {
+.contenedor-parallax {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: linear-gradient(to bottom, #cce7ff, #ffffff);
+  height: 100vh;
+}
+
+.contenedor-parallax img {
   position: absolute;
   width: 100%;
   height: auto;
@@ -760,18 +772,6 @@ footer .footer-contenido .copyright p {
   transform: scale(1.2);
 }
 
-.parallax {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 800px;
-  margin-top: 70px;
-  overflow: hidden;
-  box-sizing: border-box;
-  background: linear-gradient(to bottom, #cce7ff, #ffffff);
-}
-
 .arboles {
   position: absolute;
   bottom: 0;
@@ -781,11 +781,11 @@ footer .footer-contenido .copyright p {
   pointer-events: none;
 }
 
-.bienvenida {
+.contenedor-bienvenida {
   margin-bottom: 0;
   position: relative;
   background-color: #229351;
-  height: 800px;
+  height: 100vh;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -799,8 +799,8 @@ footer .footer-contenido .copyright p {
   transition: transform 0.2s ease-out;
 }
 
-.bienvenida h1,
-.bienvenida p {
+.contenedor-bienvenida h1,
+.contenedor-bienvenida p {
   font-size: 2rem;
   color: #ffffff;
   max-width: 800px;
