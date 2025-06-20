@@ -6,7 +6,7 @@ footer {
     color: $blanco;
     padding: 20px 0;
     font-size: $font-size-sm;
-    .footer-content{
+    .footer-contenido{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -41,7 +41,7 @@ footer {
         }
     }
     @media screen and (min-width: 768px){
-        .footer-content{
+        .footer-contenido{
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
@@ -49,16 +49,16 @@ footer {
             .footer-links, .footer-colaboradores, .copyright{
                 margin-top: 0;
             }
-            .footer-content > *:nth-child(1) {
+            .footer-contenido > *:nth-child(1) {
                 order: 1;
             }
-            .footer-content > *:nth-child(2) {
+            .footer-contenido > *:nth-child(2) {
                 order: 2;
             }
-            .footer-content > *:nth-child(3) {
+            .footer-contenido > *:nth-child(3) {
                 order: 3;
             }
-            .footer-content > *:nth-child(4) {
+            .footer-contenido > *:nth-child(4) {
                 order: 4;
                 width: 100%;
                 text-align: center;

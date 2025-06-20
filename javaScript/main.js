@@ -2,7 +2,7 @@ import { Pokedex } from "./pokedex.js";
 import { crearBotonesFiltro } from "./filtroTipos.js";
 import { crearBotonSubir } from "./volverBoton.js";
 
-crearBotonSubir(); // 👈 Aquí lo mandas a llamar
+crearBotonSubir(); //crea el boton para volver al inicio
 
 //crear la instancia
 const poke = new Pokedex();

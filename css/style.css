@@ -405,12 +405,12 @@
   pointer-events: none;
 }
 .pagina-pokedex .pikachu {
-  height: 500px;
+  height: 300px;
   bottom: 80px;
   left: 0;
 }
 .pagina-pokedex .ash {
-  height: 600px;
+  height: 500px;
   bottom: 60px;
   right: 0;
 }
@@ -621,7 +621,7 @@
   color: #ffffff;
 }
 
-.navbar {
+.menu {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -638,28 +638,28 @@
   z-index: 1000;
   box-sizing: border-box;
 }
-.navbar li {
+.menu li {
   list-style: none;
 }
-.navbar a {
+.menu a {
   text-decoration: none;
   color: inherit;
 }
-.navbar .logo {
+.menu .logo {
   height: 60px;
 }
-.navbar .logo img {
+.menu .logo img {
   height: 100%;
   transition: transform 0.3s ease-in-out;
 }
-.navbar .logo:hover {
+.menu .logo:hover {
   transform: scale(1.3);
 }
-.navbar .nav_items {
+.menu .menu_opciones {
   display: flex;
   gap: 2rem;
 }
-.navbar .nav_link:hover {
+.menu .nav_link:hover {
   transform: scale(1.3);
 }
 
@@ -681,7 +681,7 @@ footer {
   padding: 20px 0;
   font-size: 0.875rem;
 }
-footer .footer-content {
+footer .footer-contenido {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -691,47 +691,47 @@ footer .footer-content {
   margin: 0 auto;
   text-align: center;
 }
-footer .footer-content .footer-logo img {
+footer .footer-contenido .footer-logo img {
   height: 50px;
 }
-footer .footer-content .footer-links, footer .footer-content .footer-colaboradores {
+footer .footer-contenido .footer-links, footer .footer-contenido .footer-colaboradores {
   display: flex;
   gap: 20px;
 }
-footer .footer-content .footer-links a, footer .footer-content .footer-colaboradores a {
+footer .footer-contenido .footer-links a, footer .footer-contenido .footer-colaboradores a {
   text-decoration: none;
   color: inherit;
 }
-footer .footer-content .footer-links a:hover, footer .footer-content .footer-colaboradores a:hover {
+footer .footer-contenido .footer-links a:hover, footer .footer-contenido .footer-colaboradores a:hover {
   text-decoration: underline;
 }
-footer .footer-content .copyright {
+footer .footer-contenido .copyright {
   margin-top: 10px;
 }
-footer .footer-content .copyright p {
+footer .footer-contenido .copyright p {
   font-size: 13px;
   color: white;
 }
 @media screen and (min-width: 768px) {
-  footer .footer-content {
+  footer .footer-contenido {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     text-align: left;
   }
-  footer .footer-content .footer-links, footer .footer-content .footer-colaboradores, footer .footer-content .copyright {
+  footer .footer-contenido .footer-links, footer .footer-contenido .footer-colaboradores, footer .footer-contenido .copyright {
     margin-top: 0;
   }
-  footer .footer-content .footer-content > *:nth-child(1) {
+  footer .footer-contenido .footer-contenido > *:nth-child(1) {
     order: 1;
   }
-  footer .footer-content .footer-content > *:nth-child(2) {
+  footer .footer-contenido .footer-contenido > *:nth-child(2) {
     order: 2;
   }
-  footer .footer-content .footer-content > *:nth-child(3) {
+  footer .footer-contenido .footer-contenido > *:nth-child(3) {
     order: 3;
   }
-  footer .footer-content .footer-content > *:nth-child(4) {
+  footer .footer-contenido .footer-contenido > *:nth-child(4) {
     order: 4;
     width: 100%;
     text-align: center;
@@ -806,6 +806,38 @@ footer .footer-content .copyright p {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 16px;
+}
+
+.modal-fondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-pokemon {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  max-width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.cerrar-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */

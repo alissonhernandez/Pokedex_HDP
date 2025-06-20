@@ -56,6 +56,11 @@ export function tarjetaPokemon(pokemon) {
     const boton = document.createElement("button");
     boton.textContent = "Asignar Pokémon";
     boton.classList.add("boton-acompanante");
+
+    tarjeta.addEventListener("click", () => {
+        crearModalPokemon(pokemon);
+    });
+
     tarjeta.appendChild(boton);
     return tarjeta;
 }
@@ -65,6 +70,69 @@ function letra(ltr) {
     return ltr.charAt(0).toUpperCase() + ltr.slice(1);
 }
 
+export function crearModalPokemon(pokemon) {
+    const modalFondo = document.createElement("div");
+    modalFondo.classList.add("modal-fondo");
 
+    const modalContenido = document.createElement("div");
+    modalContenido.classList.add("modal-pokemon");
 
+    const tipoPrincipal = pokemon.getTipos()[0];
+    modalContenido.classList.add(`tipo-${tipoPrincipal}`);
 
+    // Botón para cerrar
+    const botonCerrar = document.createElement("span");
+    botonCerrar.classList.add("cerrar-modal");
+    botonCerrar.innerHTML = "&times;";
+    botonCerrar.addEventListener("click", () => {
+        document.body.removeChild(modalFondo);
+    });
+
+    // Título
+    const titulo = document.createElement("h2");
+    titulo.textContent = letra(pokemon.getNombre());
+    modalContenido.appendChild(botonCerrar);
+    modalContenido.appendChild(titulo);
+
+    // Imagen gif si existe
+    const imagen = document.createElement("img");
+    const gif = pokemon.getGif ? pokemon.getGif() : pokemon.getSprite();
+    imagen.src = gif;
+    imagen.alt = pokemon.getNombre();
+    modalContenido.appendChild(imagen);
+
+    // Datos básicos
+    const datos = [
+        ["Especie", letra(pokemon.getEspecie())],
+        ["Altura", pokemon.getAltura()],
+        ["Peso", pokemon.getPeso()],
+        ["Tipos", pokemon.getTipos().map(letra).join(", ")],
+        ["Habilidades", pokemon.getHabilidades().map(letra).join(", ")],
+        ["Debilidades", pokemon.getDebilidades().map(letra).join(", ")],
+        ["Movimientos", pokemon.getMovimientos().map(letra).join(", ")]
+    ];
+
+    datos.forEach(([titulo, valor]) => {
+        const p = document.createElement("p");
+        const strong = document.createElement("strong");
+        strong.textContent = `${titulo}: `;
+        p.appendChild(strong);
+        p.appendChild(document.createTextNode(valor));
+        modalContenido.appendChild(p);
+    });
+
+    // Estadísticas
+    const statsContenedor = document.createElement("div");
+    statsContenedor.classList.add("stats");
+
+    pokemon.getStats().forEach(st => {
+        const stat = document.createElement("p");
+        stat.textContent = letra(`${st.nombre}: ${st.valor}`);
+        statsContenedor.appendChild(stat);
+    });
+
+    modalContenido.appendChild(statsContenedor);
+    modalFondo.appendChild(modalContenido);
+    document.body.appendChild(modalFondo);
+
+}

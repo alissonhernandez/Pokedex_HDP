@@ -73,4 +73,8 @@ export class Pokemon {
   getMovimientos() {
     return this.#movimientos;
   }
+
+  getGif() {
+    return this.#sprites.versions["generation-v"]["black-white"].animated.front_default;
+  }
 }

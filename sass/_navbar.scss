@@ -41,7 +41,7 @@
     }
   }
 
-  .nav_items {
+  .menu_opciones {
     display: flex;
     gap: 2rem;
   }
@@ -51,6 +51,6 @@
   }
 }
 
-.navbar{
+.menu{
     @include navbar__img();
 }
