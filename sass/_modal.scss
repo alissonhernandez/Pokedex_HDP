@@ -1,29 +1,189 @@
+@import 'paleta';
+
 .modal-fondo {
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
   display: flex;
   justify-content: center;
-  align-items: center;
-  z-index: 999;
+  align-items: flex-start;
+  padding-top: 80px;
 }
 
 .modal-pokemon {
-  background: white;
-  padding: 20px;
-  border-radius: 20px;
+  width: 90%;
   max-width: 400px;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  border-radius: 20px;
+  overflow: hidden;
   position: relative;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  padding: 0;
+  color: #333;
+  background: white; 
+  animation: tarjetaBoom 0.4s ease-out;
+}
+
+
+@each $tipo, $color in $colores-tipos {
+  .modal-pokemon.tipo-#{$tipo} .modal-header {
+    background-color: $color;
+  }
+}
+
+.modal-header {
+  padding: 1.5rem;
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  margin: 0;
+  border-bottom-left-radius: 100% 40%;
+  border-bottom-right-radius: 100% 40%;
+  z-index: 1;
+  color: white;
+}
+
+.media-luna-fondo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-bottom-left-radius: 100% 50%;
+  border-bottom-right-radius: 100% 50%;
+  z-index: 0;
+  margin: 0;
+  padding: 0;
+  opacity: 0.15; 
+  background: white;
+}
+
+.modal-img {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140px;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
 }
 
 .cerrar-modal {
   position: absolute;
-  top: 10px; right: 15px;
-  font-size: 24px;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
   cursor: pointer;
+  z-index: 3;
 }
+
+.modal-body {
+  background: white;
+  border-radius: 0 0 20px 20px;
+  padding: 1.5rem;
+  color: #333;
+  z-index: 1;
+}
+
+.modal-tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+  border-bottom: 2px solid #ddd;
+}
+
+.tab-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  font-weight: bold;
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: 0.3s;
+  color: #666;
+}
+
+.tab-btn.active {
+  color: #000;
+  border-bottom: 3px solid #333;
+}
+
+.tab-contenido {
+  margin-top: 1rem;
+}
+
+.tab-seccion {
+  display: none;
+}
+
+.tab-seccion.active {
+  display: block;
+}
+
+.barra-stat {
+  margin: 0.5rem 0;
+}
+
+.barra-stat label {
+  display: inline-block;
+  width: 100px;
+}
+
+.barra-externa {
+  background: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 10px;
+  display: inline-block;
+  width: 150px;
+  vertical-align: middle;
+  margin: 0 5px;
+}
+
+.lista-movimientos {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.lista-movimientos li {
+  background: #f3f3f3;
+  padding: 5px 10px;
+  border-radius: 12px;
+}
+
+.barra-interna {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.barra-interna.verde {
+  background: #4caf50;
+}
+
+.barra-interna.rojo {
+  background: #f44336; 
+}
+
+@keyframes tarjetaBoom {
+  0% {
+    opacity: 0;
+    transform: translateY(300px) scale(0.6) rotate(-5deg);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-20px) scale(1.05) rotate(1deg);
+  }
+  70% {
+    transform: translateY(10px) scale(0.98) rotate(0deg);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+
