@@ -1,6 +1,6 @@
 //esta funcion crea la tarjeta html del pokemon
 export function tarjetaPokemon(pokemon) {
-    //creando el contenedor princpipla de la tarjeta
+    //creando el contenedor princpipal de la tarjeta
     const tarjeta = document.createElement("div");
     tarjeta.classList.add("tarjeta-pokedex");//nombre de la clase
 
@@ -13,45 +13,50 @@ export function tarjetaPokemon(pokemon) {
     nombre.textContent = letra(pokemon.getNombre());//usa la funcion llamada "letra" para que la primera letra sea mayuscula
     tarjeta.appendChild(nombre);
 
-    //crea la imagen
+    const contenedorImg = document.createElement("div");
+    contenedorImg.classList.add("contenedor-imagen");
+
+    const circuloFondo = document.createElement("div");
+    circuloFondo.classList.add("circulo-fondo");
+
     const imagen = document.createElement("img");
     imagen.src = pokemon.getSprite();
-    tarjeta.appendChild(imagen);
+
+    contenedorImg.appendChild(circuloFondo);
+    contenedorImg.appendChild(imagen);
+    tarjeta.appendChild(contenedorImg);
 
     //muestra en texto todos los datos y usa la funcion letra
     const datos = [
         ["Especie", letra(pokemon.getEspecie())],
-        ["Altura", pokemon.getAltura()],
-        ["Peso", pokemon.getPeso()],
-        ["Tipos", pokemon.getTipos().map(letra).join(", ")],
-        ["Habilidades", pokemon.getHabilidades().map(letra).join(", ")],
-        ["Debilidades", pokemon.getDebilidades().map(letra).join(", ")],
-        ["Movimientos", pokemon.getMovimientos().map(letra).join(", ")]
+        ["Tipos", pokemon.getTipos().map(tipo => {
+            const span = document.createElement("span");
+            span.classList.add("texto-fondo-tipo", `tipo-${tipo}`);
+            span.textContent = letra(tipo);
+            return span;
+        })]
     ]
 
-    //creando parrafos para mostrar los datos
+//creando parrafos para mostrar los datos
     datos.forEach(([titulo, valor]) => {
         const p = document.createElement("p");
         const strong = document.createElement("strong");
-        strong.textContent = `${titulo}:`;
+        strong.textContent = `${titulo}: `;
         p.appendChild(strong);
-        p.appendChild(document.createTextNode(valor));
+
+        if (Array.isArray(valor)) {
+            valor.forEach(el => p.appendChild(el));
+        } else {
+            p.appendChild(document.createTextNode(valor));
+        }
+
         tarjeta.appendChild(p);
     });
 
-    //contenedor para las estadisticas
-    const statsContenedor = document.createElement("div");
-    statsContenedor.classList.add("stats");
-
-    //crea el parrado y muestra la estadistica
-    pokemon.getStats().forEach(st => {
-        const parrafostat = document.createElement("p");
-        parrafostat.textContent = letra(`${st.nombre}: ${st.valor}`);
-        statsContenedor.appendChild(parrafostat);
-    });
-
-    tarjeta.appendChild(statsContenedor);
-
+    const boton = document.createElement("button");
+    boton.textContent = "Asignar Pokémon";
+    boton.classList.add("boton-acompanante");
+    tarjeta.appendChild(boton);
     return tarjeta;
 }
 
@@ -59,3 +64,7 @@ export function tarjetaPokemon(pokemon) {
 function letra(ltr) {
     return ltr.charAt(0).toUpperCase() + ltr.slice(1);
 }
+
+
+
+
