@@ -136,3 +136,23 @@ export function crearModalPokemon(pokemon) {
     document.body.appendChild(modalFondo);
 
 }
+
+export function muestratarjeta(pokemon) {
+    const tarjeta = document.createElement("div");
+    tarjeta.classList.add("tarjeta-breve");
+
+    const tipoPrincipal = pokemon.getTipos()[0];
+    tarjeta.classList.add(tipo-${tipoPrincipal});
+
+    const nombre = document.createElement("h3");
+    nombre.textContent = letra(pokemon.getNombre());
+    tarjeta.appendChild(nombre);
+
+    const imagen = document.createElement("img");
+    const gif = pokemon.getGif ? pokemon.getGif() : pokemon.getSprite();
+    imagen.src = gif;
+    imagen.alt = pokemon.getNombre();
+    tarjeta.appendChild(imagen);
+
+    return tarjeta;
+}
