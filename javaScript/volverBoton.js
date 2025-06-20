@@ -1,10 +1,20 @@
-const botonFlotante = document.createElement("button");
-botonFlotante.innerHTML = `<img src="../img/subir.png" alt="Subir" style="width: 30px;">`;
-botonFlotante.classList.add("boton-subir");
+export function crearBotonSubir() {
+  const botonFlotante = document.createElement("button");
+  botonFlotante.classList.add("boton-subir");
 
-document.body.appendChild(botonFlotante);
+  const imagen = document.createElement("img");
+  imagen.src = "../img/subir.png";
+  imagen.alt = "Subir";
 
-botonFlotante.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+  botonFlotante.appendChild(imagen);
+  document.body.appendChild(botonFlotante);
 
+  botonFlotante.style.display = "none";
+  window.addEventListener("scroll", () => {
+    botonFlotante.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+
+  botonFlotante.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}

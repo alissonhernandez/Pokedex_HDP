@@ -2,22 +2,30 @@ import { obtenerPokemones } from './pokemonService.js';
 import { tarjetaPokemon } from './html.js';
 
 export class Pokedex {
-    #pokemones = [];//almacena la lista de pokemon
-    
-    //metodo publico encargado de dibujar la pokedex
-    async dibujarPokedex(){
-        const cantidad = 150;//cantidad de pokemons a mostrar
+    //almacena todos los pokemon
+    #pokemones = [];
+    //metodo para inicializar la pokedex
+    async init() {
+        //obtiene los primeros 150 pokemon desde la api
+        this.#pokemones = await obtenerPokemones(150);
+        //metodo para dibujar todas las tarjetas
+        this.dibujarPokedex();
+    }
 
-        //corregir error de id
-        const contenedor = document.getElementById("pokedex");//contenedor del html donde se mostrara la pokedex
+  //metodo publico dibuja las tarjetas en el HTML recibe una lista filtrada por tipo y si no habia nada se usa completa
+    async dibujarPokedex(lista = null) {
+        const contenedor = document.getElementById("pokedex");
         contenedor.innerHTML = "<div class='spinner'></div>";
-        this.#pokemones = await obtenerPokemones(cantidad);//llamando a funcion que obtiene la info de la api
-        contenedor.innerHTML="";//limpia contenedor
-        //se encarga de recorrer la lista de pokemon obtenidos
-        this.#pokemones.forEach(pokemon => {
-            const tarjeta = tarjetaPokemon(pokemon);//crea la tarjeta usando la funcion
+        await new Promise(res => setTimeout(res, 300));
+        //esta es lista recibida sino existe la lista completa es almacenada
+        const pokemones = lista ?? this.#pokemones;
+        //limpia el contenido anterior del contenedor
+        contenedor.innerHTML = "";
+
+        //recorre cada Pokémon y crea una tarjeta para mostrar
+        pokemones.forEach(pokemon => {
+            const tarjeta = tarjetaPokemon(pokemon);//función que crea el HTML de la tarjeta
             contenedor.appendChild(tarjeta);
         });
     }
-
 }

@@ -34,4 +34,3 @@ export async function crearBotonesFiltro(pokedexInstance) {
     });
     contenedor.appendChild(botonTodos);
 }
-
