@@ -8,12 +8,13 @@
 }
 
 .tarjeta-pokedex {
+  background-color: #ffffff;
   width: 200px;
   height: 160px;
   border-radius: 20px;
   padding: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   transition: transform 0.3s ease;
   position: relative;
@@ -116,7 +117,7 @@
   width: 80px;
   height: 80px;
   border: none;
-  background-color: blue;
+  background-color: #19405f;
   border-radius: 50%;
   padding: 0;
   cursor: pointer;
@@ -131,13 +132,13 @@
 }
 
 .spinner {
-  border: 6px solid #f3f3f3;
-  border-top: 6px solid #6890f0;
+  border: 6px solid #ffffff;
+  border-top: 6px solid #19405f;
   border-radius: 50%;
   width: 50px;
   height: 50px;
   animation: girar 1s linear infinite;
-  margin: 40px auto;
+  margin: 3rem auto;
 }
 
 @keyframes girar {
@@ -152,43 +153,40 @@
   min-height: 100%;
   height: auto;
   overflow-y: auto;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-image: url(../img/fondo.jpg);
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  margin: 0;
-  padding: 0;
 }
 .pagina-pokedex .contenedor-fondo {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: auto;
 }
 .pagina-pokedex .pikachu,
 .pagina-pokedex .ash {
   position: fixed;
   width: auto;
   object-fit: contain;
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
 }
 .pagina-pokedex .pikachu {
-  height: 50vh;
+  height: 500px;
   bottom: 80px;
   left: 0;
 }
 .pagina-pokedex .ash {
-  height: 70vh;
+  height: 600px;
   bottom: 60px;
   right: 0;
 }
 .pagina-pokedex .contenedor-central {
   max-width: 720px;
-  width: 90vw;
-  margin: 60px auto;
-  background-color: white;
+  width: 1080px;
+  margin: 4rem auto;
+  background-color: #ffffff;
   border-radius: 20px;
   padding: 30px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -215,133 +213,133 @@
 }
 #filtros-tipos button.todos {
   background-color: #444;
-  color: white;
+  color: #ffffff;
 }
 #filtros-tipos button.todos:hover {
   background-color: #222;
 }
 #filtros-tipos button.fire {
   background-color: #fa751d;
-  color: white;
+  color: #ffffff;
 }
 #filtros-tipos button.fire:hover {
   background-color: #df5c05;
 }
 #filtros-tipos button.water {
   background-color: #6890f0;
-  color: white;
+  color: #ffffff;
 }
 #filtros-tipos button.water:hover {
   background-color: #3a6eeb;
 }
 #filtros-tipos button.grass {
   background-color: #73be4d;
-  color: white;
+  color: #ffffff;
 }
 #filtros-tipos button.grass:hover {
   background-color: #5c9e3a;
 }
 #filtros-tipos button.electric {
   background-color: #f8d030;
-  color: white;
+  color: #ffffff;
 }
 #filtros-tipos button.electric:hover {
   background-color: #edbf08;
 }
 #filtros-tipos button.psychic {
   background-color: #f85888;
-  color: white;
+  color: #ffffff;
 }
 #filtros-tipos button.psychic:hover {
   background-color: #f62765;
 }
 #filtros-tipos button.ice {
   background-color: #98d8d8;
-  color: white;
+  color: #ffffff;
 }
 #filtros-tipos button.ice:hover {
   background-color: #73caca;
 }
 #filtros-tipos button.dragon {
   background-color: #7038f8;
-  color: white;
+  color: #ffffff;
 }
 #filtros-tipos button.dragon:hover {
   background-color: #4d09f4;
 }
 #filtros-tipos button.dark {
   background-color: #705848;
-  color: white;
+  color: #ffffff;
 }
 #filtros-tipos button.dark:hover {
   background-color: #514034;
 }
 #filtros-tipos button.fairy {
   background-color: #ee99ac;
-  color: white;
+  color: #ffffff;
 }
 #filtros-tipos button.fairy:hover {
   background-color: #e76d88;
 }
 #filtros-tipos button.normal {
   background-color: #a8a878;
-  color: white;
+  color: #ffffff;
 }
 #filtros-tipos button.normal:hover {
   background-color: #90905d;
 }
 #filtros-tipos button.fighting {
   background-color: #c03028;
-  color: white;
+  color: #ffffff;
 }
 #filtros-tipos button.fighting:hover {
   background-color: #96251f;
 }
 #filtros-tipos button.flying {
   background-color: #a890f0;
-  color: white;
+  color: #ffffff;
 }
 #filtros-tipos button.flying:hover {
   background-color: #8563ea;
 }
 #filtros-tipos button.poison {
   background-color: #a040a0;
-  color: white;
+  color: #ffffff;
 }
 #filtros-tipos button.poison:hover {
   background-color: #7c317c;
 }
 #filtros-tipos button.ground {
   background-color: #e0c068;
-  color: white;
+  color: #ffffff;
 }
 #filtros-tipos button.ground:hover {
   background-color: #d7ae3e;
 }
 #filtros-tipos button.rock {
   background-color: #b8a038;
-  color: white;
+  color: #ffffff;
 }
 #filtros-tipos button.rock:hover {
   background-color: #917e2c;
 }
 #filtros-tipos button.bug {
   background-color: #a8b820;
-  color: white;
+  color: #ffffff;
 }
 #filtros-tipos button.bug:hover {
   background-color: #808d18;
 }
 #filtros-tipos button.ghost {
   background-color: #705898;
-  color: white;
+  color: #ffffff;
 }
 #filtros-tipos button.ghost:hover {
   background-color: #584578;
 }
 #filtros-tipos button.steel {
   background-color: #b8b8d0;
-  color: white;
+  color: #ffffff;
 }
 #filtros-tipos button.steel:hover {
   background-color: #9999bc;
@@ -380,7 +378,7 @@
 }
 
 .font-bold {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .font-pokedex {
@@ -399,7 +397,7 @@
   background-color: #19405f;
   color: #ffffff;
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 600;
   position: fixed;
   top: 0;
   left: 0;
@@ -440,8 +438,8 @@
 }
 
 body {
-  background: #f9f9f9;
-  min-height: 100vh;
+  background: #ffffff;
+  min-height: 1200px;
   overflow-x: hidden;
 }
 
@@ -479,7 +477,7 @@ footer .footer-content .copyright {
   margin-top: 10px;
 }
 footer .footer-content .copyright p {
-  font-size: 0.8em;
+  font-size: 13px;
   color: white;
 }
 @media screen and (min-width: 768px) {
@@ -535,11 +533,11 @@ footer .footer-content .copyright p {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 800px;
   margin-top: 70px;
   overflow: hidden;
   box-sizing: border-box;
-  background: linear-gradient(to bottom, #cce7ff, #f9f9f9);
+  background: linear-gradient(to bottom, #cce7ff, #ffffff);
 }
 
 .arboles {
@@ -555,7 +553,7 @@ footer .footer-content .copyright p {
   margin-bottom: 0;
   position: relative;
   background-color: #229351;
-  height: 100vh;
+  height: 800px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -571,11 +569,11 @@ footer .footer-content .copyright p {
 
 .bienvenida h1,
 .bienvenida p {
-  font-size: 1.8rem;
-  color: #fcfffc;
+  font-size: 2rem;
+  color: #ffffff;
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 16px;
 }
 
 /*# sourceMappingURL=style.css.map */

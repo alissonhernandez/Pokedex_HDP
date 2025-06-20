@@ -1,25 +1,32 @@
 //colores para tarjeta segun el tipo
 $colores-tipos: (
     fire: #fa751d,
-    water: #6890f0, //agua
+    water: #6890f0,
     grass: #73be4d,
     electric: #f8d030,
     psychic: #f85888,
     ice: #98d8d8,
     dragon: #7038f8,
-    dark: #705848, //oscuro
-    fairy: #ee99ac, //hada
+    dark: #705848, 
+    fairy: #ee99ac,
     normal: #a8a878,
-    fighting: #c03028, //lucha
-    flying: #a890f0, //vuelo
-    poison: #a040a0, //veneno
-    ground: #e0c068, //suelo
-    rock: #b8a038, //roca
-    bug: #a8b820, //bicho
-    ghost: #705898, //fantasma
-    steel: #b8b8d0 //acero
+    fighting: #c03028,
+    flying: #a890f0,
+    poison: #a040a0,
+    ground: #e0c068,
+    rock: #b8a038,
+    bug: #a8b820,
+    ghost: #705898,
+    steel: #b8b8d0
 );
 
 $blanco: #ffffff;
 $negro: #000;
 $azul: #19405f;
+$gris: #444;
+$azabache: #222;
+$cielo:#cce7ff; 
+$verde:#229351;
+$verde-claro:#a8e6a1;
+$anaranjado: #ffb87a;
+$shadow: 0 4px 10px rgba(0, 0, 0, 0.2);

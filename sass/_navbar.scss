@@ -6,10 +6,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: $spacing-md $spacing-lg;
   background-color: $azul;
   color: $blanco;
-  font-size: 1.25rem;
+  font-size: $font-size-lg;
   font-weight: $font-weight-bold;
   position: fixed;
   top: 0;

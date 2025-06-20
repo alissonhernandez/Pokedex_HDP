@@ -1,9 +1,9 @@
-@import 'paleta';
+@use 'paleta' as *;
 
 // mixin para botones
 @mixin boton-tipo($tipo) {
   background-color: map-get($colores-tipos, $tipo);
-  color: white;
+  color: $blanco;
   &:hover {
     background-color: darken(map-get($colores-tipos, $tipo), 10%);
   }
@@ -26,10 +26,10 @@
     text-transform: uppercase;
 
     &.todos {
-      background-color: #444;
-      color: white;
+      background-color: $gris;
+      color: $blanco;
       &:hover {
-        background-color: #222;
+        background-color: $azabache;
       }
     }
 

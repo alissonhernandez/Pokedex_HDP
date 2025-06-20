@@ -1,13 +1,15 @@
-$fondo-img: "../img/fondo.jpg";
+@use 'paleta' as *;
+@use 'margen' as *;
 
+$fondo-img: "../img/fondo.jpg";
 .spinner {
-  border: 6px solid #f3f3f3; 
-  border-top: 6px solid #6890f0; 
+  border: 6px solid $blanco; 
+  border-top: 6px solid $azul;
   border-radius: 50%;
   width: 50px;
   height: 50px;
   animation: girar 1s linear infinite;
-  margin: 40px auto;
+  margin: $spacing-xl auto;
 }
 
 @keyframes girar {
@@ -18,19 +20,16 @@ $fondo-img: "../img/fondo.jpg";
   min-height: 100%;
   height: auto;
   overflow-y: auto;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-image: url(#{$fondo-img});
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  margin: 0;
-  padding: 0;
 
   .contenedor-fondo {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: auto;
   }
 
   .pikachu,
@@ -38,27 +37,27 @@ $fondo-img: "../img/fondo.jpg";
     position: fixed;
     width: auto;
     object-fit: contain;
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
   }
 
   .pikachu {
-    height: 50vh;
+    height: 500px;
     bottom: 80px;
     left: 0;
   }
 
   .ash {
-    height: 70vh;
+    height: 600px;
     bottom: 60px;
     right: 0;
   }
 
   .contenedor-central {
     max-width: 720px;
-    width: 90vw;
-    margin: 60px auto;
-    background-color: white;
+    width: 1080px;
+    margin: $spacing-xxl auto;
+    background-color: $blanco;
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
