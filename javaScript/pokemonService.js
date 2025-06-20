@@ -1,6 +1,6 @@
 import { Pokemon } from './pokemon.js';
 
-//obentencion de los primeros 150 pokemon
+//obtencion de los primeros 150 pokemon
 export async function obtenerPokemones(limit = 150) {
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`);
   const data = await res.json();
