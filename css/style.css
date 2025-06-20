@@ -741,14 +741,15 @@ footer .footer-contenido .copyright p {
 
 .contenedor-parallax {
   position: relative;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 70px;
-  overflow: hidden;
+  text-align: center;
   box-sizing: border-box;
+  margin-top: 70px;
   background: linear-gradient(to bottom, #cce7ff, #ffffff);
-  height: 100vh;
 }
 
 .contenedor-parallax img {
@@ -782,15 +783,16 @@ footer .footer-contenido .copyright p {
 }
 
 .contenedor-bienvenida {
-  margin-bottom: 0;
   position: relative;
-  background-color: #229351;
   height: 100vh;
   overflow: hidden;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
+  box-sizing: border-box;
+  margin-bottom: 0;
+  background-color: #229351;
 }
 
 .texto-bienvenida {
@@ -806,6 +808,41 @@ footer .footer-contenido .copyright p {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 16px;
+}
+
+.contenedor-muestra {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.paisaje {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.boton {
+  position: relative;
+  z-index: 1;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background-color: #ce0808;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .modal-fondo {

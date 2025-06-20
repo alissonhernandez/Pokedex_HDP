@@ -1,18 +1,21 @@
 @use 'texto' as *;
 @use 'paleta' as *;
 
-.contenedor-parallax {
+@mixin contenedor() {
   position: relative;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 70px;
-  overflow: hidden;
+  text-align: center;
   box-sizing: border-box;
-  background: linear-gradient(to bottom, $cielo, $blanco);
-  height: 100vh;
 }
-
+.contenedor-parallax {
+  @include contenedor();
+  margin-top: 70px;
+  background: linear-gradient(to bottom, $cielo, $blanco);
+}
 .contenedor-parallax img {
   position: absolute;
   width: 100%;
@@ -21,19 +24,16 @@
   pointer-events: none;
   transition: transform 0.3s ease;
 }
-
 #cielo {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 0;
 }
-
 #bola {
   z-index: 6;
   transform: scale(1.2);
 }
-
 .arboles {
   position: absolute;
   bottom: 0;
@@ -44,15 +44,9 @@
 }
 
 .contenedor-bienvenida {
+  @include contenedor();
   margin-bottom: 0;
-  position: relative;
   background-color: $verde;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 }
 
 .texto-bienvenida {
@@ -68,4 +62,31 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 0 16px;
+}
+
+.contenedor-muestra {
+  @include contenedor();
+}
+.paisaje {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.boton {
+  position: relative;
+  z-index: 1;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background-color: #ce0808;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
 }
