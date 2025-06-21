@@ -71,70 +71,137 @@ function letra(ltr) {
 }
 
 export function crearModalPokemon(pokemon) {
-    const modalFondo = document.createElement("div");
-    modalFondo.classList.add("modal-fondo");
+  const modalFondo = document.createElement("div");
+  modalFondo.classList.add("modal-fondo");
 
-    const modalContenido = document.createElement("div");
-    modalContenido.classList.add("modal-pokemon");
+  const modalContenido = document.createElement("div");
+  modalContenido.classList.add("modal-pokemon", `tipo-${pokemon.getTipos()[0]}`);
 
-    const tipoPrincipal = pokemon.getTipos()[0];
-    modalContenido.classList.add(`tipo-${tipoPrincipal}`);
+  // header
+  const header = document.createElement("div");
+  header.classList.add("modal-header");
 
-    // Botón para cerrar
-    const botonCerrar = document.createElement("span");
-    botonCerrar.classList.add("cerrar-modal");
-    botonCerrar.innerHTML = "&times;";
-    botonCerrar.addEventListener("click", () => {
-        document.body.removeChild(modalFondo);
-    });
+  const mediaLuna = document.createElement("div");
+  mediaLuna.classList.add("media-luna-fondo");
+  header.appendChild(mediaLuna);
 
-    // Título
-    const titulo = document.createElement("h2");
-    titulo.textContent = letra(pokemon.getNombre());
-    modalContenido.appendChild(botonCerrar);
-    modalContenido.appendChild(titulo);
+  const botonCerrar = document.createElement("span");
+  botonCerrar.classList.add("cerrar-modal");
+  botonCerrar.innerHTML = "&times;";
+  botonCerrar.addEventListener("click", () => document.body.removeChild(modalFondo));
+  header.appendChild(botonCerrar);
 
-    // Imagen gif si existe
-    const imagen = document.createElement("img");
-    const gif = pokemon.getGif ? pokemon.getGif() : pokemon.getSprite();
-    imagen.src = gif;
-    imagen.alt = pokemon.getNombre();
-    modalContenido.appendChild(imagen);
+  const nombre = document.createElement("h2");
+  nombre.textContent = letra(pokemon.getNombre());
+  header.appendChild(nombre);
 
-    // Datos básicos
-    const datos = [
-        ["Especie", letra(pokemon.getEspecie())],
-        ["Altura", pokemon.getAltura()],
-        ["Peso", pokemon.getPeso()],
-        ["Tipos", pokemon.getTipos().map(letra).join(", ")],
-        ["Habilidades", pokemon.getHabilidades().map(letra).join(", ")],
-        ["Debilidades", pokemon.getDebilidades().map(letra).join(", ")],
-        ["Movimientos", pokemon.getMovimientos().map(letra).join(", ")]
-    ];
+  const numero = document.createElement("p");
+  numero.classList.add("numero-id");
+  numero.textContent = `#${String(pokemon.getId()).padStart(3, "0")}`;
+  header.appendChild(numero);
 
-    datos.forEach(([titulo, valor]) => {
+  const imagen = document.createElement("img");
+  imagen.classList.add("modal-img");
+  imagen.src = pokemon.getGif ? pokemon.getGif() : pokemon.getSprite();
+  header.appendChild(imagen);
+
+  // body
+  const body = document.createElement("div");
+  body.classList.add("modal-body");
+
+  // tabs
+  const tabs = document.createElement("div");
+  tabs.classList.add("modal-tabs");
+
+  const tabNames = ["About", "Base Stats", "Moves"];
+  const tabButtons = [];
+  const tabSections = [];
+
+  const contenido = document.createElement("div");
+  contenido.classList.add("tab-contenido");
+
+  tabNames.forEach((name, index) => {
+    const btn = document.createElement("button");
+    btn.textContent = name;
+    btn.classList.add("tab-btn");
+    if (index === 0) btn.classList.add("active");
+    tabs.appendChild(btn);
+    tabButtons.push(btn);
+
+    const section = document.createElement("div");
+    section.classList.add("tab-seccion");
+    if (index === 0) section.classList.add("active");
+
+    if (name === "About") {
+      const datos = [
+        ["Species", letra(pokemon.getEspecie())],
+        ["Height", `${pokemon.getAltura()} m`],
+        ["Weight", `${pokemon.getPeso()} kg`],
+        ["Types", pokemon.getTipos().map(letra).join(", ")],
+        ["Abilities", pokemon.getHabilidades().map(letra).join(", ")],
+        ["Weaknesses", pokemon.getDebilidades().map(letra).join(", ")],
+      ];
+      datos.forEach(([t, v]) => {
         const p = document.createElement("p");
-        const strong = document.createElement("strong");
-        strong.textContent = `${titulo}: `;
-        p.appendChild(strong);
-        p.appendChild(document.createTextNode(valor));
-        modalContenido.appendChild(p);
+        p.innerHTML = `<strong>${t}:</strong> ${v}`;
+        section.appendChild(p);
+      });
+    } else if (name === "Base Stats") {
+      pokemon.getStats().forEach(stat => {
+        const statRow = document.createElement("div");
+        statRow.classList.add("barra-stat");
+        
+        // Determinar el color segun el valor
+        const valor = stat.valor;
+        const porcentaje = valor / 2; 
+
+        // Crear el div de la barra con clases de color según el valor
+        const colorClase = valor < 50 ? "rojo" : "verde";
+        
+        statRow.innerHTML = `
+        <label>${letra(stat.nombre)}</label>
+        <div class="barra-externa">
+        <div class="barra-interna ${colorClase}" style="width:${porcentaje}%;"></div>
+        </div>
+        <span>${valor}</span>
+        `;
+        
+        section.appendChild(statRow);
     });
 
-    // Estadísticas
-    const statsContenedor = document.createElement("div");
-    statsContenedor.classList.add("stats");
+    } else if (name === "Moves") {
+      const lista = document.createElement("ul");
+      lista.classList.add("lista-movimientos");
+      pokemon.getMovimientos().forEach((mov) => {
+        const li = document.createElement("li");
+        li.textContent = letra(mov);
+        lista.appendChild(li);
+      });
+      section.appendChild(lista);
+    }
 
-    pokemon.getStats().forEach(st => {
-        const stat = document.createElement("p");
-        stat.textContent = letra(`${st.nombre}: ${st.valor}`);
-        statsContenedor.appendChild(stat);
+    contenido.appendChild(section);
+    tabSections.push(section);
+  });
+
+  tabButtons.forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+      tabButtons.forEach((b) => b.classList.remove("active"));
+      tabSections.forEach((s) => s.classList.remove("active"));
+      btn.classList.add("active");
+      tabSections[i].classList.add("active");
     });
+  });
 
-    modalContenido.appendChild(statsContenedor);
-    modalFondo.appendChild(modalContenido);
-    document.body.appendChild(modalFondo);
+  body.appendChild(tabs);
+  body.appendChild(contenido);
 
+  // Agregar header y body al modal
+  modalContenido.appendChild(header);
+  modalContenido.appendChild(body);
+
+  modalFondo.appendChild(modalContenido);
+  document.body.appendChild(modalFondo);
 }
 
 export function muestratarjeta(pokemon) {
