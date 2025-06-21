@@ -1,19 +1,22 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chewy&family=Concert+One&family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Princess+Sofia&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap");
 #pokedex {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 24px;
-  padding: 40px 20px;
-  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 40px 20px;
 }
 
 .tarjeta-pokedex {
-  border-radius: 18px;
+  width: 100%;
   padding: 20px;
-  width: 240px;
+  border-radius: 18px;
   min-height: 340px;
+  box-sizing: border-box;
+  background-color: #589cd3; /* para que veas el tamaño */
+  /* resto de estilos */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,14 +98,14 @@
   border-radius: 999px;
   text-transform: capitalize;
   background: rgba(255, 255, 255, 0.1);
-  color: white;
+  color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(6px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 .tarjeta-pokedex .boton-acompanante {
   margin-top: auto;
-  background: linear-gradient(135deg, #ffcb05, #ffdd57);
+  background: linear-gradient(135deg, #ffcb05, #fff176);
   color: black;
   border: none;
   border-radius: 999px;
@@ -114,7 +117,7 @@
   z-index: 2;
 }
 .tarjeta-pokedex .boton-acompanante:hover {
-  background: linear-gradient(135deg, #ffe066, #fff176);
+  background: linear-gradient(135deg, #ffcb05, #fff176);
   transform: scale(1.05);
 }
 
@@ -514,7 +517,7 @@
   background-color: #d7d7e4;
 }
 
-/*............................................................................*/
+/*------------------------------------------------------------------------------*/
 .boton-subir {
   position: fixed;
   bottom: 30px;
@@ -547,7 +550,7 @@
   margin-top: 8px;
 }
 .boton-acompanante:hover {
-  background-color: #ffdb4d;
+  background-color: #ffcb05;
 }
 
 .boton-acompanante {
@@ -561,10 +564,9 @@
   margin-top: 8px;
 }
 .boton-acompanante:hover {
-  background-color: #ffdb4d;
+  background-color: #ffcb05;
 }
 
-/*..............................................................*/
 .info-pokemon {
   width: 100%;
   background: rgba(0, 0, 0, 0.05);
@@ -606,10 +608,10 @@
 .info-pokemon .tipos .texto-fondo-tipo {
   padding: 5px 12px;
   border-radius: 999px;
-  background-color: gray;
+  background-color: #444;
   font-size: 0.75rem;
   font-weight: bold;
-  color: white;
+  color: #ffffff;
   text-transform: capitalize;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }

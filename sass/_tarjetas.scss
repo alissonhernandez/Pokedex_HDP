@@ -1,20 +1,20 @@
 @use 'paleta' as *;
-
 #pokedex {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 24px;
-  padding: 40px 20px;
-  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 40px 20px;
 }
 
 .tarjeta-pokedex {
-  border-radius: 18px;
+  width: 100%;
   padding: 20px;
-  width: 240px;
+  border-radius: 18px;
   min-height: 340px;
+  box-sizing: border-box;
+  background-color: lighten($azul, 35%); 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -161,7 +161,6 @@
   }
 }
 
-
 .boton-subir {
   position: fixed;
   bottom: 30px;
@@ -257,7 +256,7 @@
     .texto-fondo-tipo {
       padding: 5px 12px;
       border-radius: 999px;
-      background-color: $gris; // Se sobrescribe con $color
+      background-color: $gris; 
       font-size: 0.75rem;
       font-weight: bold;
       color: $blanco;
