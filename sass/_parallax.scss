@@ -12,11 +12,13 @@
   text-align: center;
   box-sizing: border-box;
 }
+
 .contenedor-parallax {
   @include contenedor();
   margin-top: 70px;
   background: linear-gradient(to bottom, $cielo, $blanco);
 }
+
 .contenedor-parallax img {
   position: absolute;
   width: 100%;
@@ -25,16 +27,19 @@
   pointer-events: none;
   transition: transform 0.3s ease;
 }
+
 #cielo {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 0;
 }
+
 #bola {
   z-index: 6;
   transform: scale(1.2);
 }
+
 .arboles {
   position: absolute;
   bottom: 0;
@@ -67,7 +72,7 @@
 
 .contenedor-muestra {
   position: relative;
-  min-height: 100vh; // permite crecer si hay más tarjetas
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,12 +81,12 @@
   overflow-y: visible;
 }
 
-
 .paisaje {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
+  height: 100%; // NUEVO: para cubrir el fondo completamente
   z-index: -1;
   pointer-events: none;
 }
@@ -91,6 +96,7 @@
   z-index: 2;
   text-align: center;
   color: $blanco;
+
   a {
     text-decoration: none;
     color: inherit;
@@ -105,43 +111,70 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
+
   a {
     text-decoration: none;
     color: inherit;
   }
 }
 
-.contenedor-tarjeta{
+.contenedor-tarjeta {
   height: 100%;
   width: 100%;
 }
 
-#muestraTarjeta {
+// NUEVO: Envoltorio con espacio horizontal para el abanico
+.envoltorio-baraja {
+  overflow-x: visible;
+  overflow-y: visible;
+  width: 100%;
+  padding: 0 10vw;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-  padding: 1rem;
-  z-index: 1;
   position: relative;
 }
 
+// NUEVO: Contenedor de tarjetas en abanico
+#muestraTarjeta {
+  position: relative;
+  height: 380px;
+  width: 150vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+  top: -80px; // NUEVO: mueve el abanico hacia arriba
+}
+
+// NUEVO: Tarjetas dispuestas en forma de abanico
 .tarjeta-breve {
+  position: absolute;
+  top: 65%;
+  left: 50%;
   width: 140px;
   background-color: $blanco;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
-  padding: $spacing-md;
-  transition: transform 0.2s ease;
+  padding: 1.5rem;
+  margin: -1.5rem;
   cursor: pointer;
-  z-index: 2;
+
+  transform: translate(-50%, -50%) 
+             rotate(calc(var(--i) * 6deg)) 
+             translateX(calc(var(--i) * 42px));
+  transform-origin: bottom center;
+  transition: transform 0.6s ease-in-out, z-index 0.4s ease;
+  transition-delay: 0.1s;
+  z-index: calc(100 - abs(var(--i)));
 }
 
 .tarjeta-breve:hover {
-  transform: scale(1.05);
+  transform: translate(-50%, -60%) rotate(0deg) scale(1.1);
+  z-index: 999;
+  transition-delay: 0s;
 }
-//tarjeta breve h3
+
 .tarjeta-breve h3 {
   font-size: 1rem;
   margin: 0.5rem 0;
@@ -152,4 +185,43 @@
   width: 100px;
   height: 100px;
   object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.9;
+  transition: all 0.6s ease;
+}
+
+.tarjeta-breve:hover img {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+// NUEVO: Contenedor general del abanico con titulo
+.contenedor-abanico {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 5rem 1rem 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+  position: relative;
+}
+
+.titulo-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.titulo-abanico {
+  font-family: $texto_pokedex;
+  font-size: $font-size-xxl;
+  color: $blanco;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  margin: 0;
 }
