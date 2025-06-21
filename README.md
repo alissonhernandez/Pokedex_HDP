@@ -1,9 +1,11 @@
 ![Pokedex](https://raw.githubusercontent.com/sleduardo20/pokedex/0671af442dff1d8f7141e49eb83b438885bbc9e9/public/img/logo.svg)
+
 <p align="center">
   <a href="https://alissonhernandez.github.io/Pokedex_HDP/">
-    <img src="https://img.shields.io/badge/SITIO%20WEB-ff69b4?style=for-the-badge" alt="SITIO WEB">
+    <img src="https://img.shields.io/badge/SITIO%20WEB-3b4cca?style=for-the-badge&logo=pokemon&logoColor=white" alt="SITIO WEB">
   </a>
 </p>
+
 
 # 📚 Pokédex Interactiva
 
