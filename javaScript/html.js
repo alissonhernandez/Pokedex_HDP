@@ -226,9 +226,14 @@ export function crearModalPokemon(pokemon) {
     document.body.appendChild(modalFondo);
   }, 1000);
 }
-export function muestratarjeta(pokemon) {
+
+// FUNCION ACTUALIZADA: ahora acepta índice para efecto baraja
+export function muestratarjeta(pokemon, index = 0) {
     const tarjeta = document.createElement("div");
     tarjeta.classList.add("tarjeta-breve");
+
+    // Aqui se aplica la variable CSS --i con valor simetrico (-X a +X)
+    tarjeta.style.setProperty('--i', index);
 
     const tipoPrincipal = pokemon.getTipos()[0];
     tarjeta.classList.add(`tipo-${tipoPrincipal}`);
