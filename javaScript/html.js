@@ -69,141 +69,163 @@ export function tarjetaPokemon(pokemon) {
 function letra(ltr) {
     return ltr.charAt(0).toUpperCase() + ltr.slice(1);
 }
+const gifsTipos = {
+  fire: "../gif/fire.gif",
+  water: "../gif/water.gif",
+  grass: "../gif/grass.gif",
+  bug: "../gif/bug.gif",
+  dragon: "../gif/dragon.gif",
+  normal: "../gif/normal.gif",
+  poison: "../gif/poison.gif",
+  electric: "../gif/electric.gif",
+  ground: "../gif/normal.gif",
+  fairy: "../gif/fairy.gif",
+  fighting: "../gif/fighting.gif",
+  psychic: "../gif/normal.gif",
+  rock: "../gif/normal.gif",
+  ice: "../gif/ice.gif",
+  ghost: "../gif/ghost.gif"
+};
 
 export function crearModalPokemon(pokemon) {
-  const modalFondo = document.createElement("div");
-  modalFondo.classList.add("modal-fondo");
+  const tipo = pokemon.getTipos()[0].toLowerCase(); // tipo principal
+  const gifSrc = gifsTipos[tipo] || gifsTipos["default"];
 
-  const modalContenido = document.createElement("div");
-  modalContenido.classList.add("modal-pokemon", `tipo-${pokemon.getTipos()[0]}`);
+  // Mostrar animación GIF antes del modal
+  const gifAnimacion = document.createElement("img");
+  gifAnimacion.src = gifSrc;
+  gifAnimacion.classList.add("gif-animacion");
+  document.body.appendChild(gifAnimacion);
 
-  // header
-  const header = document.createElement("div");
-  header.classList.add("modal-header");
+  setTimeout(() => {
+    document.body.removeChild(gifAnimacion);
 
-  const mediaLuna = document.createElement("div");
-  mediaLuna.classList.add("media-luna-fondo");
-  header.appendChild(mediaLuna);
+    const modalFondo = document.createElement("div");
+    modalFondo.classList.add("modal-fondo");
 
-  const botonCerrar = document.createElement("span");
-  botonCerrar.classList.add("cerrar-modal");
-  botonCerrar.innerHTML = "&times;";
-  botonCerrar.addEventListener("click", () => document.body.removeChild(modalFondo));
-  header.appendChild(botonCerrar);
+    const modalContenido = document.createElement("div");
+    modalContenido.classList.add("modal-pokemon", `tipo-${tipo}`);
 
-  const nombre = document.createElement("h2");
-  nombre.textContent = letra(pokemon.getNombre());
-  header.appendChild(nombre);
+    // Header
+    const header = document.createElement("div");
+    header.classList.add("modal-header");
 
-  const numero = document.createElement("p");
-  numero.classList.add("numero-id");
-  numero.textContent = `#${String(pokemon.getId()).padStart(3, "0")}`;
-  header.appendChild(numero);
+    const mediaLuna = document.createElement("div");
+    mediaLuna.classList.add("media-luna-fondo");
+    header.appendChild(mediaLuna);
 
-  const imagen = document.createElement("img");
-  imagen.classList.add("modal-img");
-  imagen.src = pokemon.getGif ? pokemon.getGif() : pokemon.getSprite();
-  header.appendChild(imagen);
+    const botonCerrar = document.createElement("span");
+    botonCerrar.classList.add("cerrar-modal");
+    botonCerrar.innerHTML = "&times;";
+    botonCerrar.addEventListener("click", () => document.body.removeChild(modalFondo));
+    header.appendChild(botonCerrar);
 
-  // body
-  const body = document.createElement("div");
-  body.classList.add("modal-body");
+    const nombre = document.createElement("h2");
+    nombre.textContent = letra(pokemon.getNombre());
+    header.appendChild(nombre);
 
-  // tabs
-  const tabs = document.createElement("div");
-  tabs.classList.add("modal-tabs");
+    const numero = document.createElement("p");
+    numero.classList.add("numero-id");
+    numero.textContent = `#${String(pokemon.getId()).padStart(3, "0")}`;
+    header.appendChild(numero);
 
-  const tabNames = ["About", "Base Stats", "Moves"];
-  const tabButtons = [];
-  const tabSections = [];
+    const imagen = document.createElement("img");
+    imagen.classList.add("modal-img");
+    imagen.src = pokemon.getGif ? pokemon.getGif() : pokemon.getSprite();
+    header.appendChild(imagen);
 
-  const contenido = document.createElement("div");
-  contenido.classList.add("tab-contenido");
+    // Body
+    const body = document.createElement("div");
+    body.classList.add("modal-body");
 
-  tabNames.forEach((name, index) => {
-    const btn = document.createElement("button");
-    btn.textContent = name;
-    btn.classList.add("tab-btn");
-    if (index === 0) btn.classList.add("active");
-    tabs.appendChild(btn);
-    tabButtons.push(btn);
+    const tabs = document.createElement("div");
+    tabs.classList.add("modal-tabs");
 
-    const section = document.createElement("div");
-    section.classList.add("tab-seccion");
-    if (index === 0) section.classList.add("active");
+    const tabNames = ["About", "Base Stats", "Moves"];
+    const tabButtons = [];
+    const tabSections = [];
 
-    if (name === "About") {
-      const datos = [
-        ["Species", letra(pokemon.getEspecie())],
-        ["Height", `${pokemon.getAltura()} m`],
-        ["Weight", `${pokemon.getPeso()} kg`],
-        ["Types", pokemon.getTipos().map(letra).join(", ")],
-        ["Abilities", pokemon.getHabilidades().map(letra).join(", ")],
-        ["Weaknesses", pokemon.getDebilidades().map(letra).join(", ")],
-      ];
-      datos.forEach(([t, v]) => {
-        const p = document.createElement("p");
-        p.innerHTML = `<strong>${t}:</strong> ${v}`;
-        section.appendChild(p);
-      });
-    } else if (name === "Base Stats") {
-      pokemon.getStats().forEach(stat => {
-        const statRow = document.createElement("div");
-        statRow.classList.add("barra-stat");
-        
-        // Determinar el color segun el valor
-        const valor = stat.valor;
-        const porcentaje = valor / 2; 
+    const contenido = document.createElement("div");
+    contenido.classList.add("tab-contenido");
 
-        // Crear el div de la barra con clases de color según el valor
-        const colorClase = valor < 50 ? "rojo" : "verde";
-        
-        statRow.innerHTML = `
-        <label>${letra(stat.nombre)}</label>
-        <div class="barra-externa">
-        <div class="barra-interna ${colorClase}" style="width:${porcentaje}%;"></div>
-        </div>
-        <span>${valor}</span>
-        `;
-        
-        section.appendChild(statRow);
+    tabNames.forEach((name, index) => {
+      const btn = document.createElement("button");
+      btn.textContent = name;
+      btn.classList.add("tab-btn");
+      if (index === 0) btn.classList.add("active");
+      tabs.appendChild(btn);
+      tabButtons.push(btn);
+
+      const section = document.createElement("div");
+      section.classList.add("tab-seccion");
+      if (index === 0) section.classList.add("active");
+
+      if (name === "About") {
+        const datos = [
+          ["Species", letra(pokemon.getEspecie())],
+          ["Height", `${pokemon.getAltura()} m`],
+          ["Weight", `${pokemon.getPeso()} kg`],
+          ["Types", pokemon.getTipos().map(letra).join(", ")],
+          ["Abilities", pokemon.getHabilidades().map(letra).join(", ")],
+          ["Weaknesses", pokemon.getDebilidades().map(letra).join(", ")],
+        ];
+        datos.forEach(([t, v]) => {
+          const p = document.createElement("p");
+          p.innerHTML = `<strong>${t}:</strong> ${v}`;
+          section.appendChild(p);
+        });
+      } else if (name === "Base Stats") {
+        pokemon.getStats().forEach(stat => {
+          const statRow = document.createElement("div");
+          statRow.classList.add("barra-stat");
+
+          const valor = stat.valor;
+          const porcentaje = valor / 2;
+          const colorClase = valor < 50 ? "rojo" : "verde";
+
+          statRow.innerHTML = `
+            <label>${letra(stat.nombre)}</label>
+            <div class="barra-externa">
+              <div class="barra-interna ${colorClase}" style="width:${porcentaje}%;"></div>
+            </div>
+            <span>${valor}</span>
+          `;
+          section.appendChild(statRow);
+        });
+      } else if (name === "Moves") {
+        const lista = document.createElement("ul");
+        lista.classList.add("lista-movimientos");
+        pokemon.getMovimientos().forEach(mov => {
+          const li = document.createElement("li");
+          li.textContent = letra(mov);
+          lista.appendChild(li);
+        });
+        section.appendChild(lista);
+      }
+
+      contenido.appendChild(section);
+      tabSections.push(section);
     });
 
-    } else if (name === "Moves") {
-      const lista = document.createElement("ul");
-      lista.classList.add("lista-movimientos");
-      pokemon.getMovimientos().forEach((mov) => {
-        const li = document.createElement("li");
-        li.textContent = letra(mov);
-        lista.appendChild(li);
+    tabButtons.forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        tabButtons.forEach(b => b.classList.remove("active"));
+        tabSections.forEach(s => s.classList.remove("active"));
+        btn.classList.add("active");
+        tabSections[i].classList.add("active");
       });
-      section.appendChild(lista);
-    }
-
-    contenido.appendChild(section);
-    tabSections.push(section);
-  });
-
-  tabButtons.forEach((btn, i) => {
-    btn.addEventListener("click", () => {
-      tabButtons.forEach((b) => b.classList.remove("active"));
-      tabSections.forEach((s) => s.classList.remove("active"));
-      btn.classList.add("active");
-      tabSections[i].classList.add("active");
     });
-  });
 
-  body.appendChild(tabs);
-  body.appendChild(contenido);
+    body.appendChild(tabs);
+    body.appendChild(contenido);
 
-  // Agregar header y body al modal
-  modalContenido.appendChild(header);
-  modalContenido.appendChild(body);
+    modalContenido.appendChild(header);
+    modalContenido.appendChild(body);
 
-  modalFondo.appendChild(modalContenido);
-  document.body.appendChild(modalFondo);
+    modalFondo.appendChild(modalContenido);
+    document.body.appendChild(modalFondo);
+  }, 1000);
 }
-
 export function muestratarjeta(pokemon) {
     const tarjeta = document.createElement("div");
     tarjeta.classList.add("tarjeta-breve");
