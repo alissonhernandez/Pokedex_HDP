@@ -60,8 +60,9 @@ export class Pokemon {
   }
 
   getSprite() {
-    return this.#sprites.front_default;
-  }
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.#id}.png`;
+}
+
 
   getStats() {
     return this.#stats.map(s => ({

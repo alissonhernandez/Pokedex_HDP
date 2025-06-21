@@ -41,7 +41,7 @@
   border-bottom-left-radius: 100% 40%;
   border-bottom-right-radius: 100% 40%;
   z-index: 1;
-  color: white;
+  color: $blanco;
 }
 
 .media-luna-fondo {
@@ -56,7 +56,7 @@
   margin: 0;
   padding: 0;
   opacity: 0.15; 
-  background: white;
+  background: $blanco;
 }
 
 .modal-img {
@@ -80,10 +80,10 @@
 }
 
 .modal-body {
-  background: white;
+  background: $blanco;
   border-radius: 0 0 20px 20px;
   padding: 1.5rem;
-  color: #333;
+  color:$azabache;
   z-index: 1;
 }
 
@@ -91,7 +91,7 @@
   display: flex;
   justify-content: space-around;
   margin-top: 1rem;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid $blanco;
 }
 
 .tab-btn {
@@ -132,7 +132,7 @@
 }
 
 .barra-externa {
-  background: #eee;
+  background: $blanco;
   border-radius: 10px;
   overflow: hidden;
   height: 10px;
@@ -151,7 +151,7 @@
 }
 
 .lista-movimientos li {
-  background: #f3f3f3;
+  background: $blanco;
   padding: 5px 10px;
   border-radius: 12px;
 }
@@ -162,11 +162,11 @@
 }
 
 .barra-interna.verde {
-  background: #4caf50;
+  background: $verde;
 }
 
 .barra-interna.rojo {
-  background: #f44336; 
+  background: $rojo-intenso; 
 }
 
 @keyframes tarjetaBoom {

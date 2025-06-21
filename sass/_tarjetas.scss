@@ -1,46 +1,62 @@
-@import 'paleta';
+@use 'paleta' as *;
 
 #pokedex {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 30px 0;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 24px;
+  padding: 40px 20px;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .tarjeta-pokedex {
-  background-color: $blanco;
-  width: 200px;
-  height: auto;
-  border-radius: 20px;
-  padding: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  color: $negro;
-  text-align: center;
-  transition: transform 0.3s ease;
-  position: relative;
-  overflow: hidden;
+  border-radius: 18px;
+  padding: 20px;
+  width: 240px;
+  min-height: 340px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
 
   &:hover {
-    transform: scale(1.05);
+    transform: translateY(-6px);
   }
 
-  // Contenedor visual de imagen con círculo
+  &::before {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 100%;
+    top: -30%;
+    left: -10%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent 70%);
+    transform: rotate(45deg);
+    z-index: 0;
+  }
+
   .contenedor-imagen {
     position: relative;
-    width: 200px;
-    height: 200px;
-    margin-bottom: 10px;
+    width: 160px;
+    height: 160px;
+    margin-bottom: 12px;
+    z-index: 2;
 
     .circulo-fondo {
       position: absolute;
-      width: 180px;
-      height: 180px;
+      width: 140px;
+      height: 140px;
+      top: 10px;
+      left: 10px;
       border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
       z-index: 1;
+      mix-blend-mode: overlay;
     }
 
     img {
@@ -49,45 +65,102 @@
       object-fit: contain;
       position: relative;
       z-index: 2;
+      filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.4));
+      transition: transform 0.3s ease;
     }
-  }
 
-  h3,
-  p,
-  .boton-acompanante {
-    position: relative;
-    z-index: 3;
+    &:hover img {
+      transform: scale(1.08);
+    }
   }
 
   h3 {
-    font-size: 1.3em;
-    margin: 5px 0;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    font-size: 1.4em;
+    font-weight: 800;
+    margin: 8px 0 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
   }
 
   p {
-    font-size: 0.9em;
+    font-size: 0.85em;
     margin: 2px 0;
+    color: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+  }
+
+  .tipos {
+    display: flex;
+    gap: 6px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    z-index: 2;
+
+    .texto-fondo-tipo {
+      padding: 5px 12px;
+      font-size: 0.75em;
+      font-weight: 600;
+      border-radius: 999px;
+      text-transform: capitalize;
+      background: rgba(255, 255, 255, 0.1);
+      color: $blanco;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  .boton-acompanante {
+    margin-top: auto;
+    background: linear-gradient(135deg, $amarillo, $amarillo-claro);
+    color: black;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    z-index: 2;
+
+    &:hover {
+      background: linear-gradient(135deg, $amarillo, $amarillo-claro);
+      transform: scale(1.05);
+    }
   }
 }
 
+// APLICAR ESTILOS SEGÚN EL TIPO
 @each $tipo, $color in $colores-tipos {
   .tipo-#{$tipo} {
+    background-color: lighten($color, 35%); // fondo suave
+    box-shadow: 0 0 0 4px $color; 
+
     .circulo-fondo {
-      background-color: $color;
+      background: radial-gradient(circle, lighten($color, 20%) 30%, transparent 70%);
+      opacity: 0.4;
     }
+
+    .info-pokemon {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-left: 4px solid $color;
+    }
+
     .texto-fondo-tipo {
       background-color: $color;
-      color: white;
-      padding: 2px 6px;
-      border-radius: 6px;
-      margin-right: 5px;
-      display: inline-block;
-      font-size: 0.85em;
-      text-transform: capitalize;
+    }
+
+    .boton-acompanante {
+      background-color: $color;
+
+      &:hover {
+        background-color: lighten($color, 10%);
+      }
     }
   }
 }
+
 
 .boton-subir {
   position: fixed;
@@ -111,7 +184,7 @@
 }
 
 .boton-acompanante {
-  background-color: #ffcb05;
+  background-color: $amarillo;
   border: none;
   border-radius: 10px;
   padding: 8px 12px;
@@ -121,12 +194,12 @@
   margin-top: 8px;
 
   &:hover {
-    background-color: #ffdb4d;
+    background-color: $amarillo;
   }
 }
 
 .boton-acompanante {
-  background-color: #ffcb05;
+  background-color: $amarillo;
   border: none;
   border-radius: 10px;
   padding: 8px 12px;
@@ -136,7 +209,61 @@
   margin-top: 8px;
 
   &:hover {
-    background-color: #ffdb4d;
+    background-color: $amarillo;
+  }
+}
+
+.info-pokemon {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 14px;
+  padding: 12px;
+  margin-top: 10px;
+  backdrop-filter: blur(4px);
+  position: relative;
+  z-index: 2;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  .nombre-especie {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    width: fit-content;
+    color: $negro;
+  }
+
+  .id-pokemon {
+    font-size: 0.85rem;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .tipos {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 6px;
+
+    .texto-fondo-tipo {
+      padding: 5px 12px;
+      border-radius: 999px;
+      background-color: $gris; // Se sobrescribe con $color
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: $blanco;
+      text-transform: capitalize;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    }
   }
 }
 
