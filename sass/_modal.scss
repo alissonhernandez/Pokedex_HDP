@@ -169,6 +169,32 @@
   background: $rojo-intenso; 
 }
 
+.boton-atrapar {
+  background: linear-gradient(135deg, #ff4d4d 0%, #cc0000 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.75rem 1.8rem;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 6px 12px rgba(204, 0, 0, 0.6);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.boton-atrapar:hover {
+  background: linear-gradient(135deg, #e60000 0%, #990000 100%);
+  box-shadow: 0 8px 20px rgba(153, 0, 0, 0.8);
+  transform: translateY(-3px);
+}
+
+.boton-atrapar:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px rgba(153, 0, 0, 0.6);
+}
+
 @keyframes tarjetaBoom {
   0% {
     opacity: 0;

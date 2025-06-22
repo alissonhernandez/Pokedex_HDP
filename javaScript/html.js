@@ -1,3 +1,5 @@
+import { agregarAcompanante } from './acompanantes.js'; 
+
 //esta funcion crea la tarjeta html del pokemon
 export function tarjetaPokemon(pokemon) {
     //creando el contenedor princpipal de la tarjeta
@@ -221,7 +223,31 @@ export function crearModalPokemon(pokemon) {
 
     modalContenido.appendChild(header);
     modalContenido.appendChild(body);
+    
+   // Boton atrapar
+  const botonAtrapar = document.createElement("button"); 
+  botonAtrapar.classList.add("boton-atrapar");
+  botonAtrapar.textContent = "Atrapar";
 
+  // Contenedor para centrar el boton
+  const contenedorBoton = document.createElement("div");
+  contenedorBoton.style.display = "flex";
+  contenedorBoton.style.justifyContent = "center";
+  contenedorBoton.style.margin = "1rem 0";
+
+  // Evento para atrapar
+  botonAtrapar.addEventListener("click", (event) => {
+    event.stopPropagation(); // evitar que se abra modal si tienes ese evento
+    const agregado = agregarAcompanante(pokemon);
+    if (agregado) {
+      botonAtrapar.textContent = "Atrapado";
+      botonAtrapar.disabled = true;
+    }
+  });
+
+  contenedorBoton.appendChild(botonAtrapar);
+    modalContenido.appendChild(body);
+    modalContenido.appendChild(contenedorBoton);
     modalFondo.appendChild(modalContenido);
     document.body.appendChild(modalFondo);
   }, 1000);
