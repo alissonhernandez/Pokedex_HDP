@@ -1778,3 +1778,692 @@ footer .footer-contenido .copyright p {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+/* Estilos para la página de acompañantes y entrenadores */
+
+.contenido-principal {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.seccion-acompanantes,
+.seccion-entrenadores {
+  margin-bottom: 3rem;
+}
+
+.contenedor-principal {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.titulo-seccion {
+  text-align: center;
+  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contenedor-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Tarjetas de Acompañantes */
+.tarjeta-acompanante {
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 3px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.tarjeta-acompanante:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.tarjeta-acompanante::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: var(--tipo-color, #666);
+}
+
+.tarjeta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.tarjeta-header h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.tarjeta-header .numero-id {
+  background: #f0f0f0;
+  color: #666;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.tarjeta-acompanante .contenedor-imagen {
+  position: relative;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.tarjeta-acompanante .contenedor-imagen .circulo-fondo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background: var(--tipo-color, #666);
+  border-radius: 50%;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.tarjeta-acompanante .contenedor-imagen img {
+  position: relative;
+  z-index: 2;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.tarjeta-info {
+  margin: 1.5rem 0;
+}
+
+.tarjeta-info p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.tarjeta-info p strong {
+  color: #333;
+  font-weight: 600;
+}
+
+.tarjeta-info .texto-fondo-tipo {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+  margin: 0.1rem;
+  text-transform: capitalize;
+}
+
+.tarjeta-acciones {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.tarjeta-acciones button {
+  flex: 1;
+  min-width: 80px;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.tarjeta-acciones button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tarjeta-acciones .boton-ver {
+  background: #4CAF50;
+  color: white;
+}
+
+.tarjeta-acciones .boton-ver:hover {
+  background: #45a049;
+}
+
+.tarjeta-acciones .boton-editar {
+  background: #2196F3;
+  color: white;
+}
+
+.tarjeta-acciones .boton-editar:hover {
+  background: #1976D2;
+}
+
+.tarjeta-acciones .boton-eliminar {
+  background: #f44336;
+  color: white;
+}
+
+.tarjeta-acciones .boton-eliminar:hover {
+  background: #d32f2f;
+}
+
+/* Tarjetas de Entrenadores */
+.tarjeta-entrenador {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 2rem;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tarjeta-entrenador:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.tarjeta-entrenador::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  pointer-events: none;
+}
+
+.tarjeta-entrenador .contenedor-imagen {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  background: white;
+}
+
+.tarjeta-entrenador .contenedor-imagen img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.tarjeta-entrenador:hover .contenedor-imagen img {
+  transform: scale(1.1);
+}
+
+.tarjeta-entrenador .circulo-fondo {
+  display: none; /* Ocultamos el círculo de fondo ya que usamos imágenes de perfil */
+}
+
+.tarjeta-entrenador .tarjeta-header h3 {
+  color: white;
+}
+
+.tarjeta-entrenador .numero-id {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.tarjeta-entrenador .tarjeta-info p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tarjeta-entrenador .tarjeta-info p strong {
+  color: white;
+}
+
+/* Mensajes */
+.mensaje-vacio,
+.mensaje-error {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.mensaje-vacio h3,
+.mensaje-error h3 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.mensaje-vacio p,
+.mensaje-error p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.mensaje-error {
+  border-left: 5px solid #f44336;
+}
+
+.mensaje-error h3 {
+  color: #f44336;
+}
+
+/* Modales */
+.modal-detalles,
+.modal-edicion {
+  background: white;
+  border-radius: 15px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-detalles .modal-header,
+.modal-edicion .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-detalles .modal-header h2,
+.modal-edicion .modal-header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.modal-detalles .cerrar-modal,
+.modal-edicion .cerrar-modal {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.modal-detalles .cerrar-modal:hover,
+.modal-edicion .cerrar-modal:hover {
+  color: #333;
+}
+
+.modal-detalles .modal-body,
+.modal-edicion .modal-body {
+  padding: 1.5rem;
+}
+
+.modal-imagen {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin: 0 auto 1.5rem;
+  display: block;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.detalles-info p {
+  margin: 0.8rem 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.detalles-info p strong {
+  color: #333;
+  font-weight: 600;
+}
+
+/* Formularios */
+.form-grupo {
+  margin-bottom: 1.5rem;
+}
+
+.form-grupo label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.requerido {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.form-grupo input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-grupo input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.form-help {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.4;
+  background: #f8f9fa;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border-left: 3px solid #667eea;
+}
+
+.form-acciones {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.form-acciones button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-acciones .boton-guardar {
+  background: #4CAF50;
+  color: white;
+}
+
+.form-acciones .boton-guardar:hover {
+  background: #45a049;
+}
+
+.form-acciones .boton-cancelar {
+  background: #f44336;
+  color: white;
+}
+
+.form-acciones .boton-cancelar:hover {
+  background: #d32f2f;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contenido-principal {
+    padding: 1rem;
+  }
+
+  .contenedor-principal {
+    padding: 1rem;
+  }
+
+  .titulo-seccion {
+    font-size: 2rem;
+  }
+
+  .contenedor-tarjetas {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .tarjeta-acciones {
+    flex-direction: column;
+  }
+
+  .tarjeta-acciones button {
+    width: 100%;
+  }
+
+  .form-acciones {
+    flex-direction: column;
+  }
+}
+
+/* Estilos para el modal de pokémon del entrenador */
+.pokemones-entrenador {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.pokemon-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  background: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.pokemon-item:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pokemon-mini {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-right: 1rem;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.pokemon-info {
+  flex: 1;
+}
+
+.pokemon-info h4 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.pokemon-info p {
+  margin: 0 0 0.5rem 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.tipos-pokemon {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.tipos-pokemon .texto-fondo-tipo {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.boton-desasignar {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.boton-desasignar:hover {
+  background: #d32f2f;
+  transform: translateY(-1px);
+}
+
+/* Estilos para el botón de asignar */
+.boton-asignar {
+  background: #ff9800;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.boton-asignar:hover {
+  background: #f57c00;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para el select de entrenadores */
+.form-grupo select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  background: white;
+}
+
+.form-grupo select:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+/* Estilos para el modal de asignación */
+.modal-edicion {
+  background: white;
+  border-radius: 15px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Estilos para el botón de actualización temporal */
+.boton-actualizar-entrenadores {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  margin: 1rem 0;
+}
+
+.boton-actualizar-entrenadores:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+/* Mejoras adicionales para las tarjetas de entrenadores */
+.tarjeta-entrenador .tarjeta-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.tarjeta-entrenador .tarjeta-header h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.tarjeta-entrenador .numero-id {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* Estilos para el header de sección con botón */
+.seccion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #eee;
+}
+
+.seccion-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 2rem;
+}
+
+/* Estilos para el título con botón */
+.titulo-con-boton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #eee;
+}
+
+.titulo-con-boton .titulo-seccion {
+  margin: 0;
+  color: #333;
+  font-size: 2rem;
+}
+
+.boton-nuevo-entrenador {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.boton-nuevo-entrenador:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+  background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+}
+
+.boton-nuevo-entrenador:active {
+  transform: translateY(0);
+}
