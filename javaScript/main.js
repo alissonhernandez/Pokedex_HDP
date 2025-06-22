@@ -3,12 +3,44 @@ import { crearBotonesFiltro } from "./filtroTipos.js";
 import { crearBotonSubir } from "./volverBoton.js";
 import { mostrarTarjetasBreves } from "./muestraTarjeta.js";
 
-crearBotonSubir(); //crea el boton para volver al inicio
-mostrarTarjetasBreves();
-//crear la instancia
-const poke = new Pokedex();
-//inicia la pokedex
-poke.init().then(() => {
-  //cuando los datos estén listos crea los botones por tipo
-  crearBotonesFiltro(poke); //pasa la instancia para que sepa que dibujar
+// Función para verificar si estamos en la página principal
+function esPaginaPrincipal() {
+    return window.location.pathname.endsWith('index.html') || 
+           window.location.pathname.endsWith('/') ||
+           window.location.pathname.includes('index.html');
+}
+
+// Función para verificar si estamos en la página de Pokédex
+function esPaginaPokedex() {
+    return window.location.pathname.includes('pokedex.html');
+}
+
+// Inicializar solo en las páginas correspondientes
+document.addEventListener('DOMContentLoaded', async () => {
+    console.log('Página actual:', window.location.pathname);
+    
+    try {
+        // Crear botón subir en todas las páginas
+        crearBotonSubir();
+        
+        // Solo mostrar tarjetas breves en la página principal
+        if (esPaginaPrincipal()) {
+            console.log('Inicializando página principal...');
+            await mostrarTarjetasBreves();
+        }
+        
+        // Solo inicializar Pokédex en la página de Pokédex
+        if (esPaginaPokedex()) {
+            console.log('Inicializando Pokédex...');
+            const poke = new Pokedex();
+            await poke.init().then(() => {
+                //cuando los datos estén listos crea los botones por tipo
+                crearBotonesFiltro(poke); //pasa la instancia para que sepa que dibujar
+            });
+        }
+        
+        console.log('Inicialización completada');
+    } catch (error) {
+        console.error('Error durante la inicialización:', error);
+    }
 });
