@@ -1,4 +1,6 @@
 @use 'paleta' as *;
+@use 'texto' as *;
+
 #pokedex {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -14,7 +16,7 @@
   border-radius: 18px;
   min-height: 340px;
   box-sizing: border-box;
-  background-color: lighten($azul, 35%); 
+  background-color: lighten($azul, 35%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,25 +93,37 @@
   }
 
   .tipos {
-    display: flex;
-    gap: 6px;
-    margin-top: 10px;
-    flex-wrap: wrap;
-    z-index: 2;
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  z-index: 2;
 
-    .texto-fondo-tipo {
-      padding: 5px 12px;
-      font-size: 0.75em;
-      font-weight: 600;
-      border-radius: 999px;
-      text-transform: capitalize;
-      background: rgba(255, 255, 255, 0.1);
-      color: $blanco;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(6px);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-    }
+  .tipo-destacado {
+    padding: 5px 12px;
+    font-size: 0.75em;
+    font-weight: 600;
+    border-radius: 999px;
+    text-transform: capitalize;
+    background: #0ffcff; /* Azul neón para destacar */
+    color: #000;
+    box-shadow: 0 2px 12px rgba(0, 255, 255, 0.7);
   }
+
+  .tipo-general {
+    padding: 5px 12px;
+    font-size: 0.75em;
+    font-weight: 600;
+    border-radius: 999px;
+    text-transform: capitalize;
+    color: $blanco;
+
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+}
 
   .boton-acompanante {
     margin-top: auto;
@@ -131,11 +145,14 @@
   }
 }
 
-// APLICAR ESTILOS SEGÚN EL TIPO
+// COLORES DE TIPO (solo color fondo para .tipo-general, sin borde ni sombra)
 @each $tipo, $color in $colores-tipos {
+  .tarjeta-pokedex.tipo-#{$tipo} {
+    box-shadow: 0 0 0 4px $color; // Borde solo en la tarjeta
+  }
+
   .tipo-#{$tipo} {
-    background-color: lighten($color, 35%); // fondo suave
-    box-shadow: 0 0 0 4px $color; 
+    background-color: lighten($color, 35%);
 
     .circulo-fondo {
       background: radial-gradient(circle, lighten($color, 20%) 30%, transparent 70%);
@@ -147,8 +164,11 @@
       border-left: 4px solid $color;
     }
 
-    .texto-fondo-tipo {
-      background-color: $color;
+    .tipo-general {
+      background-color: $color !important;
+      border: none !important;
+      box-shadow: none !important;
+      color: $blanco !important;
     }
 
     .boton-acompanante {
@@ -161,6 +181,7 @@
   }
 }
 
+/*-----------------------------------------------*/
 .boton-subir {
   position: fixed;
   bottom: 30px;
