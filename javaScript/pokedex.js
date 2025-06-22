@@ -15,6 +15,13 @@ export class Pokedex {
   //metodo publico dibuja las tarjetas en el HTML recibe una lista filtrada por tipo y si no habia nada se usa completa
     async dibujarPokedex(lista = null) {
         const contenedor = document.getElementById("pokedex");
+        
+        // Verificar si el elemento existe antes de usarlo
+        if (!contenedor) {
+            console.warn('Elemento #pokedex no encontrado');
+            return;
+        }
+        
         contenedor.innerHTML = "<div class='spinner'></div>";
         await new Promise(res => setTimeout(res, 300));
         //esta es lista recibida sino existe la lista completa es almacenada
