@@ -1,11 +1,12 @@
 @use 'paleta' as *;
+@use 'texto' as *;
 
-// mixin para botones
+// Mixin pastel para botones de tipo
 @mixin boton-tipo($tipo) {
-  background-color: map-get($colores-tipos, $tipo);
-  color: $blanco;
+  background-color: lighten(map-get($colores-tipos, $tipo), 30%);
+  color: $negro;
   &:hover {
-    background-color: darken(map-get($colores-tipos, $tipo), 10%);
+    background-color: lighten(map-get($colores-tipos, $tipo), 20%);
   }
 }
 
@@ -24,16 +25,17 @@
     font-weight: bold;
     transition: 0.3s ease;
     text-transform: uppercase;
+    font-family: $font-size-xs;
 
     &.todos {
-      background-color: $gris;
-      color: $blanco;
+      background-color: lighten($gris, 25%);
+      color: $negro;
       &:hover {
-        background-color: $azabache;
+        background-color: lighten($gris, 15%);
       }
     }
 
-    // Aplicar estilos por tipo
+    // Aplicar estilos pastel por tipo
     @each $tipo, $color in $colores-tipos {
       &.#{$tipo} {
         @include boton-tipo($tipo);

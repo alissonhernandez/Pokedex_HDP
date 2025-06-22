@@ -148,7 +148,17 @@
 // COLORES DE TIPO (solo color fondo para .tipo-general, sin borde ni sombra)
 @each $tipo, $color in $colores-tipos {
   .tarjeta-pokedex.tipo-#{$tipo} {
-    box-shadow: 0 0 0 4px $color; // Borde solo en la tarjeta
+    box-shadow: 0 0 0 4px $color;
+    transition: box-shadow 0.4s ease, transform 0.3s ease;
+
+    &.seleccionada {
+      box-shadow: 0 0 15px 6px lighten($color, 10%);
+      transform: scale(1.03) rotate(0.5deg);
+    }
+
+    &:hover {
+      transform: translateY(-6px);
+    }
   }
 
   .tipo-#{$tipo} {
