@@ -2,6 +2,7 @@ import { Pokedex } from "./pokedex.js";
 import { crearBotonesFiltro } from "./filtroTipos.js";
 import { crearBotonSubir } from "./volverBoton.js";
 import { mostrarTarjetasBreves } from "./muestraTarjeta.js";
+import { obtenerPokemones } from "./pokemonService.js"; // 🔹 Asegurate de importar esto
 
 // Función para verificar si estamos en la página principal
 function esPaginaPrincipal() {
@@ -33,10 +34,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (esPaginaPokedex()) {
             console.log('Inicializando Pokédex...');
             const poke = new Pokedex();
-            await poke.init().then(() => {
-                //cuando los datos estén listos crea los botones por tipo
-                crearBotonesFiltro(poke); //pasa la instancia para que sepa que dibujar
-            });
+            const pokemones = await obtenerPokemones(150); 
+
+            crearBotonesFiltro(poke, pokemones);           
+            poke.dibujarPokedex(pokemones);               
         }
         
         console.log('Inicialización completada');

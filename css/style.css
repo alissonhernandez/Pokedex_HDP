@@ -1045,7 +1045,6 @@
 .pagina-pokedex .contenedor-fondo {
   position: relative;
   width: 100%;
-  min-height: auto;
 }
 .pagina-pokedex .pikachu,
 .pagina-pokedex .ash {
@@ -1067,16 +1066,16 @@
 }
 .pagina-pokedex .contenedor-central {
   width: 100%;
+  min-height: 80vh;
   max-width: 720px;
-  margin: 4rem auto;
   background-color: #000;
-  border-radius: 20px;
+  margin: 4rem auto 0 auto;
   padding: 30px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   position: relative;
   z-index: 1;
   text-align: center;
   box-sizing: border-box;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
 }
 
 #filtros-tipos {
@@ -1104,130 +1103,130 @@
   background-color: #6a6a6a;
 }
 #filtros-tipos button.fire {
-  background-color: #fdd0b3;
-  color: #000;
+  background-color: #fa751d;
+  color: #ffffff;
 }
 #filtros-tipos button.fire:hover {
-  background-color: #fcb281;
+  filter: brightness(1.1);
 }
 #filtros-tipos button.water {
-  background-color: #f3f6fe;
-  color: #000;
+  background-color: #6890f0;
+  color: #ffffff;
 }
 #filtros-tipos button.water:hover {
-  background-color: #c5d4f9;
+  filter: brightness(1.1);
 }
 #filtros-tipos button.grass {
-  background-color: #cbe7bd;
-  color: #000;
+  background-color: #73be4d;
+  color: #ffffff;
 }
 #filtros-tipos button.grass:hover {
-  background-color: #aed998;
+  filter: brightness(1.1);
 }
 #filtros-tipos button.electric {
-  background-color: #fdf2c4;
-  color: #000;
+  background-color: #f8d030;
+  color: #ffffff;
 }
 #filtros-tipos button.electric:hover {
-  background-color: #fbe693;
+  filter: brightness(1.1);
 }
 #filtros-tipos button.psychic {
-  background-color: #feebf1;
-  color: #000;
+  background-color: #f85888;
+  color: #ffffff;
 }
 #filtros-tipos button.psychic:hover {
-  background-color: #fcbace;
+  filter: brightness(1.1);
 }
 #filtros-tipos button.ice {
-  background-color: white;
-  color: #000;
+  background-color: #98d8d8;
+  color: #ffffff;
 }
 #filtros-tipos button.ice:hover {
-  background-color: #e2f4f4;
+  filter: brightness(1.1);
 }
 #filtros-tipos button.dragon {
-  background-color: #daccfd;
-  color: #000;
+  background-color: #7038f8;
+  color: #ffffff;
 }
 #filtros-tipos button.dragon:hover {
-  background-color: #b79bfb;
+  filter: brightness(1.1);
 }
 #filtros-tipos button.dark {
-  background-color: #bba596;
-  color: #000;
+  background-color: #705848;
+  color: #ffffff;
 }
 #filtros-tipos button.dark:hover {
-  background-color: #a78a77;
+  filter: brightness(1.1);
 }
 #filtros-tipos button.fairy {
-  background-color: white;
-  color: #000;
+  background-color: #ee99ac;
+  color: #ffffff;
 }
 #filtros-tipos button.fairy:hover {
-  background-color: #fdf0f3;
+  filter: brightness(1.1);
 }
 #filtros-tipos button.normal {
-  background-color: #e4e4d5;
-  color: #000;
+  background-color: #a8a878;
+  color: #ffffff;
 }
 #filtros-tipos button.normal:hover {
-  background-color: #d0d0b6;
+  filter: brightness(1.1);
 }
 #filtros-tipos button.fighting {
-  background-color: #e99c98;
-  color: #000;
+  background-color: #c03028;
+  color: #ffffff;
 }
 #filtros-tipos button.fighting:hover {
-  background-color: #e1736d;
+  filter: brightness(1.1);
 }
 #filtros-tipos button.flying {
-  background-color: white;
-  color: #000;
+  background-color: #a890f0;
+  color: #ffffff;
 }
 #filtros-tipos button.flying:hover {
-  background-color: #eeeafc;
+  filter: brightness(1.1);
 }
 #filtros-tipos button.poison {
-  background-color: #d9a0d9;
-  color: #000;
+  background-color: #a040a0;
+  color: #ffffff;
 }
 #filtros-tipos button.poison:hover {
-  background-color: #ca7cca;
+  filter: brightness(1.1);
 }
 #filtros-tipos button.ground {
-  background-color: #faf5e7;
-  color: #000;
+  background-color: #e0c068;
+  color: #ffffff;
 }
 #filtros-tipos button.ground:hover {
-  background-color: #f1e3bd;
+  filter: brightness(1.1);
 }
 #filtros-tipos button.rock {
-  background-color: #e4d8a5;
-  color: #000;
+  background-color: #b8a038;
+  color: #ffffff;
 }
 #filtros-tipos button.rock:hover {
-  background-color: #d8c77e;
+  filter: brightness(1.1);
 }
 #filtros-tipos button.bug {
-  background-color: #e0ea87;
-  color: #000;
+  background-color: #a8b820;
+  color: #ffffff;
 }
 #filtros-tipos button.bug:hover {
-  background-color: #d4e35b;
+  filter: brightness(1.1);
 }
 #filtros-tipos button.ghost {
-  background-color: #c1b5d4;
-  color: #000;
+  background-color: #705898;
+  color: #ffffff;
 }
 #filtros-tipos button.ghost:hover {
-  background-color: #a595c1;
+  filter: brightness(1.1);
 }
 #filtros-tipos button.steel {
-  background-color: white;
-  color: #000;
+  background-color: #b8b8d0;
+  color: #ffffff;
 }
 #filtros-tipos button.steel:hover {
-  background-color: #f5f5f9;
+  filter: brightness(1.1);
 }
 
 .menu {

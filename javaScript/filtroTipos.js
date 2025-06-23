@@ -1,17 +1,13 @@
 import { obtenerPokemones } from "./pokemonService.js";
 import { obtenerTipos } from "./tipos.js";
 
-export async function crearBotonesFiltro(pokedexInstance) {
+export function crearBotonesFiltro(pokedexInstance, pokemones) {
     const contenedor = document.getElementById("filtros-tipos");
     if (!contenedor) return;
 
-    //obtiene pokemones y tipos únicos
-    const pokemones = await obtenerPokemones(150);
-    const tiposMap = obtenerTipos(pokemones); // Map con tipo - pokemon
-    console.log("Tipos obtenidos:", tiposMap);
-    //creando boton por cada tipo unico
+    const tiposMap = obtenerTipos(pokemones); // usando los pokemones recibidos
+
     tiposMap.forEach((_, tipo) => {
-        console.log("Creando botón para tipo:", tipo);
         const boton = document.createElement("button");
         boton.textContent = tipo.toUpperCase();
         boton.classList.add("boton-tipo", tipo);
@@ -24,7 +20,6 @@ export async function crearBotonesFiltro(pokedexInstance) {
         contenedor.appendChild(boton);
     });
 
-    //boton para mostrar todos
     const botonTodos = document.createElement("button");
     botonTodos.textContent = "TODOS";
     botonTodos.classList.add("boton-tipo", "todos");
@@ -32,5 +27,6 @@ export async function crearBotonesFiltro(pokedexInstance) {
     botonTodos.addEventListener("click", () => {
         pokedexInstance.dibujarPokedex(pokemones);
     });
+
     contenedor.appendChild(botonTodos);
 }

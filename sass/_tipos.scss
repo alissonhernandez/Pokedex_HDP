@@ -2,14 +2,15 @@
 @use 'texto' as *;
 @use 'breakpoints' as *;
 
-// Mixin pastel para botones de tipo
+// Mixin para botones de tipo
 @mixin boton-tipo($tipo) {
-  background-color: lighten(map-get($colores-tipos, $tipo), 30%);
-  color: $negro;
+  background-color: map-get($colores-tipos, $tipo);
+  color: $blanco;
   &:hover {
-    background-color: lighten(map-get($colores-tipos, $tipo), 20%);
+    filter: brightness(1.1); 
   }
 }
+
 
 #filtros-tipos {
   margin: 20px 0;
