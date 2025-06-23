@@ -74,7 +74,7 @@
     }
 
     &:hover img {
-      transform: scale(1.08);
+      transform: scale(1.5);
     }
   }
 
@@ -128,22 +128,22 @@
 }
 }
 
-// COLORES DE TIPO (solo color fondo para .tipo-general, sin borde ni sombra)
 @each $tipo, $color in $colores-tipos {
   .tarjeta-pokedex.tipo-#{$tipo} {
-    box-shadow: 0 0 0 4px $color;
-    transition: box-shadow 0.4s ease, transform 0.3s ease;
-
-    &.seleccionada {
-      box-shadow: 0 0 15px 6px lighten($color, 10%);
-      transform: scale(1.03) rotate(0.5deg);
-    }
+    background-color: $color;
+    border: 2px solid $blanco;
+    color: $blanco;
 
     &:hover {
+      filter: brightness(1.1);
       transform: translateY(-6px);
     }
-  }
 
+    h3, p, .nombre-especie, .id-pokemon {
+      color: $blanco;
+    }
+  }
+  
   .tipo-#{$tipo} {
     background-color: lighten($color, 35%);
 
@@ -286,14 +286,8 @@
 }
 
 @each $tipo, $color in $colores-tipos {
-  .tipo-#{$tipo} {
-    .texto-fondo-tipo {
-      background-color: lighten($color, 45%);
-      border-color: $color;
-      color: #000;
-    }
+  .texto-fondo-tipo.tipo-#{$tipo} {
+    background-color: $color;
+    color: $blanco;
   }
 }
-
-
-

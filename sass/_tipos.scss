@@ -11,7 +11,6 @@
   }
 }
 
-
 #filtros-tipos {
   margin: 20px 0;
   display: flex;
@@ -30,14 +29,14 @@
     font-family: $font-size-xs;
 
     &.todos {
-      background-color: lighten($gris, 25%);
-      color: $negro;
+      background-color: $gris;
+      color: $blanco;
       &:hover {
-        background-color: lighten($gris, 15%);
+        filter: brightness(1.1);
       }
     }
 
-    // Aplicar estilos pastel por tipo
+    // Aplicar estilos por tipo
     @each $tipo, $color in $colores-tipos {
       &.#{$tipo} {
         @include boton-tipo($tipo);

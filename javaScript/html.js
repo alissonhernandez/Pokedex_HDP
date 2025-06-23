@@ -6,9 +6,8 @@ export function tarjetaPokemon(pokemon) {
     const tarjeta = document.createElement("div");
     tarjeta.classList.add("tarjeta-pokedex"); // nombre de la clase
 
-    // Toma el primer tipo del pokemon para asignar el color
-    const tipoPrincipal = pokemon.getTipos()[0];
-    tarjeta.classList.add(`tipo-${tipoPrincipal}`);
+    const primerTipo = pokemon.getTipos()[0];
+    tarjeta.classList.add(`tipo-${primerTipo}`);
 
     // Nombre del Pokémon
     const nombre = document.createElement("h3");
@@ -169,12 +168,12 @@ export function crearModalPokemon(pokemon) {
 
       if (name === "About") {
         const datos = [
-          ["Species", letra(pokemon.getEspecie())],
-          ["Height", `${pokemon.getAltura()} m`],
-          ["Weight", `${pokemon.getPeso()} kg`],
-          ["Types", pokemon.getTipos().map(letra).join(", ")],
-          ["Abilities", pokemon.getHabilidades().map(letra).join(", ")],
-          ["Weaknesses", pokemon.getDebilidades().map(letra).join(", ")],
+          ["🦸‍♂️ Species", letra(pokemon.getEspecie())],
+          ["📏 Height", `${pokemon.getAltura()} m`],
+          ["⚖️ Weight", `${pokemon.getPeso()} kg`],
+          ["🔮 Types", pokemon.getTipos().map(letra).join(", ")],
+          ["✨ Abilities", pokemon.getHabilidades().map(letra).join(", ")],
+          ["⚔️ Weaknesses", pokemon.getDebilidades().map(letra).join(", ")],
         ];
         datos.forEach(([t, v]) => {
           const p = document.createElement("p");

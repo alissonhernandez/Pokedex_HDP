@@ -15,18 +15,32 @@ export function guardarAcompanantes(lista) {
 
 function mostrarPokebolaGif() {
   const gif = document.createElement("img");
-  gif.src = "../gif/atrapar.gif"; // Asegúrate de que la ruta es correcta
+  gif.src = "../gif/atrapar.gif"; 
   gif.classList.add("pokebola-gif");
+
+  // Crear y reproducir el audio
+  const audio = document.createElement("audio");
+  audio.src = "../audio/atrapar.mp3"; 
+  audio.volume = 0.8;
+  audio.play();
 
   document.body.appendChild(gif);
 
-  // Quitar después de 2 segundos
+  // Duración total: 2s de gif + 1s de animación de salida = 3s
   setTimeout(() => {
     gif.classList.add("desaparecer");
-    setTimeout(() => gif.remove(), 1000); // después de animación de salida
+
+    // Después de animación de salida (1s)
+    setTimeout(() => {
+      gif.remove();
+
+      // Detener y eliminar el audio
+      audio.pause();
+      audio.currentTime = 0;
+      audio.remove();
+    }, 1000);
   }, 2000);
 }
-
 
 export async function agregarAcompanante(pokemon) {
   try {

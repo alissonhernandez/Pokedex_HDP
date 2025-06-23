@@ -30,3 +30,4 @@ export function crearBotonesFiltro(pokedexInstance, pokemones) {
 
     contenedor.appendChild(botonTodos);
 }
+

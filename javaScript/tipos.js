@@ -12,4 +12,3 @@ export function obtenerTipos(pokemones) {
 
     return tiposUnicos;
 }
-
