@@ -289,6 +289,7 @@ function crearTarjetaEntrenador(entrenador) {
   tarjeta.classList.add("tarjeta-entrenador");
 
   const cantidadPokemon = entrenador.pokemones ? entrenador.pokemones.length : 0;
+  const rol = entrenador.rol ? entrenador.rol : 'Entrenador Pokémon';
 
   tarjeta.innerHTML = `
     <div class="tarjeta-header">
@@ -302,7 +303,7 @@ function crearTarjetaEntrenador(entrenador) {
     </div>
 
     <div class="tarjeta-info">
-      <p><strong>Rol:</strong> Entrenador Pokémon</p>
+      <p><strong>Rol:</strong> ${rol}</p>
       <p><strong>Equipo:</strong> Pokedex HDP</p>
       <p><strong>Acompañantes:</strong> ${cantidadPokemon}/6</p>
     </div>
@@ -486,28 +487,82 @@ function mostrarModalEdicion(item, tipo) {
   const contenido = document.createElement("div");
   contenido.classList.add("modal-edicion");
   
-  contenido.innerHTML = `
-    <div class="modal-header">
-      <h2>Editar ${tipo === 'acompanante' ? 'Acompañante' : 'Entrenador'}</h2>
-      <span class="cerrar-modal" onclick="this.closest('.modal-fondo').remove()">&times;</span>
-    </div>
-    <div class="modal-body">
-      <form id="form-edicion">
-        <div class="form-grupo">
-          <label>Nombre:</label>
-          <input type="text" id="edit-nombre" value="${item.nombre}" required>
+  if (tipo === 'acompanante') {
+    contenido.innerHTML = `
+      <div class="modal-header">
+        <h2>Editar Acompañante</h2>
+        <span class="cerrar-modal" onclick="this.closest('.modal-fondo').remove()">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="preview-pokemon">
+          <img src="${item.sprite}" alt="${item.nombre}" class="pokemon-preview">
+          <div class="pokemon-info-preview">
+            <h3>#${String(item.id).padStart(3, "0")}</h3>
+            <div class="tipos-preview">
+              ${item.tipos.map(tipo => 
+                `<span class="texto-fondo-tipo tipo-${tipo}">${letra(tipo)}</span>`
+              ).join(' ')}
+            </div>
+          </div>
         </div>
-        <div class="form-grupo">
-          <label>Especie:</label>
-          <input type="text" id="edit-especie" value="${item.especie || ''}" ${tipo === 'acompanante' ? 'required' : ''}>
-        </div>
-        <div class="form-acciones">
-          <button type="submit" class="boton-guardar">Guardar</button>
-          <button type="button" class="boton-cancelar" onclick="this.closest('.modal-fondo').remove()">Cancelar</button>
-        </div>
-      </form>
-    </div>
-  `;
+        <form id="form-edicion">
+          <div class="form-grupo">
+            <label>Nombre personalizado:</label>
+            <input type="text" id="edit-nombre" value="${item.nombre}" placeholder="Ej: Mi Pikachu" required>
+            <small class="form-help">Puedes darle un nombre personalizado a tu Pokémon</small>
+          </div>
+          <div class="form-grupo">
+            <label>Especie:</label>
+            <input type="text" id="edit-especie" value="${item.especie || ''}" placeholder="Ej: Ratón Eléctrico" required>
+            <small class="form-help">La especie o tipo de Pokémon</small>
+          </div>
+          <div class="form-grupo">
+            <label>Altura (metros):</label>
+            <input type="number" id="edit-altura" value="${item.altura}" step="0.1" min="0.1" max="20" required>
+            <small class="form-help">Altura en metros (0.1 - 20)</small>
+          </div>
+          <div class="form-grupo">
+            <label>Peso (kg):</label>
+            <input type="number" id="edit-peso" value="${item.peso}" step="0.1" min="0.1" max="1000" required>
+            <small class="form-help">Peso en kilogramos (0.1 - 1000)</small>
+          </div>
+          <div class="form-grupo">
+            <label>Fecha de captura:</label>
+            <input type="date" id="edit-fecha" value="${new Date(item.fechaCaptura).toISOString().split('T')[0]}" required>
+            <small class="form-help">Fecha cuando capturaste este Pokémon</small>
+          </div>
+          <div class="form-acciones">
+            <button type="submit" class="boton-guardar">💾 Guardar Cambios</button>
+            <button type="button" class="boton-cancelar" onclick="this.closest('.modal-fondo').remove()">❌ Cancelar</button>
+          </div>
+        </form>
+      </div>
+    `;
+  } else {
+    // Para entrenadores (mantener la implementación original)
+    contenido.innerHTML = `
+      <div class="modal-header">
+        <h2>Editar Entrenador</h2>
+        <span class="cerrar-modal" onclick="this.closest('.modal-fondo').remove()">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form id="form-edicion">
+          <div class="form-grupo">
+            <label>Nombre:</label>
+            <input type="text" id="edit-nombre" value="${item.nombre}" required>
+          </div>
+          <div class="form-grupo">
+            <label>Especie:</label>
+            <input type="text" id="edit-especie" value="${item.especie || ''}" ${tipo === 'acompanante' ? 'required' : ''}>
+          </div>
+          <div class="form-acciones">
+            <button type="submit" class="boton-guardar">Guardar</button>
+            <button type="button" class="boton-cancelar" onclick="this.closest('.modal-fondo').remove()">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    `;
+  }
   
   modal.appendChild(contenido);
   document.body.appendChild(modal);
@@ -517,22 +572,70 @@ function mostrarModalEdicion(item, tipo) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const nombre = document.getElementById('edit-nombre').value;
-    const especie = document.getElementById('edit-especie').value;
-    
     try {
       if (tipo === 'acompanante') {
+        // Obtener todos los valores del formulario
+        const nombre = document.getElementById('edit-nombre').value.trim();
+        const especie = document.getElementById('edit-especie').value.trim();
+        const altura = parseFloat(document.getElementById('edit-altura').value);
+        const peso = parseFloat(document.getElementById('edit-peso').value);
+        const fecha = document.getElementById('edit-fecha').value;
+        
+        // Validaciones
+        if (!nombre) {
+          alert('Por favor, ingresa un nombre para tu Pokémon');
+          return;
+        }
+        
+        if (!especie) {
+          alert('Por favor, ingresa la especie del Pokémon');
+          return;
+        }
+        
+        if (isNaN(altura) || altura < 0.1 || altura > 20) {
+          alert('Por favor, ingresa una altura válida entre 0.1 y 20 metros');
+          return;
+        }
+        
+        if (isNaN(peso) || peso < 0.1 || peso > 1000) {
+          alert('Por favor, ingresa un peso válido entre 0.1 y 1000 kg');
+          return;
+        }
+        
+        if (!fecha) {
+          alert('Por favor, selecciona una fecha de captura');
+          return;
+        }
+        
+        // Actualizar el objeto del acompañante
         item.nombre = nombre;
         item.especie = especie;
+        item.altura = altura;
+        item.peso = peso;
+        item.fechaCaptura = new Date(fecha).toISOString();
+        
+        // Guardar en IndexedDB
         await dbManager.actualizarAcompanante(item);
+        
+        alert('✅ ¡Acompañante actualizado exitosamente!');
+        modal.remove();
+        await mostrarAcompanantes();
+      } else {
+        // Para entrenadores (mantener la implementación original)
+        const nombre = document.getElementById('edit-nombre').value;
+        const especie = document.getElementById('edit-especie').value;
+        
+        item.nombre = nombre;
+        item.especie = especie;
+        await dbManager.actualizarEntrenador(item);
+        
+        alert('Cambios guardados exitosamente');
+        modal.remove();
+        await mostrarEntrenadores();
       }
-      
-      alert('Cambios guardados exitosamente');
-      modal.remove();
-      await mostrarAcompanantes();
     } catch (error) {
       console.error('Error al guardar:', error);
-      alert('Error al guardar cambios');
+      alert('❌ Error al guardar cambios: ' + error.message);
     }
   });
 }
@@ -543,10 +646,115 @@ function letra(ltr) {
 }
 
 // Función para editar entrenador
-window.editarEntrenador = function(id) {
-  // Implementar edición del entrenador
-  alert('Función de editar entrenador en desarrollo');
+window.editarEntrenador = async function(id) {
+  try {
+    const entrenador = entrenadoresCache.find(e => e.id === id);
+    if (!entrenador) {
+      alert('Entrenador no encontrado');
+      return;
+    }
+    
+    // Mostrar modal de edición para entrenador
+    mostrarModalEdicionEntrenador(entrenador);
+  } catch (error) {
+    console.error('Error al editar entrenador:', error);
+    alert('Error al cargar datos del entrenador');
+  }
 };
+
+// Función específica para mostrar modal de edición de entrenador
+function mostrarModalEdicionEntrenador(entrenador) {
+  const modal = document.createElement('div');
+  modal.classList.add('modal-fondo');
+  
+  const contenido = document.createElement('div');
+  contenido.classList.add('modal-edicion');
+  
+  contenido.innerHTML = `
+    <div class="modal-header">
+      <h2>Editar Entrenador</h2>
+      <span class="cerrar-modal" onclick="this.closest('.modal-fondo').remove()">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div class="preview-entrenador">
+        <img src="${entrenador.imagen}" alt="${entrenador.nombre}" class="entrenador-preview" onerror="this.src='../img/Ash.png'">
+        <div class="entrenador-info-preview">
+          <h3>#${String(entrenador.id).padStart(3, "0")}</h3>
+          <p class="rol-entrenador">Entrenador Pokémon</p>
+          <p class="equipo-entrenador">Equipo: Pokedex HDP</p>
+        </div>
+      </div>
+      <form id="form-edicion-entrenador">
+        <div class="form-grupo">
+          <label>Nombre del Entrenador:</label>
+          <input type="text" id="edit-nombre-entrenador" value="${entrenador.nombre}" placeholder="Ej: Juan Pérez" required>
+          <small class="form-help">Nombre completo del entrenador</small>
+        </div>
+        <div class="form-grupo">
+          <label>URL de Imagen:</label>
+          <input type="url" id="edit-imagen-entrenador" value="${entrenador.imagen}" placeholder="https://ejemplo.com/imagen.jpg">
+          <small class="form-help">
+            💡 URL de la imagen del entrenador. Si no funciona, se usará la imagen de Ash por defecto.
+          </small>
+        </div>
+        <div class="form-grupo">
+          <label>Rol en el Equipo:</label>
+          <input type="text" id="edit-rol-entrenador" value="Entrenador Pokémon" placeholder="Ej: Líder de Gimnasio" required>
+          <small class="form-help">Rol o especialidad del entrenador</small>
+        </div>
+        <div class="form-acciones">
+          <button type="submit" class="boton-guardar">💾 Guardar Cambios</button>
+          <button type="button" class="boton-cancelar" onclick="this.closest('.modal-fondo').remove()">❌ Cancelar</button>
+        </div>
+      </form>
+    </div>
+  `;
+  
+  modal.appendChild(contenido);
+  document.body.appendChild(modal);
+  
+  // Manejar el formulario
+  const form = modal.querySelector('#form-edicion-entrenador');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    try {
+      // Obtener valores del formulario
+      const nombre = document.getElementById('edit-nombre-entrenador').value.trim();
+      const imagenUrl = document.getElementById('edit-imagen-entrenador').value.trim();
+      const rol = document.getElementById('edit-rol-entrenador').value.trim();
+      
+      // Validaciones
+      if (!nombre) {
+        alert('Por favor, ingresa el nombre del entrenador');
+        return;
+      }
+      
+      if (!rol) {
+        alert('Por favor, ingresa el rol del entrenador');
+        return;
+      }
+      
+      // Actualizar el objeto del entrenador
+      entrenador.nombre = nombre;
+      entrenador.imagen = imagenUrl || '../img/Ash.png';
+      entrenador.rol = rol;
+      
+      // Guardar en IndexedDB
+      await dbManager.actualizarEntrenador(entrenador);
+      
+      alert('✅ ¡Entrenador actualizado exitosamente!');
+      modal.remove();
+      
+      // Actualizar el cache y las vistas
+      await mostrarEntrenadores();
+      await mostrarAcompanantes(); // Para actualizar el cache de entrenadores
+    } catch (error) {
+      console.error('Error al guardar entrenador:', error);
+      alert('❌ Error al guardar cambios: ' + error.message);
+    }
+  });
+}
 
 // Función para mostrar modal de nuevo entrenador
 window.mostrarModalNuevoEntrenador = function() {
@@ -591,7 +799,9 @@ window.mostrarModalNuevoEntrenador = function() {
     
     const nombre = document.getElementById('nombre-entrenador').value.trim();
     const imagenUrl = document.getElementById('imagen-github').value.trim();
-    
+    let rol = 'Entrenador Pokémon';
+    // Si quieres permitir que el usuario elija el rol al crear, puedes agregar un input en el formulario y leerlo aquí
+
     if (!nombre) {
       alert('Por favor, ingresa el nombre del entrenador');
       return;
@@ -601,7 +811,7 @@ window.mostrarModalNuevoEntrenador = function() {
     const imagenFinal = imagenUrl || '../img/Ash.png';
 
     try {
-      await dbManager.crearNuevoEntrenador(nombre, imagenFinal);
+      await dbManager.crearNuevoEntrenador(nombre, imagenFinal, rol);
       alert('¡Entrenador creado exitosamente!');
       modal.remove();
       // Actualizar el cache y las vistas

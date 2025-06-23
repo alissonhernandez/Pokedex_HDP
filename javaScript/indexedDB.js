@@ -414,7 +414,7 @@ class IndexedDBManager {
     }
 
     // Función para crear un nuevo entrenador
-    async crearNuevoEntrenador(nombre, imagenGitHub) {
+    async crearNuevoEntrenador(nombre, imagenGitHub, rol = 'Entrenador Pokémon') {
         const db = await this.waitForDB();
         const transaction = db.transaction([TRAINERS_STORE], 'readwrite');
         const store = transaction.objectStore(TRAINERS_STORE);
@@ -431,7 +431,8 @@ class IndexedDBManager {
                     id: siguienteId,
                     nombre: nombre,
                     imagen: imagenGitHub,
-                    pokemones: []
+                    pokemones: [],
+                    rol: rol
                 };
                 
                 // Agregar el nuevo entrenador
