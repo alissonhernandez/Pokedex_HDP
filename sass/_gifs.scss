@@ -10,3 +10,20 @@
   opacity: 0.9;    
   filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8)); 
 }
+
+.pokebola-gif {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 700px;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.pokebola-gif.desaparecer {
+  opacity: 0;
+}

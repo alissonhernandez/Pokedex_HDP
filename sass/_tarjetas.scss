@@ -17,9 +17,8 @@
   width: 100%;
   padding: 20px;
   border-radius: 18px;
-  min-height: 340px;
+  min-height: 260px;
   box-sizing: border-box;
-  background-color: lighten($azul, 35%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -108,7 +107,7 @@
     font-weight: 600;
     border-radius: 999px;
     text-transform: capitalize;
-    background: #0ffcff; /* Azul neón para destacar */
+    background: #0ffcff; 
     color: #000;
     box-shadow: 0 2px 12px rgba(0, 255, 255, 0.7);
   }
@@ -127,25 +126,6 @@
     outline: none !important;
   }
 }
-
-  .boton-acompanante {
-    margin-top: auto;
-    background: linear-gradient(135deg, $amarillo, $amarillo-claro);
-    color: black;
-    border: none;
-    border-radius: 999px;
-    padding: 10px 20px;
-    font-weight: bold;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-    z-index: 2;
-
-    &:hover {
-      background: linear-gradient(135deg, $amarillo, $amarillo-claro);
-      transform: scale(1.05);
-    }
-  }
 }
 
 // COLORES DE TIPO (solo color fondo para .tipo-general, sin borde ni sombra)
@@ -231,20 +211,6 @@
   }
 }
 
-.boton-acompanante {
-  background-color: $amarillo;
-  border: none;
-  border-radius: 10px;
-  padding: 8px 12px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 8px;
-
-  &:hover {
-    background-color: $amarillo;
-  }
-}
 
 .info-pokemon {
   width: 100%;
@@ -299,5 +265,35 @@
     }
   }
 }
+
+.texto-fondo-tipo {
+  display: inline-block;
+  padding: 6px 14px;
+  margin: 4px 6px 0 0;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: bold;
+  text-transform: capitalize;
+  background-color: transparent;
+  border: 2px solid currentColor;
+  color: #000;
+  box-shadow: none;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+@each $tipo, $color in $colores-tipos {
+  .tipo-#{$tipo} {
+    .texto-fondo-tipo {
+      background-color: lighten($color, 45%);
+      border-color: $color;
+      color: #000;
+    }
+  }
+}
+
 
 

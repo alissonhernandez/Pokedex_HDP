@@ -1,18 +1,18 @@
 import { agregarAcompanante } from './acompanantes.js'; 
 
-//esta funcion crea la tarjeta html del pokemon
+// Esta función crea la tarjeta HTML del Pokémon sin botón
 export function tarjetaPokemon(pokemon) {
-    //creando el contenedor princpipal de la tarjeta
+    // Creando el contenedor principal de la tarjeta
     const tarjeta = document.createElement("div");
-    tarjeta.classList.add("tarjeta-pokedex");//nombre de la clase
+    tarjeta.classList.add("tarjeta-pokedex"); // nombre de la clase
 
-    //toma el primer tipo del pokemon para poder asignar el color
+    // Toma el primer tipo del pokemon para asignar el color
     const tipoPrincipal = pokemon.getTipos()[0];
     tarjeta.classList.add(`tipo-${tipoPrincipal}`);
 
-    //nombre del pokemon
+    // Nombre del Pokémon
     const nombre = document.createElement("h3");
-    nombre.textContent = letra(pokemon.getNombre());//usa la funcion llamada "letra" para que la primera letra sea mayuscula
+    nombre.textContent = letra(pokemon.getNombre()); // primera letra mayúscula
     tarjeta.appendChild(nombre);
 
     const contenedorImg = document.createElement("div");
@@ -28,22 +28,21 @@ export function tarjetaPokemon(pokemon) {
     contenedorImg.appendChild(imagen);
     tarjeta.appendChild(contenedorImg);
 
-    //muestra en texto todos los datos y usa la funcion letra
+    // Muestra los tipos 
     const datos = [
-        ["Especie", letra(pokemon.getEspecie())],
-        ["Tipos", pokemon.getTipos().map(tipo => {
+        ["", pokemon.getTipos().map(tipo => {
             const span = document.createElement("span");
             span.classList.add("texto-fondo-tipo", `tipo-${tipo}`);
             span.textContent = letra(tipo);
             return span;
         })]
-    ]
+    ];
 
-//creando parrafos para mostrar los datos
+    // Crear párrafos para mostrar los datos
     datos.forEach(([titulo, valor]) => {
         const p = document.createElement("p");
         const strong = document.createElement("strong");
-        strong.textContent = `${titulo}: `;
+        strong.textContent = `${titulo} `;
         p.appendChild(strong);
 
         if (Array.isArray(valor)) {
@@ -55,17 +54,14 @@ export function tarjetaPokemon(pokemon) {
         tarjeta.appendChild(p);
     });
 
-    const boton = document.createElement("button");
-    boton.textContent = "Asignar Pokémon";
-    boton.classList.add("boton-acompanante");
-
+    // Mantener el evento para abrir modal al clickear la tarjeta
     tarjeta.addEventListener("click", () => {
         crearModalPokemon(pokemon);
     });
 
-    tarjeta.appendChild(boton);
     return tarjeta;
 }
+
 
 //funcion para colocar en mayuscula la primera letra del texto
 function letra(ltr) {
@@ -99,6 +95,14 @@ export function crearModalPokemon(pokemon) {
   gifAnimacion.classList.add("gif-animacion");
   document.body.appendChild(gifAnimacion);
 
+  const audio = new Audio("../audio/pokemon.mp3");
+    audio.currentTime = 1; 
+    audio.play();
+    setTimeout(() => {
+      audio.pause();
+      audio.currentTime = 0;
+    }, 5000);
+
   setTimeout(() => {
     document.body.removeChild(gifAnimacion);
 
@@ -123,6 +127,7 @@ export function crearModalPokemon(pokemon) {
     header.appendChild(botonCerrar);
 
     const nombre = document.createElement("h2");
+    nombre.classList.add("modal-nombre");
     nombre.textContent = letra(pokemon.getNombre());
     header.appendChild(nombre);
 
@@ -276,3 +281,4 @@ export function muestratarjeta(pokemon, index = 0) {
 
     return tarjeta;
 }
+

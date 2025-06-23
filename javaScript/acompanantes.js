@@ -13,6 +13,21 @@ export function guardarAcompanantes(lista) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(lista));
 }
 
+function mostrarPokebolaGif() {
+  const gif = document.createElement("img");
+  gif.src = "../gif/atrapar.gif"; // Asegúrate de que la ruta es correcta
+  gif.classList.add("pokebola-gif");
+
+  document.body.appendChild(gif);
+
+  // Quitar después de 2 segundos
+  setTimeout(() => {
+    gif.classList.add("desaparecer");
+    setTimeout(() => gif.remove(), 1000); // después de animación de salida
+  }, 2000);
+}
+
+
 export async function agregarAcompanante(pokemon) {
   try {
     // Verificar si ya existe
@@ -32,6 +47,7 @@ export async function agregarAcompanante(pokemon) {
     // Agregar a IndexedDB
     await dbManager.agregarAcompanante(pokemon);
     alert(`${pokemon.getNombre()} fue atrapado como acompañante.`);
+    mostrarPokebolaGif();
     
     // Actualizar la vista
     await mostrarAcompanantes();
@@ -854,3 +870,4 @@ window.eliminarEntrenador = async function(id) {
     alert('Error al eliminar el entrenador: ' + error.message);
   }
 };
+
