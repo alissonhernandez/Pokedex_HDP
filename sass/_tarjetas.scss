@@ -1,13 +1,16 @@
 @use 'paleta' as *;
 @use 'texto' as *;
+@use 'breakpoints' as *;
+
 
 #pokedex {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));;
   gap: 32px;
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 40px 20px;
+ 
 }
 
 .tarjeta-pokedex {

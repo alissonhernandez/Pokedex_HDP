@@ -1,6 +1,7 @@
 @use 'paleta' as *;
 @use 'margen' as *;
 @use 'texto' as *;
+@use 'breakpoints' as *;
 footer {
     background-color: $azul;
     color: $blanco;

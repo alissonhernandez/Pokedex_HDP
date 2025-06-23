@@ -1,4 +1,5 @@
-@import 'paleta';
+@use 'paleta' as *;
+@use 'breakpoints' as *;
 
 .modal-fondo {
   position: fixed;

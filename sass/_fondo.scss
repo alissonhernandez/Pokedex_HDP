@@ -1,5 +1,6 @@
 @use 'paleta' as *;
 @use 'margen' as *;
+@use 'breakpoints' as *;
 
 $fondo-img: "../img/fondo.jpg";
 .spinner {
@@ -54,15 +55,17 @@ $fondo-img: "../img/fondo.jpg";
   }
 
   .contenedor-central {
-    max-width: 720px;
-    width: 1080px;
-    margin: $spacing-xxl auto;
-    background-color: $negro;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    position: relative;
-    z-index: 1;
-    text-align: center;
-  }
+  width: 100%;
+  max-width: 720px;
+  margin: $spacing-xxl auto;
+  background-color: $negro;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  box-sizing: border-box; 
+}
+
 }

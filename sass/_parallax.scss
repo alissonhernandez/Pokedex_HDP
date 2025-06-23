@@ -1,6 +1,7 @@
 @use 'texto' as *;
 @use 'paleta' as *;
 @use 'margen' as *;
+@use 'breakpoints' as *;
 
 @mixin contenedor() {
   position: relative;

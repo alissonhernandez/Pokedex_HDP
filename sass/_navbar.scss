@@ -1,7 +1,7 @@
 @use 'paleta' as *;
 @use 'margen' as *;
 @use 'texto' as *;
-
+@use 'breakpoints' as *;
 @mixin navbar__img() {
   display: flex;
   align-items: center;
