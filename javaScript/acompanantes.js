@@ -51,13 +51,6 @@ export async function agregarAcompanante(pokemon) {
     return false;
   }
 
-    // Verificar límite de 6 acompañantes
-    const cantidad = await dbManager.contarAcompanantes();
-    if (cantidad >= 6) {
-    alert("Solo puedes tener hasta 6 acompañantes.");
-    return false;
-  }
-
     // Agregar a IndexedDB
     await dbManager.agregarAcompanante(pokemon);
     alert(`${pokemon.getNombre()} fue atrapado como acompañante.`);
@@ -112,6 +105,22 @@ export async function mostrarAcompanantes() {
     titulo.textContent = "Acompañantes Disponibles";
     titulo.classList.add("titulo-seccion");
     contenedorPrincipal.appendChild(titulo);
+
+    // Mensaje informativo sobre el sistema
+    const mensajeInfo = document.createElement("div");
+    mensajeInfo.classList.add("mensaje-info");
+    mensajeInfo.innerHTML = `
+      <div class="info-container">
+        <p><strong>💡 Sistema de Acompañantes:</strong></p>
+        <ul>
+          <li>Puedes atrapar tantos Pokémon como quieras</li>
+          <li>Cada entrenador puede tener máximo 6 Pokémon</li>
+          <li>Asigna tus Pokémon a los entrenadores disponibles</li>
+          <li>Los entrenadores llenos no aparecerán en la lista de asignación</li>
+        </ul>
+      </div>
+    `;
+    contenedorPrincipal.appendChild(mensajeInfo);
 
     // Contenedor de tarjetas
     const contenedorTarjetas = document.createElement("div");
@@ -241,17 +250,25 @@ async function cargarEntrenadoresEnSelect() {
     const select = document.getElementById('select-entrenador');
     
     if (select) {
-      // Limpiar opciones existentes
       select.innerHTML = '<option value="">-- Selecciona --</option>';
       
-      // Agregar entrenadores
+      // Agregar entrenadores que tengan espacio disponible
       entrenadores.forEach(entrenador => {
         const cantidadPokemon = entrenador.pokemones ? entrenador.pokemones.length : 0;
-        const option = document.createElement('option');
-        option.value = entrenador.id;
-        option.textContent = `${entrenador.nombre} (${cantidadPokemon}/6)`;
-        select.appendChild(option);
+        
+        // Solo mostrar entrenadores que tengan menos de 6 Pokémon
+        if (cantidadPokemon < 6) {
+          const option = document.createElement('option');
+          option.value = entrenador.id;
+          option.textContent = `${entrenador.nombre} (${cantidadPokemon}/6)`;
+          select.appendChild(option);
+        }
       });
+      
+      // Si no hay entrenadores disponibles, mostrar mensaje
+      if (select.children.length === 1) {
+        select.innerHTML = '<option value="">No hay entrenadores disponibles (todos llenos)</option>';
+      }
     }
   } catch (error) {
     console.error('Error al cargar entrenadores en select:', error);

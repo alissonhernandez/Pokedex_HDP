@@ -230,3 +230,50 @@
     transform: translateY(0) scale(1);
   }
 }
+
+// Estilos para el mensaje informativo
+.mensaje-info {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+  border: 2px solid #28a745;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.1);
+}
+
+.info-container {
+  color: #155724;
+}
+
+.info-container p {
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.info-container ul {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1.5rem;
+}
+
+.info-container li {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+// Responsive para el mensaje informativo
+@media (max-width: 768px) {
+  .mensaje-info {
+    margin: 0.5rem 0;
+    padding: 0.75rem;
+  }
+  
+  .info-container p {
+    font-size: 0.9rem;
+  }
+  
+  .info-container li {
+    font-size: 0.85rem;
+  }
+}

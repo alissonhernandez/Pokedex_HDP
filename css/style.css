@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chewy&family=Concert+One&family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Princess+Sofia&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap");
+@import url("https://fonts.cdnfonts.com/css/pokemon-solid");
+* {
+  font-family: "Poppins", sans-serif;
+}
+
 .text-xs {
   font-size: 0.75rem;
 }
@@ -36,11 +41,55 @@
 }
 
 .font-pokedex {
-  font-family: Concert One, Static;
+  font-family: "Pokemon Solid", "Concert One", cursive;
+}
+
+.font-secundario {
+  font-family: "Concert One", cursive;
+}
+
+.font-general {
+  font-family: "Poppins", sans-serif;
 }
 
 .color-texto {
   color: #ffffff;
+}
+
+h1, h2, h3, .titulo-principal, .titulo-seccion {
+  font-family: "Pokemon Solid", "Concert One", cursive;
+  letter-spacing: 1px;
+}
+
+.tarjeta-pokemon h3,
+.tarjeta-acompanante h3,
+.tarjeta-entrenador h3 {
+  font-family: "Pokemon Solid", "Concert One", cursive;
+  letter-spacing: 0.5px;
+}
+
+.pokemon-nombre,
+.pokemon-info h4 {
+  font-family: "Pokemon Solid", "Concert One", cursive;
+  letter-spacing: 0.3px;
+}
+
+.boton-atrapar,
+.boton-guardar,
+.boton-nuevo-entrenador {
+  font-family: "Concert One", cursive;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.menu_opciones a {
+  font-family: "Concert One", cursive;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+}
+
+.logo {
+  font-family: "Pokemon Solid", "Concert One", cursive;
 }
 
 #pokedex {
@@ -169,10 +218,10 @@
 }
 
 .tipo-fire {
-  background-color: #fee0cc;
+  background-color: rgb(253.8636363636, 223.6363636364, 203.6363636364);
 }
 .tipo-fire .circulo-fondo {
-  background: radial-gradient(circle, #fcb281 30%, transparent 70%);
+  background: radial-gradient(circle, rgb(252.2077922078, 177.9350649351, 128.7922077922) 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-fire .info-pokemon {
@@ -189,7 +238,7 @@
   background-color: #fa751d;
 }
 .tipo-fire .boton-acompanante:hover {
-  background-color: #fb934f;
+  background-color: rgb(251.1038961039, 147.4675324675, 78.8961038961);
 }
 
 .tarjeta-pokedex.tipo-water {
@@ -209,7 +258,7 @@
   background-color: white;
 }
 .tipo-water .circulo-fondo {
-  background: radial-gradient(circle, #c5d4f9 30%, transparent 70%);
+  background: radial-gradient(circle, rgb(196.7831325301, 212.2048192771, 249.2168674699) 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-water .info-pokemon {
@@ -226,7 +275,7 @@
   background-color: #6890f0;
 }
 .tipo-water .boton-acompanante:hover {
-  background-color: #96b2f5;
+  background-color: rgb(150.3915662651, 178.1024096386, 244.6084337349);
 }
 
 .tarjeta-pokedex.tipo-grass {
@@ -243,10 +292,10 @@
 }
 
 .tipo-grass {
-  background-color: #daeed0;
+  background-color: rgb(217.8395061728, 237.7469135802, 207.7530864198);
 }
 .tipo-grass .circulo-fondo {
-  background: radial-gradient(circle, #aed998 30%, transparent 70%);
+  background: radial-gradient(circle, rgb(173.7654320988, 217.2839506173, 151.7160493827) 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-grass .info-pokemon {
@@ -263,7 +312,7 @@
   background-color: #73be4d;
 }
 .tipo-grass .boton-acompanante:hover {
-  background-color: #90cc72;
+  background-color: rgb(144.3827160494, 203.6419753086, 114.3580246914);
 }
 
 .tarjeta-pokedex.tipo-electric {
@@ -280,10 +329,10 @@
 }
 
 .tipo-electric {
-  background-color: #fef7dd;
+  background-color: rgb(253.8387850467, 247.203271028, 220.6612149533);
 }
 .tipo-electric .circulo-fondo {
-  background: radial-gradient(circle, #fbe693 30%, transparent 70%);
+  background: radial-gradient(circle, rgb(251.3364485981, 230.4018691589, 146.6635514019) 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-electric .info-pokemon {
@@ -300,7 +349,7 @@
   background-color: #f8d030;
 }
 .tipo-electric .boton-acompanante:hover {
-  background-color: #fadb61;
+  background-color: rgb(249.6682242991, 219.2009345794, 97.3317757009);
 }
 
 .tarjeta-pokedex.tipo-psychic {
@@ -320,7 +369,7 @@
   background-color: white;
 }
 .tipo-psychic .circulo-fondo {
-  background: radial-gradient(circle, #fcbace 30%, transparent 70%);
+  background: radial-gradient(circle, rgb(252.1034482759, 185.8965517241, 205.7586206897) 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-psychic .info-pokemon {
@@ -337,7 +386,7 @@
   background-color: #f85888;
 }
 .tipo-psychic .boton-acompanante:hover {
-  background-color: #fa89ab;
+  background-color: rgb(250.0517241379, 136.9482758621, 170.8793103448);
 }
 
 .tarjeta-pokedex.tipo-ice {
@@ -357,7 +406,7 @@
   background-color: white;
 }
 .tipo-ice .circulo-fondo {
-  background: radial-gradient(circle, #e2f4f4 30%, transparent 70%);
+  background: radial-gradient(circle, rgb(225.985915493, 244.014084507, 244.014084507) 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-ice .info-pokemon {
@@ -374,7 +423,7 @@
   background-color: #98d8d8;
 }
 .tipo-ice .boton-acompanante:hover {
-  background-color: #bde6e6;
+  background-color: rgb(188.9929577465, 230.0070422535, 230.0070422535);
 }
 
 .tarjeta-pokedex.tipo-dragon {
@@ -391,10 +440,10 @@
 }
 
 .tipo-dragon {
-  background-color: #ece4fe;
+  background-color: rgb(235.9101941748, 228.4344660194, 254.0655339806);
 }
 .tipo-dragon .circulo-fondo {
-  background: radial-gradient(circle, #b79bfb 30%, transparent 70%);
+  background: radial-gradient(circle, rgb(182.8058252427, 154.5339805825, 251.4660194175) 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-dragon .info-pokemon {
@@ -411,7 +460,7 @@
   background-color: #7038f8;
 }
 .tipo-dragon .boton-acompanante:hover {
-  background-color: #9369fa;
+  background-color: rgb(147.4029126214, 105.2669902913, 249.7330097087);
 }
 
 .tarjeta-pokedex.tipo-dark {
@@ -428,10 +477,10 @@
 }
 
 .tipo-dark {
-  background-color: #c5b2a5;
+  background-color: rgb(197.2826086957, 178.0434782609, 165.2173913043);
 }
 .tipo-dark .circulo-fondo {
-  background: radial-gradient(circle, #a78a77 30%, transparent 70%);
+  background: radial-gradient(circle, rgb(167.347826087, 138.1304347826, 118.652173913) 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-dark .info-pokemon {
@@ -448,7 +497,7 @@
   background-color: #705848;
 }
 .tipo-dark .boton-acompanante:hover {
-  background-color: #8f705c;
+  background-color: rgb(143.0434782609, 112.3913043478, 91.9565217391);
 }
 
 .tarjeta-pokedex.tipo-fairy {
@@ -468,7 +517,7 @@
   background-color: white;
 }
 .tipo-fairy .circulo-fondo {
-  background: radial-gradient(circle, #fdf0f3 30%, transparent 70%);
+  background: radial-gradient(circle, rgb(252.5714285714, 240.4285714286, 243.1428571429) 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-fairy .info-pokemon {
@@ -485,7 +534,7 @@
   background-color: #ee99ac;
 }
 .tipo-fairy .boton-acompanante:hover {
-  background-color: #f5c5d0;
+  background-color: rgb(245.2857142857, 196.7142857143, 207.5714285714);
 }
 
 .tarjeta-pokedex.tipo-normal {
@@ -502,10 +551,10 @@
 }
 
 .tipo-normal {
-  background-color: #eeeee5;
+  background-color: rgb(237.9527027027, 237.9527027027, 228.5472972973);
 }
 .tipo-normal .circulo-fondo {
-  background: radial-gradient(circle, #d0d0b6 30%, transparent 70%);
+  background: radial-gradient(circle, rgb(207.972972973, 207.972972973, 182.027027027) 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-normal .info-pokemon {
@@ -522,7 +571,7 @@
   background-color: #a8a878;
 }
 .tipo-normal .boton-acompanante:hover {
-  background-color: #bcbc97;
+  background-color: rgb(187.9864864865, 187.9864864865, 151.0135135135);
 }
 
 .tarjeta-pokedex.tipo-fighting {
@@ -539,10 +588,10 @@
 }
 
 .tipo-fighting {
-  background-color: #eeb0ad;
+  background-color: rgb(237.8448275862, 176.0862068966, 172.6551724138);
 }
 .tipo-fighting .circulo-fondo {
-  background: radial-gradient(circle, #e1736d 30%, transparent 70%);
+  background: radial-gradient(circle, rgb(224.6551724138, 115.4137931034, 109.3448275862) 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-fighting .info-pokemon {
@@ -559,7 +608,7 @@
   background-color: #c03028;
 }
 .tipo-fighting .boton-acompanante:hover {
-  background-color: #d84b43;
+  background-color: rgb(215.8620689655, 74.9655172414, 67.1379310345);
 }
 
 .tarjeta-pokedex.tipo-flying {
@@ -579,7 +628,7 @@
   background-color: white;
 }
 .tipo-flying .circulo-fondo {
-  background: radial-gradient(circle, #eeeafc 30%, transparent 70%);
+  background: radial-gradient(circle, rgb(238.4285714286, 233.8571428571, 252.1428571429) 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-flying .info-pokemon {
@@ -596,7 +645,7 @@
   background-color: #a890f0;
 }
 .tipo-flying .boton-acompanante:hover {
-  background-color: #cbbdf6;
+  background-color: rgb(203.2142857143, 188.9285714286, 246.0714285714);
 }
 
 .tarjeta-pokedex.tipo-poison {
@@ -613,10 +662,10 @@
 }
 
 .tipo-poison {
-  background-color: #e0b2e0;
+  background-color: rgb(224.2857142857, 178.2142857143, 224.2857142857);
 }
 .tipo-poison .circulo-fondo {
-  background: radial-gradient(circle, #ca7cca 30%, transparent 70%);
+  background: radial-gradient(circle, rgb(202.4285714286, 123.5714285714, 202.4285714286) 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-poison .info-pokemon {
@@ -633,7 +682,7 @@
   background-color: #a040a0;
 }
 .tipo-poison .boton-acompanante:hover {
-  background-color: #bc57bc;
+  background-color: rgb(187.8571428571, 87.1428571429, 187.8571428571);
 }
 
 .tarjeta-pokedex.tipo-ground {
@@ -650,10 +699,10 @@
 }
 
 .tipo-ground {
-  background-color: #fefefc;
+  background-color: rgb(254.4038461538, 253.7884615385, 252.0961538462);
 }
 .tipo-ground .circulo-fondo {
-  background: radial-gradient(circle, #f1e3bd 30%, transparent 70%);
+  background: radial-gradient(circle, rgb(241.3736263736, 227.3076923077, 188.6263736264) 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-ground .info-pokemon {
@@ -670,7 +719,7 @@
   background-color: #e0c068;
 }
 .tipo-ground .boton-acompanante:hover {
-  background-color: #e9d292;
+  background-color: rgb(232.6868131868, 209.6538461538, 146.3131868132);
 }
 
 .tarjeta-pokedex.tipo-rock {
@@ -687,10 +736,10 @@
 }
 
 .tipo-rock {
-  background-color: #eae1b9;
+  background-color: rgb(233.65, 224.5, 184.85);
 }
 .tipo-rock .circulo-fondo {
-  background: radial-gradient(circle, #d8c77e 30%, transparent 70%);
+  background: radial-gradient(circle, rgb(215.8, 199, 126.2) 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-rock .info-pokemon {
@@ -707,7 +756,7 @@
   background-color: #b8a038;
 }
 .tipo-rock .boton-acompanante:hover {
-  background-color: #ccb657;
+  background-color: rgb(203.9, 182, 87.1);
 }
 
 .tarjeta-pokedex.tipo-bug {
@@ -724,10 +773,10 @@
 }
 
 .tipo-bug {
-  background-color: #e5ee9d;
+  background-color: rgb(229.3333333333, 237.8888888889, 156.6111111111);
 }
 .tipo-bug .circulo-fondo {
-  background: radial-gradient(circle, #d4e35b 30%, transparent 70%);
+  background: radial-gradient(circle, rgb(212.3333333333, 226.5555555556, 91.4444444444) 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-bug .info-pokemon {
@@ -761,10 +810,10 @@
 }
 
 .tipo-ghost {
-  background-color: #cec5dd;
+  background-color: rgb(206.2, 197.05, 221.45);
 }
 .tipo-ghost .circulo-fondo {
-  background: radial-gradient(circle, #a595c1 30%, transparent 70%);
+  background: radial-gradient(circle, rgb(165.4, 148.6, 193.4) 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-ghost .info-pokemon {
@@ -781,7 +830,7 @@
   background-color: #705898;
 }
 .tipo-ghost .boton-acompanante:hover {
-  background-color: #8a74af;
+  background-color: rgb(138.2, 116.3, 174.7);
 }
 
 .tarjeta-pokedex.tipo-steel {
@@ -801,7 +850,7 @@
   background-color: white;
 }
 .tipo-steel .circulo-fondo {
-  background: radial-gradient(circle, #f5f5f9 30%, transparent 70%);
+  background: radial-gradient(circle, rgb(245.3728813559, 245.3728813559, 248.6271186441) 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-steel .info-pokemon {
@@ -818,7 +867,7 @@
   background-color: #b8b8d0;
 }
 .tipo-steel .boton-acompanante:hover {
-  background-color: #d7d7e4;
+  background-color: rgb(214.686440678, 214.686440678, 228.313559322);
 }
 
 /*-----------------------------------------------*/
@@ -2038,7 +2087,7 @@ footer .footer-contenido .copyright p {
 }
 
 .titulo-abanico {
-  font-family: Concert One, Static;
+  font-family: "Pokemon Solid", "Concert One", cursive;
   font-size: 2rem;
   color: #ffffff;
   text-align: center;
@@ -2340,6 +2389,48 @@ footer .footer-contenido .copyright p {
   }
   100% {
     transform: translateY(0) scale(1);
+  }
+}
+.mensaje-info {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+  border: 2px solid #28a745;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.1);
+}
+
+.info-container {
+  color: #155724;
+}
+
+.info-container p {
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.info-container ul {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1.5rem;
+}
+
+.info-container li {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .mensaje-info {
+    margin: 0.5rem 0;
+    padding: 0.75rem;
+  }
+  .info-container p {
+    font-size: 0.9rem;
+  }
+  .info-container li {
+    font-size: 0.85rem;
   }
 }
 .gif-animacion {
