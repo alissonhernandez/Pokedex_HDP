@@ -186,31 +186,31 @@ class IndexedDBManager {
                         {
                             id: 1,
                             nombre: "Isabel",
-                            imagen: "https://avatars.githubusercontent.com/u/123456789?size=200",
+                            imagen: "https://avatars.githubusercontent.com/u/139247973?s=96&v=4",
                             pokemones: []
                         },
                         {
                             id: 2,
                             nombre: "Alisson",
-                            imagen: "https://avatars.githubusercontent.com/u/987654321?size=200",
+                            imagen: "https://avatars.githubusercontent.com/u/94188688?s=96&v=4",
                             pokemones: []
                         },
                         {
                             id: 3,
                             nombre: "Diana",
-                            imagen: "https://avatars.githubusercontent.com/u/456789123?size=200",
+                            imagen: "https://avatars.githubusercontent.com/u/131033714?s=400&u=dce8af828eac73b1c022f5f9c24b859b81af3c2b&v=4",
                             pokemones: []
                         },
                         {
                             id: 4,
                             nombre: "Osiris",
-                            imagen: "https://avatars.githubusercontent.com/u/789123456?size=200",
+                            imagen: "https://avatars.githubusercontent.com/u/89263074?s=96&v=4",
                             pokemones: []
                         },
                         {
                             id: 5,
                             nombre: "Cesar",
-                            imagen: "https://avatars.githubusercontent.com/u/321654987?size=200",
+                            imagen: "https://avatars.githubusercontent.com/u/144456953?s=96&v=4",
                             pokemones: []
                         }
                     ];
