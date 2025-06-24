@@ -52,114 +52,105 @@
   padding: 40px 20px;
 }
 
-.tarjeta-3d-wrapper {
-  perspective: 1000px;
-  width: 100%;
-  height: 100%;
-}
-
 .tarjeta-pokedex {
-  width: 100%;
-  padding: 20px;
-  border-radius: 18px;
-  min-height: 260px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: relative;
-  overflow: hidden;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #222;
+  color: #ffffff;
   text-align: center;
-  z-index: 1;
   transform-style: preserve-3d;
-  transition: transform 0.2s ease;
-  will-change: transform;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
 }
-.tarjeta-pokedex::before {
-  content: "";
-  position: absolute;
-  width: 120%;
-  height: 100%;
-  top: -30%;
-  left: -10%;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent 70%);
-  transform: rotate(45deg);
-  z-index: 0;
+.tarjeta-pokedex:hover {
+  transform: rotateY(5deg) scale(1.03);
+  box-shadow: 0 12px 40px rgba(255, 203, 5, 0.5);
 }
 .tarjeta-pokedex .contenedor-imagen {
   position: relative;
   width: 160px;
   height: 160px;
-  margin-bottom: 12px;
+  margin: 0 auto 10px;
   z-index: 2;
 }
 .tarjeta-pokedex .contenedor-imagen .circulo-fondo {
   position: absolute;
-  width: 140px;
-  height: 140px;
   top: 10px;
   left: 10px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
   z-index: 1;
-  mix-blend-mode: overlay;
 }
 .tarjeta-pokedex .contenedor-imagen img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  position: relative;
-  z-index: 2;
-  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.4));
-  transition: transform 0.3s ease;
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.6));
+  transform: scale(1);
+  transition: transform 0.4s ease;
 }
 .tarjeta-pokedex .contenedor-imagen img:hover {
-  transform: scale(1.15);
+  transform: scale(1.2) rotate(3deg);
 }
 .tarjeta-pokedex h3 {
-  font-size: 1.4em;
-  font-weight: 800;
-  margin: 8px 0 4px;
+  font-size: 1.5em;
+  font-weight: 900;
+  margin: 10px 0 4px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.05em;
   z-index: 2;
 }
 .tarjeta-pokedex p {
   font-size: 0.85em;
-  margin: 2px 0;
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.75);
   z-index: 2;
 }
 .tarjeta-pokedex .tipos {
   display: flex;
-  gap: 6px;
-  margin-top: 10px;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
   z-index: 2;
 }
-.tarjeta-pokedex .tipos .tipo-destacado {
-  padding: 5px 12px;
-  font-size: 0.75em;
-  font-weight: 600;
-  border-radius: 999px;
-  text-transform: capitalize;
-  background: #0ffcff;
-  color: #000;
-  box-shadow: 0 2px 12px rgba(0, 255, 255, 0.7);
-}
 .tarjeta-pokedex .tipos .tipo-general {
-  padding: 5px 12px;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 999px;
   font-size: 0.75em;
   font-weight: 600;
-  border-radius: 999px;
   text-transform: capitalize;
-  color: #ffffff;
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  outline: none !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  transition: background-color 0.3s;
+}
+.tarjeta-pokedex .tipos .tipo-general:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+.tarjeta-pokedex .tipos .tipo-destacado {
+  background-color: #00fff7;
+  color: #000;
+  padding: 6px 16px;
+  font-size: 0.8em;
+  font-weight: bold;
+  border-radius: 999px;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.7);
+  text-transform: capitalize;
 }
 
+@keyframes tarjeta-brillo {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .tarjeta-pokedex.tipo-fire {
   background-color: #fa751d;
   border: 2px solid #ffffff;
@@ -168,8 +159,20 @@
 .tarjeta-pokedex.tipo-fire:hover {
   filter: brightness(1.1);
 }
-.tarjeta-pokedex.tipo-fire h3, .tarjeta-pokedex.tipo-fire p, .tarjeta-pokedex.tipo-fire .nombre-especie, .tarjeta-pokedex.tipo-fire .id-pokemon {
+.tarjeta-pokedex.tipo-fire h3, .tarjeta-pokedex.tipo-fire p {
   color: #ffffff;
+}
+.tarjeta-pokedex.tipo-fire::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(45deg, rgba(250, 117, 29, 0.25) 0 2px, transparent 2px 8px);
+  background-size: 50px 50px;
+  animation: tarjeta-brillo 6s linear infinite;
+  z-index: 0;
 }
 
 .tipo-fire {
@@ -179,14 +182,8 @@
   background: radial-gradient(circle, #fcb281 30%, transparent 70%);
   opacity: 0.4;
 }
-.tipo-fire .info-pokemon {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-left: 4px solid #fa751d;
-}
 .tipo-fire .tipo-general {
   background-color: #fa751d !important;
-  border: none !important;
-  box-shadow: none !important;
   color: #ffffff !important;
 }
 .tipo-fire .boton-acompanante {
@@ -204,8 +201,20 @@
 .tarjeta-pokedex.tipo-water:hover {
   filter: brightness(1.1);
 }
-.tarjeta-pokedex.tipo-water h3, .tarjeta-pokedex.tipo-water p, .tarjeta-pokedex.tipo-water .nombre-especie, .tarjeta-pokedex.tipo-water .id-pokemon {
+.tarjeta-pokedex.tipo-water h3, .tarjeta-pokedex.tipo-water p {
   color: #ffffff;
+}
+.tarjeta-pokedex.tipo-water::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(45deg, rgba(104, 144, 240, 0.25) 0 2px, transparent 2px 8px);
+  background-size: 50px 50px;
+  animation: tarjeta-brillo 6s linear infinite;
+  z-index: 0;
 }
 
 .tipo-water {
@@ -215,14 +224,8 @@
   background: radial-gradient(circle, #c5d4f9 30%, transparent 70%);
   opacity: 0.4;
 }
-.tipo-water .info-pokemon {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-left: 4px solid #6890f0;
-}
 .tipo-water .tipo-general {
   background-color: #6890f0 !important;
-  border: none !important;
-  box-shadow: none !important;
   color: #ffffff !important;
 }
 .tipo-water .boton-acompanante {
@@ -240,8 +243,20 @@
 .tarjeta-pokedex.tipo-grass:hover {
   filter: brightness(1.1);
 }
-.tarjeta-pokedex.tipo-grass h3, .tarjeta-pokedex.tipo-grass p, .tarjeta-pokedex.tipo-grass .nombre-especie, .tarjeta-pokedex.tipo-grass .id-pokemon {
+.tarjeta-pokedex.tipo-grass h3, .tarjeta-pokedex.tipo-grass p {
   color: #ffffff;
+}
+.tarjeta-pokedex.tipo-grass::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(45deg, rgba(115, 190, 77, 0.25) 0 2px, transparent 2px 8px);
+  background-size: 50px 50px;
+  animation: tarjeta-brillo 6s linear infinite;
+  z-index: 0;
 }
 
 .tipo-grass {
@@ -251,14 +266,8 @@
   background: radial-gradient(circle, #aed998 30%, transparent 70%);
   opacity: 0.4;
 }
-.tipo-grass .info-pokemon {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-left: 4px solid #73be4d;
-}
 .tipo-grass .tipo-general {
   background-color: #73be4d !important;
-  border: none !important;
-  box-shadow: none !important;
   color: #ffffff !important;
 }
 .tipo-grass .boton-acompanante {
@@ -276,8 +285,20 @@
 .tarjeta-pokedex.tipo-electric:hover {
   filter: brightness(1.1);
 }
-.tarjeta-pokedex.tipo-electric h3, .tarjeta-pokedex.tipo-electric p, .tarjeta-pokedex.tipo-electric .nombre-especie, .tarjeta-pokedex.tipo-electric .id-pokemon {
+.tarjeta-pokedex.tipo-electric h3, .tarjeta-pokedex.tipo-electric p {
   color: #ffffff;
+}
+.tarjeta-pokedex.tipo-electric::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(45deg, rgba(248, 208, 48, 0.25) 0 2px, transparent 2px 8px);
+  background-size: 50px 50px;
+  animation: tarjeta-brillo 6s linear infinite;
+  z-index: 0;
 }
 
 .tipo-electric {
@@ -287,14 +308,8 @@
   background: radial-gradient(circle, #fbe693 30%, transparent 70%);
   opacity: 0.4;
 }
-.tipo-electric .info-pokemon {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-left: 4px solid #f8d030;
-}
 .tipo-electric .tipo-general {
   background-color: #f8d030 !important;
-  border: none !important;
-  box-shadow: none !important;
   color: #ffffff !important;
 }
 .tipo-electric .boton-acompanante {
@@ -312,8 +327,20 @@
 .tarjeta-pokedex.tipo-psychic:hover {
   filter: brightness(1.1);
 }
-.tarjeta-pokedex.tipo-psychic h3, .tarjeta-pokedex.tipo-psychic p, .tarjeta-pokedex.tipo-psychic .nombre-especie, .tarjeta-pokedex.tipo-psychic .id-pokemon {
+.tarjeta-pokedex.tipo-psychic h3, .tarjeta-pokedex.tipo-psychic p {
   color: #ffffff;
+}
+.tarjeta-pokedex.tipo-psychic::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(45deg, rgba(248, 88, 136, 0.25) 0 2px, transparent 2px 8px);
+  background-size: 50px 50px;
+  animation: tarjeta-brillo 6s linear infinite;
+  z-index: 0;
 }
 
 .tipo-psychic {
@@ -323,14 +350,8 @@
   background: radial-gradient(circle, #fcbace 30%, transparent 70%);
   opacity: 0.4;
 }
-.tipo-psychic .info-pokemon {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-left: 4px solid #f85888;
-}
 .tipo-psychic .tipo-general {
   background-color: #f85888 !important;
-  border: none !important;
-  box-shadow: none !important;
   color: #ffffff !important;
 }
 .tipo-psychic .boton-acompanante {
@@ -348,8 +369,20 @@
 .tarjeta-pokedex.tipo-ice:hover {
   filter: brightness(1.1);
 }
-.tarjeta-pokedex.tipo-ice h3, .tarjeta-pokedex.tipo-ice p, .tarjeta-pokedex.tipo-ice .nombre-especie, .tarjeta-pokedex.tipo-ice .id-pokemon {
+.tarjeta-pokedex.tipo-ice h3, .tarjeta-pokedex.tipo-ice p {
   color: #ffffff;
+}
+.tarjeta-pokedex.tipo-ice::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(45deg, rgba(152, 216, 216, 0.25) 0 2px, transparent 2px 8px);
+  background-size: 50px 50px;
+  animation: tarjeta-brillo 6s linear infinite;
+  z-index: 0;
 }
 
 .tipo-ice {
@@ -359,14 +392,8 @@
   background: radial-gradient(circle, #e2f4f4 30%, transparent 70%);
   opacity: 0.4;
 }
-.tipo-ice .info-pokemon {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-left: 4px solid #98d8d8;
-}
 .tipo-ice .tipo-general {
   background-color: #98d8d8 !important;
-  border: none !important;
-  box-shadow: none !important;
   color: #ffffff !important;
 }
 .tipo-ice .boton-acompanante {
@@ -384,8 +411,20 @@
 .tarjeta-pokedex.tipo-dragon:hover {
   filter: brightness(1.1);
 }
-.tarjeta-pokedex.tipo-dragon h3, .tarjeta-pokedex.tipo-dragon p, .tarjeta-pokedex.tipo-dragon .nombre-especie, .tarjeta-pokedex.tipo-dragon .id-pokemon {
+.tarjeta-pokedex.tipo-dragon h3, .tarjeta-pokedex.tipo-dragon p {
   color: #ffffff;
+}
+.tarjeta-pokedex.tipo-dragon::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(45deg, rgba(112, 56, 248, 0.25) 0 2px, transparent 2px 8px);
+  background-size: 50px 50px;
+  animation: tarjeta-brillo 6s linear infinite;
+  z-index: 0;
 }
 
 .tipo-dragon {
@@ -395,14 +434,8 @@
   background: radial-gradient(circle, #b79bfb 30%, transparent 70%);
   opacity: 0.4;
 }
-.tipo-dragon .info-pokemon {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-left: 4px solid #7038f8;
-}
 .tipo-dragon .tipo-general {
   background-color: #7038f8 !important;
-  border: none !important;
-  box-shadow: none !important;
   color: #ffffff !important;
 }
 .tipo-dragon .boton-acompanante {
@@ -420,8 +453,20 @@
 .tarjeta-pokedex.tipo-dark:hover {
   filter: brightness(1.1);
 }
-.tarjeta-pokedex.tipo-dark h3, .tarjeta-pokedex.tipo-dark p, .tarjeta-pokedex.tipo-dark .nombre-especie, .tarjeta-pokedex.tipo-dark .id-pokemon {
+.tarjeta-pokedex.tipo-dark h3, .tarjeta-pokedex.tipo-dark p {
   color: #ffffff;
+}
+.tarjeta-pokedex.tipo-dark::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(45deg, rgba(112, 88, 72, 0.25) 0 2px, transparent 2px 8px);
+  background-size: 50px 50px;
+  animation: tarjeta-brillo 6s linear infinite;
+  z-index: 0;
 }
 
 .tipo-dark {
@@ -431,14 +476,8 @@
   background: radial-gradient(circle, #a78a77 30%, transparent 70%);
   opacity: 0.4;
 }
-.tipo-dark .info-pokemon {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-left: 4px solid #705848;
-}
 .tipo-dark .tipo-general {
   background-color: #705848 !important;
-  border: none !important;
-  box-shadow: none !important;
   color: #ffffff !important;
 }
 .tipo-dark .boton-acompanante {
@@ -456,8 +495,20 @@
 .tarjeta-pokedex.tipo-fairy:hover {
   filter: brightness(1.1);
 }
-.tarjeta-pokedex.tipo-fairy h3, .tarjeta-pokedex.tipo-fairy p, .tarjeta-pokedex.tipo-fairy .nombre-especie, .tarjeta-pokedex.tipo-fairy .id-pokemon {
+.tarjeta-pokedex.tipo-fairy h3, .tarjeta-pokedex.tipo-fairy p {
   color: #ffffff;
+}
+.tarjeta-pokedex.tipo-fairy::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(45deg, rgba(238, 153, 172, 0.25) 0 2px, transparent 2px 8px);
+  background-size: 50px 50px;
+  animation: tarjeta-brillo 6s linear infinite;
+  z-index: 0;
 }
 
 .tipo-fairy {
@@ -467,14 +518,8 @@
   background: radial-gradient(circle, #fdf0f3 30%, transparent 70%);
   opacity: 0.4;
 }
-.tipo-fairy .info-pokemon {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-left: 4px solid #ee99ac;
-}
 .tipo-fairy .tipo-general {
   background-color: #ee99ac !important;
-  border: none !important;
-  box-shadow: none !important;
   color: #ffffff !important;
 }
 .tipo-fairy .boton-acompanante {
@@ -492,8 +537,20 @@
 .tarjeta-pokedex.tipo-normal:hover {
   filter: brightness(1.1);
 }
-.tarjeta-pokedex.tipo-normal h3, .tarjeta-pokedex.tipo-normal p, .tarjeta-pokedex.tipo-normal .nombre-especie, .tarjeta-pokedex.tipo-normal .id-pokemon {
+.tarjeta-pokedex.tipo-normal h3, .tarjeta-pokedex.tipo-normal p {
   color: #ffffff;
+}
+.tarjeta-pokedex.tipo-normal::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(45deg, rgba(168, 168, 120, 0.25) 0 2px, transparent 2px 8px);
+  background-size: 50px 50px;
+  animation: tarjeta-brillo 6s linear infinite;
+  z-index: 0;
 }
 
 .tipo-normal {
@@ -503,14 +560,8 @@
   background: radial-gradient(circle, #d0d0b6 30%, transparent 70%);
   opacity: 0.4;
 }
-.tipo-normal .info-pokemon {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-left: 4px solid #a8a878;
-}
 .tipo-normal .tipo-general {
   background-color: #a8a878 !important;
-  border: none !important;
-  box-shadow: none !important;
   color: #ffffff !important;
 }
 .tipo-normal .boton-acompanante {
@@ -528,8 +579,20 @@
 .tarjeta-pokedex.tipo-fighting:hover {
   filter: brightness(1.1);
 }
-.tarjeta-pokedex.tipo-fighting h3, .tarjeta-pokedex.tipo-fighting p, .tarjeta-pokedex.tipo-fighting .nombre-especie, .tarjeta-pokedex.tipo-fighting .id-pokemon {
+.tarjeta-pokedex.tipo-fighting h3, .tarjeta-pokedex.tipo-fighting p {
   color: #ffffff;
+}
+.tarjeta-pokedex.tipo-fighting::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(45deg, rgba(192, 48, 40, 0.25) 0 2px, transparent 2px 8px);
+  background-size: 50px 50px;
+  animation: tarjeta-brillo 6s linear infinite;
+  z-index: 0;
 }
 
 .tipo-fighting {
@@ -539,14 +602,8 @@
   background: radial-gradient(circle, #e1736d 30%, transparent 70%);
   opacity: 0.4;
 }
-.tipo-fighting .info-pokemon {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-left: 4px solid #c03028;
-}
 .tipo-fighting .tipo-general {
   background-color: #c03028 !important;
-  border: none !important;
-  box-shadow: none !important;
   color: #ffffff !important;
 }
 .tipo-fighting .boton-acompanante {
@@ -564,8 +621,20 @@
 .tarjeta-pokedex.tipo-flying:hover {
   filter: brightness(1.1);
 }
-.tarjeta-pokedex.tipo-flying h3, .tarjeta-pokedex.tipo-flying p, .tarjeta-pokedex.tipo-flying .nombre-especie, .tarjeta-pokedex.tipo-flying .id-pokemon {
+.tarjeta-pokedex.tipo-flying h3, .tarjeta-pokedex.tipo-flying p {
   color: #ffffff;
+}
+.tarjeta-pokedex.tipo-flying::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(45deg, rgba(168, 144, 240, 0.25) 0 2px, transparent 2px 8px);
+  background-size: 50px 50px;
+  animation: tarjeta-brillo 6s linear infinite;
+  z-index: 0;
 }
 
 .tipo-flying {
@@ -575,14 +644,8 @@
   background: radial-gradient(circle, #eeeafc 30%, transparent 70%);
   opacity: 0.4;
 }
-.tipo-flying .info-pokemon {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-left: 4px solid #a890f0;
-}
 .tipo-flying .tipo-general {
   background-color: #a890f0 !important;
-  border: none !important;
-  box-shadow: none !important;
   color: #ffffff !important;
 }
 .tipo-flying .boton-acompanante {
@@ -600,8 +663,20 @@
 .tarjeta-pokedex.tipo-poison:hover {
   filter: brightness(1.1);
 }
-.tarjeta-pokedex.tipo-poison h3, .tarjeta-pokedex.tipo-poison p, .tarjeta-pokedex.tipo-poison .nombre-especie, .tarjeta-pokedex.tipo-poison .id-pokemon {
+.tarjeta-pokedex.tipo-poison h3, .tarjeta-pokedex.tipo-poison p {
   color: #ffffff;
+}
+.tarjeta-pokedex.tipo-poison::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(45deg, rgba(160, 64, 160, 0.25) 0 2px, transparent 2px 8px);
+  background-size: 50px 50px;
+  animation: tarjeta-brillo 6s linear infinite;
+  z-index: 0;
 }
 
 .tipo-poison {
@@ -611,14 +686,8 @@
   background: radial-gradient(circle, #ca7cca 30%, transparent 70%);
   opacity: 0.4;
 }
-.tipo-poison .info-pokemon {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-left: 4px solid #a040a0;
-}
 .tipo-poison .tipo-general {
   background-color: #a040a0 !important;
-  border: none !important;
-  box-shadow: none !important;
   color: #ffffff !important;
 }
 .tipo-poison .boton-acompanante {
@@ -636,8 +705,20 @@
 .tarjeta-pokedex.tipo-ground:hover {
   filter: brightness(1.1);
 }
-.tarjeta-pokedex.tipo-ground h3, .tarjeta-pokedex.tipo-ground p, .tarjeta-pokedex.tipo-ground .nombre-especie, .tarjeta-pokedex.tipo-ground .id-pokemon {
+.tarjeta-pokedex.tipo-ground h3, .tarjeta-pokedex.tipo-ground p {
   color: #ffffff;
+}
+.tarjeta-pokedex.tipo-ground::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(45deg, rgba(224, 192, 104, 0.25) 0 2px, transparent 2px 8px);
+  background-size: 50px 50px;
+  animation: tarjeta-brillo 6s linear infinite;
+  z-index: 0;
 }
 
 .tipo-ground {
@@ -647,14 +728,8 @@
   background: radial-gradient(circle, #f1e3bd 30%, transparent 70%);
   opacity: 0.4;
 }
-.tipo-ground .info-pokemon {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-left: 4px solid #e0c068;
-}
 .tipo-ground .tipo-general {
   background-color: #e0c068 !important;
-  border: none !important;
-  box-shadow: none !important;
   color: #ffffff !important;
 }
 .tipo-ground .boton-acompanante {
@@ -672,8 +747,20 @@
 .tarjeta-pokedex.tipo-rock:hover {
   filter: brightness(1.1);
 }
-.tarjeta-pokedex.tipo-rock h3, .tarjeta-pokedex.tipo-rock p, .tarjeta-pokedex.tipo-rock .nombre-especie, .tarjeta-pokedex.tipo-rock .id-pokemon {
+.tarjeta-pokedex.tipo-rock h3, .tarjeta-pokedex.tipo-rock p {
   color: #ffffff;
+}
+.tarjeta-pokedex.tipo-rock::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(45deg, rgba(184, 160, 56, 0.25) 0 2px, transparent 2px 8px);
+  background-size: 50px 50px;
+  animation: tarjeta-brillo 6s linear infinite;
+  z-index: 0;
 }
 
 .tipo-rock {
@@ -683,14 +770,8 @@
   background: radial-gradient(circle, #d8c77e 30%, transparent 70%);
   opacity: 0.4;
 }
-.tipo-rock .info-pokemon {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-left: 4px solid #b8a038;
-}
 .tipo-rock .tipo-general {
   background-color: #b8a038 !important;
-  border: none !important;
-  box-shadow: none !important;
   color: #ffffff !important;
 }
 .tipo-rock .boton-acompanante {
@@ -708,8 +789,20 @@
 .tarjeta-pokedex.tipo-bug:hover {
   filter: brightness(1.1);
 }
-.tarjeta-pokedex.tipo-bug h3, .tarjeta-pokedex.tipo-bug p, .tarjeta-pokedex.tipo-bug .nombre-especie, .tarjeta-pokedex.tipo-bug .id-pokemon {
+.tarjeta-pokedex.tipo-bug h3, .tarjeta-pokedex.tipo-bug p {
   color: #ffffff;
+}
+.tarjeta-pokedex.tipo-bug::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(45deg, rgba(168, 184, 32, 0.25) 0 2px, transparent 2px 8px);
+  background-size: 50px 50px;
+  animation: tarjeta-brillo 6s linear infinite;
+  z-index: 0;
 }
 
 .tipo-bug {
@@ -719,14 +812,8 @@
   background: radial-gradient(circle, #d4e35b 30%, transparent 70%);
   opacity: 0.4;
 }
-.tipo-bug .info-pokemon {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-left: 4px solid #a8b820;
-}
 .tipo-bug .tipo-general {
   background-color: #a8b820 !important;
-  border: none !important;
-  box-shadow: none !important;
   color: #ffffff !important;
 }
 .tipo-bug .boton-acompanante {
@@ -744,8 +831,20 @@
 .tarjeta-pokedex.tipo-ghost:hover {
   filter: brightness(1.1);
 }
-.tarjeta-pokedex.tipo-ghost h3, .tarjeta-pokedex.tipo-ghost p, .tarjeta-pokedex.tipo-ghost .nombre-especie, .tarjeta-pokedex.tipo-ghost .id-pokemon {
+.tarjeta-pokedex.tipo-ghost h3, .tarjeta-pokedex.tipo-ghost p {
   color: #ffffff;
+}
+.tarjeta-pokedex.tipo-ghost::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(45deg, rgba(112, 88, 152, 0.25) 0 2px, transparent 2px 8px);
+  background-size: 50px 50px;
+  animation: tarjeta-brillo 6s linear infinite;
+  z-index: 0;
 }
 
 .tipo-ghost {
@@ -755,14 +854,8 @@
   background: radial-gradient(circle, #a595c1 30%, transparent 70%);
   opacity: 0.4;
 }
-.tipo-ghost .info-pokemon {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-left: 4px solid #705898;
-}
 .tipo-ghost .tipo-general {
   background-color: #705898 !important;
-  border: none !important;
-  box-shadow: none !important;
   color: #ffffff !important;
 }
 .tipo-ghost .boton-acompanante {
@@ -780,8 +873,20 @@
 .tarjeta-pokedex.tipo-steel:hover {
   filter: brightness(1.1);
 }
-.tarjeta-pokedex.tipo-steel h3, .tarjeta-pokedex.tipo-steel p, .tarjeta-pokedex.tipo-steel .nombre-especie, .tarjeta-pokedex.tipo-steel .id-pokemon {
+.tarjeta-pokedex.tipo-steel h3, .tarjeta-pokedex.tipo-steel p {
   color: #ffffff;
+}
+.tarjeta-pokedex.tipo-steel::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(45deg, rgba(184, 184, 208, 0.25) 0 2px, transparent 2px 8px);
+  background-size: 50px 50px;
+  animation: tarjeta-brillo 6s linear infinite;
+  z-index: 0;
 }
 
 .tipo-steel {
@@ -791,14 +896,8 @@
   background: radial-gradient(circle, #f5f5f9 30%, transparent 70%);
   opacity: 0.4;
 }
-.tipo-steel .info-pokemon {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-left: 4px solid #b8b8d0;
-}
 .tipo-steel .tipo-general {
   background-color: #b8b8d0 !important;
-  border: none !important;
-  box-shadow: none !important;
   color: #ffffff !important;
 }
 .tipo-steel .boton-acompanante {
