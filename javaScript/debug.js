@@ -50,9 +50,9 @@ export function debugPageInfo() {
 
 // Función para ejecutar toda la depuración
 export function runDebug() {
-    console.log('🚀 Iniciando depuración...');
+    console.log('Iniciando depuración...');
     debugPageInfo();
     debugDOM();
     debugIndexedDB();
-    console.log('✅ Depuración completada');
+    console.log('Depuración completada');
 } 
