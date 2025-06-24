@@ -111,7 +111,7 @@ export async function mostrarAcompanantes() {
     mensajeInfo.classList.add("mensaje-info");
     mensajeInfo.innerHTML = `
       <div class="info-container">
-        <p><strong>💡 Sistema de Acompañantes:</strong></p>
+        <p><strong>Sistema de Acompañantes:</strong></p>
         <ul>
           <li>Puedes atrapar tantos Pokémon como quieras</li>
           <li>Cada entrenador puede tener máximo 6 Pokémon</li>
@@ -306,7 +306,7 @@ export async function mostrarEntrenadores() {
     titulo.classList.add("titulo-seccion");
     
     const botonNuevo = document.createElement("button");
-    botonNuevo.textContent = "➕ Nuevo Entrenador";
+    botonNuevo.textContent = "Nuevo Entrenador";
     botonNuevo.classList.add("boton-nuevo-entrenador");
     botonNuevo.onclick = mostrarModalNuevoEntrenador;
     
@@ -579,8 +579,8 @@ function mostrarModalEdicion(item, tipo) {
             <small class="form-help">Fecha cuando capturaste este Pokémon</small>
           </div>
           <div class="form-acciones">
-            <button type="submit" class="boton-guardar">💾 Guardar Cambios</button>
-            <button type="button" class="boton-cancelar" onclick="this.closest('.modal-fondo').remove()">❌ Cancelar</button>
+            <button type="submit" class="boton-guardar">Guardar Cambios</button>
+            <button type="button" class="boton-cancelar" onclick="this.closest('.modal-fondo').remove()">Cancelar</button>
           </div>
         </form>
       </div>
@@ -664,7 +664,7 @@ function mostrarModalEdicion(item, tipo) {
         // Guardar en IndexedDB
         await dbManager.actualizarAcompanante(item);
         
-        alert('✅ ¡Acompañante actualizado exitosamente!');
+        alert('¡Acompañante actualizado exitosamente!');
         modal.remove();
         await mostrarAcompanantes();
       } else {
@@ -682,7 +682,7 @@ function mostrarModalEdicion(item, tipo) {
       }
     } catch (error) {
       console.error('Error al guardar:', error);
-      alert('❌ Error al guardar cambios: ' + error.message);
+      alert('Error al guardar cambios: ' + error.message);
     }
   });
 }
@@ -741,7 +741,7 @@ function mostrarModalEdicionEntrenador(entrenador) {
           <label>URL de Imagen:</label>
           <input type="url" id="edit-imagen-entrenador" value="${entrenador.imagen}" placeholder="https://ejemplo.com/imagen.jpg">
           <small class="form-help">
-            💡 URL de la imagen del entrenador. Si no funciona, se usará la imagen de Ash por defecto.
+            URL de la imagen del entrenador. Si no funciona, se usará la imagen de Ash por defecto.
           </small>
         </div>
         <div class="form-grupo">
@@ -750,8 +750,8 @@ function mostrarModalEdicionEntrenador(entrenador) {
           <small class="form-help">Rol o especialidad del entrenador</small>
         </div>
         <div class="form-acciones">
-          <button type="submit" class="boton-guardar">💾 Guardar Cambios</button>
-          <button type="button" class="boton-cancelar" onclick="this.closest('.modal-fondo').remove()">❌ Cancelar</button>
+          <button type="submit" class="boton-guardar">Guardar Cambios</button>
+          <button type="button" class="boton-cancelar" onclick="this.closest('.modal-fondo').remove()">Cancelar</button>
         </div>
       </form>
     </div>
@@ -790,7 +790,7 @@ function mostrarModalEdicionEntrenador(entrenador) {
       // Guardar en IndexedDB
       await dbManager.actualizarEntrenador(entrenador);
       
-      alert('✅ ¡Entrenador actualizado exitosamente!');
+      alert('¡Entrenador actualizado exitosamente!');
       modal.remove();
       
       // Actualizar el cache y las vistas
@@ -798,7 +798,7 @@ function mostrarModalEdicionEntrenador(entrenador) {
       await mostrarAcompanantes(); // Para actualizar el cache de entrenadores
     } catch (error) {
       console.error('Error al guardar entrenador:', error);
-      alert('❌ Error al guardar cambios: ' + error.message);
+      alert('Error al guardar cambios: ' + error.message);
     }
   });
 }
@@ -825,7 +825,7 @@ window.mostrarModalNuevoEntrenador = function() {
           <label>URL de Imagen (opcional):</label>
           <input type="url" id="imagen-github" placeholder="https://ejemplo.com/imagen.jpg">
           <small class="form-help">
-            💡 Puedes usar cualquier URL de imagen. Si no proporcionas una imagen o la URL no funciona, 
+            Puedes usar cualquier URL de imagen. Si no proporcionas una imagen o la URL no funciona, 
             se usará la imagen de Ash por defecto.
           </small>
         </div>
@@ -847,7 +847,6 @@ window.mostrarModalNuevoEntrenador = function() {
     const nombre = document.getElementById('nombre-entrenador').value.trim();
     const imagenUrl = document.getElementById('imagen-github').value.trim();
     let rol = 'Entrenador Pokémon';
-    // Si quieres permitir que el usuario elija el rol al crear, puedes agregar un input en el formulario y leerlo aquí
 
     if (!nombre) {
       alert('Por favor, ingresa el nombre del entrenador');
