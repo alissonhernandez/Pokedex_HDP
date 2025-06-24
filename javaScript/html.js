@@ -1,19 +1,29 @@
 import { agregarAcompanante } from './acompanantes.js'; 
 
-// Esta función crea la tarjeta HTML del Pokémon sin botón
 export function tarjetaPokemon(pokemon) {
-    // Creando el contenedor principal de la tarjeta
+    // Contenedor externo con perspective
+    const contenedor3D = document.createElement("div");
+    contenedor3D.classList.add("tarjeta-3d-wrapper");
+
+    // Tarjeta principal
     const tarjeta = document.createElement("div");
-    tarjeta.classList.add("tarjeta-pokedex"); // nombre de la clase
+    tarjeta.classList.add("tarjeta-pokedex");
 
     const primerTipo = pokemon.getTipos()[0];
     tarjeta.classList.add(`tipo-${primerTipo}`);
 
-    // Nombre del Pokémon
+    // Nombre
     const nombre = document.createElement("h3");
-    nombre.textContent = letra(pokemon.getNombre()); // primera letra mayúscula
+    nombre.textContent = letra(pokemon.getNombre());
     tarjeta.appendChild(nombre);
 
+    // ID
+    const id = document.createElement("p");
+    id.classList.add("id-pokemon");
+    id.textContent = `#${pokemon.getId().toString().padStart(3, "0")}`;
+    tarjeta.appendChild(id);
+
+    // Imagen
     const contenedorImg = document.createElement("div");
     contenedorImg.classList.add("contenedor-imagen");
 
@@ -27,7 +37,7 @@ export function tarjetaPokemon(pokemon) {
     contenedorImg.appendChild(imagen);
     tarjeta.appendChild(contenedorImg);
 
-    // Muestra los tipos 
+    // Tipos
     const datos = [
         ["", pokemon.getTipos().map(tipo => {
             const span = document.createElement("span");
@@ -37,7 +47,6 @@ export function tarjetaPokemon(pokemon) {
         })]
     ];
 
-    // Crear párrafos para mostrar los datos
     datos.forEach(([titulo, valor]) => {
         const p = document.createElement("p");
         const strong = document.createElement("strong");
@@ -53,14 +62,31 @@ export function tarjetaPokemon(pokemon) {
         tarjeta.appendChild(p);
     });
 
-    // Mantener el evento para abrir modal al clickear la tarjeta
-    tarjeta.addEventListener("click", () => {
+    contenedor3D.appendChild(tarjeta);
+
+    // Evento 3D — rotar tarjeta dentro del wrapper con perspectiva
+    contenedor3D.addEventListener("mousemove", (e) => {
+        const rect = contenedor3D.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = -(y - centerY) / 5;
+        const rotateY = (x - centerX) / 5;
+        tarjeta.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    contenedor3D.addEventListener("mouseleave", () => {
+        tarjeta.style.transform = "rotateX(0deg) rotateY(0deg)";
+    });
+
+    // Click para abrir modal
+    contenedor3D.addEventListener("click", () => {
         crearModalPokemon(pokemon);
     });
 
-    return tarjeta;
+    return contenedor3D;
 }
-
 
 //funcion para colocar en mayuscula la primera letra del texto
 function letra(ltr) {
