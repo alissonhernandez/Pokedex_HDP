@@ -1,8 +1,9 @@
+
 import { Pokedex } from "./pokedex.js";
 import { crearBotonesFiltro } from "./filtroTipos.js";
 import { crearBotonSubir } from "./volverBoton.js";
 import { mostrarTarjetasBreves } from "./muestraTarjeta.js";
-import { obtenerPokemones } from "./pokemonService.js"; // 🔹 Asegurate de importar esto
+import { obtenerPokemones } from "./pokemonService.js";
 
 // Función para verificar si estamos en la página principal
 function esPaginaPrincipal() {
@@ -24,22 +25,24 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Crear botón subir en todas las páginas
         crearBotonSubir();
         
-        // Solo mostrar tarjetas breves en la página principal
+        // Mostrar tarjetas breves solo en la página principal
         if (esPaginaPrincipal()) {
             console.log('Inicializando página principal...');
             await mostrarTarjetasBreves();
         }
-        
-        // Solo inicializar Pokédex en la página de Pokédex
+
+        // Inicializar Pokédex solo si estamos en la página de Pokédex
         if (esPaginaPokedex()) {
             console.log('Inicializando Pokédex...');
+            
             const poke = new Pokedex();
-            const pokemones = await obtenerPokemones(150); 
+            await poke.init(); // Esto ya obtiene y dibuja los pokemones
 
-            crearBotonesFiltro(poke, pokemones);           
-            poke.dibujarPokedex(pokemones);               
+            poke.agregarBuscadorPorNombre(); // ✅ Activar la barra de búsqueda
+            const pokemones = await obtenerPokemones(150);
+            crearBotonesFiltro(poke, pokemones); // Botones de filtro por tipo
         }
-        
+
         console.log('Inicialización completada');
     } catch (error) {
         console.error('Error durante la inicialización:', error);
