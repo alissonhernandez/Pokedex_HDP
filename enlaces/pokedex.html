@@ -25,17 +25,21 @@
     <img src="../img/pikachu.png" class="pikachu" alt="Pikachu">
     <img src="../img/Ash.png" class="ash" alt="Ash">
     <button class="boton-subir">
-  <img src="../img/subir.png">
-</button>
+      <img src="../img/subir.png" alt="Subir">
+    </button>
 
     <div class="contenedor-central">
       <img src="../img/pokedex.png" class="pokedex" alt="Pokedex">
-      <div id="buscador-container">
-  <input type="text" id="busqueda-pokemon" placeholder="Buscar Pokémon por nombre...">
-  <button id="boton-buscar">
-    
-  </button>
-</div>
+
+      <!-- 🔍 Buscador con botón y lupa SVG -->
+      <div class="contenedor-busqueda">
+        <input type="text" id="busqueda-pokemon" placeholder="Buscar Pokémon por nombre...">
+        <button id="boton-buscar" aria-label="Buscar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" viewBox="0 0 24 24">
+            <path d="M10 2a8 8 0 105.293 14.293l4.707 4.707 1.414-1.414-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/>
+          </svg>
+        </button>
+      </div>
 
       <div id="filtros-tipos"></div>
       <div id="pokedex"></div>
@@ -48,8 +52,8 @@
         <img src="../img/poke.png" alt="Logo">
       </div>
       <div class="footer-links">
-        <a href="./index.html">Inicio</a>
-        <a href="./enlaces/pokedex.html">Pokedex</a>
+        <a href="../index.html">Inicio</a>
+        <a href="../enlaces/pokedex.html">Pokedex</a>
         <a href="../enlaces/acompañantes.html">Acompañantes</a>
         <a href="https://github.com/alissonhernandez/Pokedex_HDP">Github</a>
       </div>
