@@ -173,10 +173,10 @@
 }
 
 .tipo-fire {
-  background-color: rgb(253.8636363636, 223.6363636364, 203.6363636364);
+  background-color: #fee0cc;
 }
 .tipo-fire .circulo-fondo {
-  background: radial-gradient(circle, rgb(252.2077922078, 177.9350649351, 128.7922077922) 30%, transparent 70%);
+  background: radial-gradient(circle, #fcb281 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-fire .info-pokemon {
@@ -193,7 +193,7 @@
   background-color: #fa751d;
 }
 .tipo-fire .boton-acompanante:hover {
-  background-color: rgb(251.1038961039, 147.4675324675, 78.8961038961);
+  background-color: #fb934f;
 }
 
 .tarjeta-pokedex.tipo-water {
@@ -212,7 +212,7 @@
   background-color: white;
 }
 .tipo-water .circulo-fondo {
-  background: radial-gradient(circle, rgb(196.7831325301, 212.2048192771, 249.2168674699) 30%, transparent 70%);
+  background: radial-gradient(circle, #c5d4f9 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-water .info-pokemon {
@@ -229,7 +229,7 @@
   background-color: #6890f0;
 }
 .tipo-water .boton-acompanante:hover {
-  background-color: rgb(150.3915662651, 178.1024096386, 244.6084337349);
+  background-color: #96b2f5;
 }
 
 .tarjeta-pokedex.tipo-grass {
@@ -245,10 +245,10 @@
 }
 
 .tipo-grass {
-  background-color: rgb(217.8395061728, 237.7469135802, 207.7530864198);
+  background-color: #daeed0;
 }
 .tipo-grass .circulo-fondo {
-  background: radial-gradient(circle, rgb(173.7654320988, 217.2839506173, 151.7160493827) 30%, transparent 70%);
+  background: radial-gradient(circle, #aed998 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-grass .info-pokemon {
@@ -265,7 +265,7 @@
   background-color: #73be4d;
 }
 .tipo-grass .boton-acompanante:hover {
-  background-color: rgb(144.3827160494, 203.6419753086, 114.3580246914);
+  background-color: #90cc72;
 }
 
 .tarjeta-pokedex.tipo-electric {
@@ -281,10 +281,10 @@
 }
 
 .tipo-electric {
-  background-color: rgb(253.8387850467, 247.203271028, 220.6612149533);
+  background-color: #fef7dd;
 }
 .tipo-electric .circulo-fondo {
-  background: radial-gradient(circle, rgb(251.3364485981, 230.4018691589, 146.6635514019) 30%, transparent 70%);
+  background: radial-gradient(circle, #fbe693 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-electric .info-pokemon {
@@ -301,7 +301,7 @@
   background-color: #f8d030;
 }
 .tipo-electric .boton-acompanante:hover {
-  background-color: rgb(249.6682242991, 219.2009345794, 97.3317757009);
+  background-color: #fadb61;
 }
 
 .tarjeta-pokedex.tipo-psychic {
@@ -320,7 +320,7 @@
   background-color: white;
 }
 .tipo-psychic .circulo-fondo {
-  background: radial-gradient(circle, rgb(252.1034482759, 185.8965517241, 205.7586206897) 30%, transparent 70%);
+  background: radial-gradient(circle, #fcbace 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-psychic .info-pokemon {
@@ -337,7 +337,7 @@
   background-color: #f85888;
 }
 .tipo-psychic .boton-acompanante:hover {
-  background-color: rgb(250.0517241379, 136.9482758621, 170.8793103448);
+  background-color: #fa89ab;
 }
 
 .tarjeta-pokedex.tipo-ice {
@@ -356,7 +356,7 @@
   background-color: white;
 }
 .tipo-ice .circulo-fondo {
-  background: radial-gradient(circle, rgb(225.985915493, 244.014084507, 244.014084507) 30%, transparent 70%);
+  background: radial-gradient(circle, #e2f4f4 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-ice .info-pokemon {
@@ -373,7 +373,7 @@
   background-color: #98d8d8;
 }
 .tipo-ice .boton-acompanante:hover {
-  background-color: rgb(188.9929577465, 230.0070422535, 230.0070422535);
+  background-color: #bde6e6;
 }
 
 .tarjeta-pokedex.tipo-dragon {
@@ -389,10 +389,10 @@
 }
 
 .tipo-dragon {
-  background-color: rgb(235.9101941748, 228.4344660194, 254.0655339806);
+  background-color: #ece4fe;
 }
 .tipo-dragon .circulo-fondo {
-  background: radial-gradient(circle, rgb(182.8058252427, 154.5339805825, 251.4660194175) 30%, transparent 70%);
+  background: radial-gradient(circle, #b79bfb 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-dragon .info-pokemon {
@@ -409,7 +409,7 @@
   background-color: #7038f8;
 }
 .tipo-dragon .boton-acompanante:hover {
-  background-color: rgb(147.4029126214, 105.2669902913, 249.7330097087);
+  background-color: #9369fa;
 }
 
 .tarjeta-pokedex.tipo-dark {
@@ -425,10 +425,10 @@
 }
 
 .tipo-dark {
-  background-color: rgb(197.2826086957, 178.0434782609, 165.2173913043);
+  background-color: #c5b2a5;
 }
 .tipo-dark .circulo-fondo {
-  background: radial-gradient(circle, rgb(167.347826087, 138.1304347826, 118.652173913) 30%, transparent 70%);
+  background: radial-gradient(circle, #a78a77 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-dark .info-pokemon {
@@ -445,7 +445,7 @@
   background-color: #705848;
 }
 .tipo-dark .boton-acompanante:hover {
-  background-color: rgb(143.0434782609, 112.3913043478, 91.9565217391);
+  background-color: #8f705c;
 }
 
 .tarjeta-pokedex.tipo-fairy {
@@ -464,7 +464,7 @@
   background-color: white;
 }
 .tipo-fairy .circulo-fondo {
-  background: radial-gradient(circle, rgb(252.5714285714, 240.4285714286, 243.1428571429) 30%, transparent 70%);
+  background: radial-gradient(circle, #fdf0f3 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-fairy .info-pokemon {
@@ -481,7 +481,7 @@
   background-color: #ee99ac;
 }
 .tipo-fairy .boton-acompanante:hover {
-  background-color: rgb(245.2857142857, 196.7142857143, 207.5714285714);
+  background-color: #f5c5d0;
 }
 
 .tarjeta-pokedex.tipo-normal {
@@ -497,10 +497,10 @@
 }
 
 .tipo-normal {
-  background-color: rgb(237.9527027027, 237.9527027027, 228.5472972973);
+  background-color: #eeeee5;
 }
 .tipo-normal .circulo-fondo {
-  background: radial-gradient(circle, rgb(207.972972973, 207.972972973, 182.027027027) 30%, transparent 70%);
+  background: radial-gradient(circle, #d0d0b6 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-normal .info-pokemon {
@@ -517,7 +517,7 @@
   background-color: #a8a878;
 }
 .tipo-normal .boton-acompanante:hover {
-  background-color: rgb(187.9864864865, 187.9864864865, 151.0135135135);
+  background-color: #bcbc97;
 }
 
 .tarjeta-pokedex.tipo-fighting {
@@ -533,10 +533,10 @@
 }
 
 .tipo-fighting {
-  background-color: rgb(237.8448275862, 176.0862068966, 172.6551724138);
+  background-color: #eeb0ad;
 }
 .tipo-fighting .circulo-fondo {
-  background: radial-gradient(circle, rgb(224.6551724138, 115.4137931034, 109.3448275862) 30%, transparent 70%);
+  background: radial-gradient(circle, #e1736d 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-fighting .info-pokemon {
@@ -553,7 +553,7 @@
   background-color: #c03028;
 }
 .tipo-fighting .boton-acompanante:hover {
-  background-color: rgb(215.8620689655, 74.9655172414, 67.1379310345);
+  background-color: #d84b43;
 }
 
 .tarjeta-pokedex.tipo-flying {
@@ -572,7 +572,7 @@
   background-color: white;
 }
 .tipo-flying .circulo-fondo {
-  background: radial-gradient(circle, rgb(238.4285714286, 233.8571428571, 252.1428571429) 30%, transparent 70%);
+  background: radial-gradient(circle, #eeeafc 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-flying .info-pokemon {
@@ -589,7 +589,7 @@
   background-color: #a890f0;
 }
 .tipo-flying .boton-acompanante:hover {
-  background-color: rgb(203.2142857143, 188.9285714286, 246.0714285714);
+  background-color: #cbbdf6;
 }
 
 .tarjeta-pokedex.tipo-poison {
@@ -605,10 +605,10 @@
 }
 
 .tipo-poison {
-  background-color: rgb(224.2857142857, 178.2142857143, 224.2857142857);
+  background-color: #e0b2e0;
 }
 .tipo-poison .circulo-fondo {
-  background: radial-gradient(circle, rgb(202.4285714286, 123.5714285714, 202.4285714286) 30%, transparent 70%);
+  background: radial-gradient(circle, #ca7cca 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-poison .info-pokemon {
@@ -625,7 +625,7 @@
   background-color: #a040a0;
 }
 .tipo-poison .boton-acompanante:hover {
-  background-color: rgb(187.8571428571, 87.1428571429, 187.8571428571);
+  background-color: #bc57bc;
 }
 
 .tarjeta-pokedex.tipo-ground {
@@ -641,10 +641,10 @@
 }
 
 .tipo-ground {
-  background-color: rgb(254.4038461538, 253.7884615385, 252.0961538462);
+  background-color: #fefefc;
 }
 .tipo-ground .circulo-fondo {
-  background: radial-gradient(circle, rgb(241.3736263736, 227.3076923077, 188.6263736264) 30%, transparent 70%);
+  background: radial-gradient(circle, #f1e3bd 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-ground .info-pokemon {
@@ -661,7 +661,7 @@
   background-color: #e0c068;
 }
 .tipo-ground .boton-acompanante:hover {
-  background-color: rgb(232.6868131868, 209.6538461538, 146.3131868132);
+  background-color: #e9d292;
 }
 
 .tarjeta-pokedex.tipo-rock {
@@ -677,10 +677,10 @@
 }
 
 .tipo-rock {
-  background-color: rgb(233.65, 224.5, 184.85);
+  background-color: #eae1b9;
 }
 .tipo-rock .circulo-fondo {
-  background: radial-gradient(circle, rgb(215.8, 199, 126.2) 30%, transparent 70%);
+  background: radial-gradient(circle, #d8c77e 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-rock .info-pokemon {
@@ -697,7 +697,7 @@
   background-color: #b8a038;
 }
 .tipo-rock .boton-acompanante:hover {
-  background-color: rgb(203.9, 182, 87.1);
+  background-color: #ccb657;
 }
 
 .tarjeta-pokedex.tipo-bug {
@@ -713,10 +713,10 @@
 }
 
 .tipo-bug {
-  background-color: rgb(229.3333333333, 237.8888888889, 156.6111111111);
+  background-color: #e5ee9d;
 }
 .tipo-bug .circulo-fondo {
-  background: radial-gradient(circle, rgb(212.3333333333, 226.5555555556, 91.4444444444) 30%, transparent 70%);
+  background: radial-gradient(circle, #d4e35b 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-bug .info-pokemon {
@@ -749,10 +749,10 @@
 }
 
 .tipo-ghost {
-  background-color: rgb(206.2, 197.05, 221.45);
+  background-color: #cec5dd;
 }
 .tipo-ghost .circulo-fondo {
-  background: radial-gradient(circle, rgb(165.4, 148.6, 193.4) 30%, transparent 70%);
+  background: radial-gradient(circle, #a595c1 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-ghost .info-pokemon {
@@ -769,7 +769,7 @@
   background-color: #705898;
 }
 .tipo-ghost .boton-acompanante:hover {
-  background-color: rgb(138.2, 116.3, 174.7);
+  background-color: #8a74af;
 }
 
 .tarjeta-pokedex.tipo-steel {
@@ -788,7 +788,7 @@
   background-color: white;
 }
 .tipo-steel .circulo-fondo {
-  background: radial-gradient(circle, rgb(245.3728813559, 245.3728813559, 248.6271186441) 30%, transparent 70%);
+  background: radial-gradient(circle, #f5f5f9 30%, transparent 70%);
   opacity: 0.4;
 }
 .tipo-steel .info-pokemon {
@@ -805,7 +805,7 @@
   background-color: #b8b8d0;
 }
 .tipo-steel .boton-acompanante:hover {
-  background-color: rgb(214.686440678, 214.686440678, 228.313559322);
+  background-color: #d7d7e4;
 }
 
 .boton-subir {

@@ -1,0 +1,19 @@
+.contenedor-busqueda {
+  margin: 1rem auto;
+  text-align: center;
+
+  input {
+    padding: 10px 20px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+    width: 80%;
+    max-width: 400px;
+    outline: none;
+    transition: border-color 0.3s;
+
+    &:focus {
+      border-color: #ffcb05; // amarillo Pokémon
+    }
+  }
+}
