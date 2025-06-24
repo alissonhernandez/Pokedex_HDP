@@ -1,3 +1,4 @@
+pokedex.js
 import { obtenerPokemones } from './pokemonService.js';
 import { tarjetaPokemon } from './html.js';
 
@@ -11,6 +12,34 @@ export class Pokedex {
         //metodo para dibujar todas las tarjetas
         this.dibujarPokedex();
     }
+    agregarBuscadorPorNombre() {
+  const inputBusqueda = document.getElementById('busqueda-pokemon');
+  const botonBusqueda = document.getElementById('boton-buscar');
+
+  if (!inputBusqueda) {
+      console.warn('Input de búsqueda no encontrado');
+      return;
+  }
+
+  const normalizar = (texto) =>
+      texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+  const filtrarPokemones = () => {
+    const texto = normalizar(inputBusqueda.value);
+
+    const resultado = this.#pokemones.filter(pokemon =>
+        normalizar(pokemon.getNombre()).includes(texto)
+    );
+
+    this.dibujarPokedex(resultado);
+  };
+
+  inputBusqueda.addEventListener('input', filtrarPokemones);
+
+  if (botonBusqueda) {
+    botonBusqueda.addEventListener('click', filtrarPokemones);
+  }
+}
 
   //metodo publico dibuja las tarjetas en el HTML recibe una lista filtrada por tipo y si no habia nada se usa completa
     async dibujarPokedex(lista = null) {
@@ -35,4 +64,5 @@ export class Pokedex {
             contenedor.appendChild(tarjeta);
         });
     }
-}
+} 
+
