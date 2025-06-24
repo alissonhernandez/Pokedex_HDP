@@ -36,6 +36,22 @@
   margin-top: 2rem;
 }
 
+.boton-nuevo-entrenador {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 // Tarjetas de Acompañantes
 .tarjeta-acompanante {
   background: white;
@@ -193,13 +209,34 @@
 
 // Tarjetas de Entrenadores
 .tarjeta-entrenador {
-  @extend .tarjeta-acompanante;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 2rem;
   color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
 
   &::before {
-    background: #fff;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    pointer-events: none;
   }
+
+  .circulo-fondo {
+    display: none;
+}
 
   .tarjeta-header h3 {
     color: white;
@@ -263,14 +300,16 @@
   position: relative;
 }
 
-.modal-header {
+.modal-detalles .modal-header-asignar,
+.modal-edicion .modal-header-asignar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem;
   border-bottom: 1px solid #eee;
 
-  h2 {
+
+  .h2 {
     margin: 0;
     color: #333;
   }
@@ -287,7 +326,7 @@
   }
 }
 
-.modal-body {
+.modal-body-asignar {
   padding: 1.5rem;
 }
 
