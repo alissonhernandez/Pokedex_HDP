@@ -199,11 +199,11 @@ function mostrarModalAsignarEntrenador(acompanante) {
   const contenido = document.createElement('div');
   contenido.classList.add('modal-edicion');
   contenido.innerHTML = `
-    <div class="modal-header">
+    <div class="modal-header-asignar">
       <h2>Asignar a entrenador</h2>
       <span class="cerrar-modal" onclick="this.closest('.modal-fondo').remove()">&times;</span>
     </div>
-    <div class="modal-body">
+    <div class="modal-body-asignar">
       <form id="form-asignar-entrenador">
         <div class="form-grupo">
           <label>Selecciona un entrenador:</label>
