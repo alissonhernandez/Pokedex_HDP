@@ -1,4 +1,4 @@
-@import 'paleta';
+@use 'paleta' as *;
 
 .modal-fondo {
   position: fixed;
