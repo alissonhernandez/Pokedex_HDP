@@ -49,7 +49,11 @@ export async function agregarAcompanante(pokemon) {
     alert("Este Pokémon ya fue seleccionado como acompañante.");
     return false;
   }
-
+  const acompanantes = await dbManager.obtenerAcompanantes();
+    if (acompanantes.length >= 6) {
+      alert("Solo puedes tener hasta 6 acompañantes.");
+      return false;
+    }
     // Agregar a IndexedDB
     await dbManager.agregarAcompanante(pokemon);
     alert(`${pokemon.getNombre()} fue atrapado como acompañante.`);
