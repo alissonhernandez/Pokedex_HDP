@@ -8,44 +8,47 @@
     <title>Pokedex - Acompañantes y Entrenadores</title>
 </head>
 <body>
-        <nav class="menu fondo-pokedex">
-        <div class="logo">
-            <img src="../img/poke.png" alt="logo">
-        </div>
-        <div class="menu_opciones">
-            <a href="../index.html" class="">Inicio</a>
-            <a href="../enlaces/pokedex.html" class="">Pokedex</a>
-            <a href="../enlaces/acompañantes.html">Acompañantes</a>
-            <a href="https://github.com/alissonhernandez/Pokedex_HDP" class="">Github</a>
-        </div>
-    </nav>
+  <object type="image/svg+xml" data="../iconos/icons.svg" style="display: none;"></object>
+  <nav class="menu">
+    <div class="logo">
+      <img src="../img/poke.png" alt="logo">
+    </div>
+    <input type="checkbox" id="toggler">
+    <label for="toggler">
+      <svg class="icon">
+          <use xlink:href="../iconos/icons.svg#menu"></use>
+      </svg>
+    </label>
+    <div class="menu_opciones">
+      <a href="../index.html" class="opcion">Inicio</a>
+      <a href="../enlaces/pokedex.html" class="opcion">Pokedex</a>
+      <a href="../enlaces/acompañantes.html" class="opcion">Acompañantes</a>
+      <a href="https://github.com/alissonhernandez/Pokedex_HDP" class="opcion">Github</a>
+    </div>
+  </nav>
 
-    <main class="contenido-principal">
-        <div class="contenedor-principal">
-            <h1 class="titulo-principal">Acompañantes y Entrenadores</h1>
-            
-            <div class="secciones">
-                <section id="acompanantes">
-                    <h2>Acompañantes</h2>
-                    <!-- Los acompañantes se cargarán aquí -->
-                </section>
-                
-                <section id="entrenadores">
-                    <h2>Entrenadores del Equipo</h2>
-                    <!-- Los entrenadores se cargarán aquí -->
-                </section>
-            </div>
-        </div>
-    </main>
+  <main class="contenido-principal">
+    <div class="contenedor-principal">
+      <h1 class="titulo-principal">Acompañantes y Entrenadores</h1>
+      <div class="secciones">
+        <section id="acompanantes">
+          <h2>Acompañantes</h2>
+        </section>
+        <section id="entrenadores">
+          <h2>Entrenadores del Equipo</h2>
+        </section>
+      </div>
+    </div>
+  </main>
 
-    <footer>
+  <footer>
     <div class="footer-contenido">
       <div class="footer-logo">
         <img src="../img/poke.png" alt="Logo">
       </div>
       <div class="footer-links">
-        <a href="./index.html">Inicio</a>
-        <a href="./enlaces/pokedex.html">Pokedex</a>
+        <a href="../index.html">Inicio</a>
+        <a href="../enlaces/pokedex.html">Pokedex</a>
         <a href="../enlaces/acompañantes.html">Acompañantes</a>
         <a href="https://github.com/alissonhernandez/Pokedex_HDP">Github</a>
       </div>
@@ -61,6 +64,6 @@
       </div>
     </div>
   </footer>
-    <script type="module" src="../javaScript/acompanantes-main.js"></script>
+  <script type="module" src="../javaScript/acompanantes-main.js"></script>
 </body>
 </html>

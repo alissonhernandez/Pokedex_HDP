@@ -8,16 +8,22 @@
   <title>Pokedex</title>
 </head>
 <body class="pagina-pokedex">
-
-  <nav class="menu fondo-pokedex">
+  <object type="image/svg+xml" data="../iconos/icons.svg" style="display: none;"></object>
+  <nav class="menu">
     <div class="logo">
       <img src="../img/poke.png" alt="logo">
     </div>
+    <input type="checkbox" id="toggler">
+    <label for="toggler">
+      <svg class="icon">
+          <use xlink:href="../iconos/icons.svg#menu"></use>
+      </svg>
+    </label>
     <div class="menu_opciones">
-      <a href="../index.html">Inicio</a>
-      <a href="../enlaces/pokedex.html">Pokedex</a>
-      <a href="../enlaces/acompañantes.html">Acompañantes</a>
-      <a href="https://github.com/alissonhernandez/Pokedex_HDP">Github</a>
+      <a href="../index.html" class="opcion">Inicio</a>
+      <a href="../enlaces/pokedex.html" class="opcion">Pokedex</a>
+      <a href="../enlaces/acompañantes.html" class="opcion">Acompañantes</a>
+      <a href="https://github.com/alissonhernandez/Pokedex_HDP" class="opcion">Github</a>
     </div>
   </nav>
 
@@ -27,11 +33,8 @@
     <button class="boton-subir">
       <img src="../img/subir.png" alt="Subir">
     </button>
-
     <div class="contenedor-central">
       <img src="../img/pokedex.png" class="pokedex" alt="Pokedex">
-
-      <!-- 🔍 Buscador con botón y lupa SVG -->
       <div class="contenedor-busqueda">
         <input type="text" id="busqueda-pokemon" placeholder="Buscar Pokémon por nombre...">
         <button id="boton-buscar" aria-label="Buscar">
@@ -40,7 +43,6 @@
           </svg>
         </button>
       </div>
-
       <div id="filtros-tipos"></div>
       <div id="pokedex"></div>
       <div class="spinner"></div>
