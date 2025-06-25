@@ -266,14 +266,16 @@ export function crearModalPokemon(pokemon) {
   contenedorBoton.style.margin = "1rem 0";
 
   // Evento para atrapar
-  botonAtrapar.addEventListener("click", (event) => {
-    event.stopPropagation(); // evitar que se abra modal si tienes ese evento
-    const agregado = agregarAcompanante(pokemon);
-    if (agregado) {
-      botonAtrapar.textContent = "Atrapado";
-      botonAtrapar.disabled = true;
-    }
-  });
+ botonAtrapar.addEventListener("click", async (event) => {
+  event.stopPropagation();
+
+  const agregado = await agregarAcompanante(pokemon); 
+  if (agregado) {
+    botonAtrapar.textContent = "Atrapado";
+    botonAtrapar.disabled = true;
+  }
+});
+
 
   contenedorBoton.appendChild(botonAtrapar);
     modalContenido.appendChild(body);
