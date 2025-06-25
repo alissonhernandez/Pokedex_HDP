@@ -309,7 +309,7 @@ export async function mostrarEntrenadores() {
   }
 // Limpiar el contenedor antes de mostrar los entrenadores
   contenedor.innerHTML = "";
-
+// Limpiar el contenedor antes de mostrar los entrenadores
   try {
     const lista = await dbManager.obtenerEntrenadores();
     // Actualizar el cache de entrenadores
@@ -322,16 +322,16 @@ export async function mostrarEntrenadores() {
     // Título de la sección con botón
     const tituloContainer = document.createElement("div");
     tituloContainer.classList.add("titulo-con-boton");
-    
+     // Título de la sección
     const titulo = document.createElement("h2");
     titulo.textContent = "Entrenadores del Equipo";
     titulo.classList.add("titulo-seccion");
-    
+    // Botón para agregar nuevo entrenador
     const botonNuevo = document.createElement("button");
     botonNuevo.textContent = "Nuevo Entrenador";
     botonNuevo.classList.add("boton-nuevo-entrenador");
     botonNuevo.onclick = mostrarModalNuevoEntrenador;
-    
+    // Agregar el título y el botón al contenedor
     tituloContainer.appendChild(titulo);
     tituloContainer.appendChild(botonNuevo);
     contenedorPrincipal.appendChild(tituloContainer);
@@ -339,12 +339,12 @@ export async function mostrarEntrenadores() {
     // Contenedor de tarjetas
     const contenedorTarjetas = document.createElement("div");
     contenedorTarjetas.classList.add("contenedor-tarjetas");
-
+    // Crear tarjetas para cada entrenador
     lista.forEach(entrenador => {
       const tarjeta = crearTarjetaEntrenador(entrenador);
       contenedorTarjetas.appendChild(tarjeta);
     });
-
+    // Agregar el contenedor de tarjetas al contenedor principal
     contenedorPrincipal.appendChild(contenedorTarjetas);
     contenedor.appendChild(contenedorPrincipal);
   } catch (error) {
@@ -352,15 +352,15 @@ export async function mostrarEntrenadores() {
     contenedor.innerHTML = '<p>Error al cargar entrenadores</p>';
   }
 }
-
+// Función para mostrar el modal de nuevo entrenador
 function crearTarjetaEntrenador(entrenador) {
   const tarjeta = document.createElement("div");
   tarjeta.classList.add("tarjeta-entrenador");
 
-  const cantidadPokemon = entrenador.pokemones ? entrenador.pokemones.length : 0;
-  const rol = entrenador.rol ? entrenador.rol : 'Entrenador Pokémon';
+  const cantidadPokemon = entrenador.pokemones ? entrenador.pokemones.length : 0; // Obtener la cantidad de Pokémon
+  const rol = entrenador.rol ? entrenador.rol : 'Entrenador Pokémon'; // Obtener el rol del entrenador
 
-  tarjeta.innerHTML = `
+  tarjeta.innerHTML = ` 
     <div class="tarjeta-header">
       <h3>${entrenador.nombre}</h3>
       <span class="numero-id">#${String(entrenador.id).padStart(3, "0")}</span>
@@ -395,33 +395,33 @@ function crearTarjetaEntrenador(entrenador) {
 
 // Funciones globales para los botones
 window.verDetallesAcompanante = async function(id) {
-  try {
+  try { // Verificar si el acompañante existe
     const acompanante = await dbManager.verificarAcompanante(id);
     if (acompanante) {
-      mostrarModalDetalles(acompanante, 'acompanante');
+      mostrarModalDetalles(acompanante, 'acompanante'); // Mostrar detalles del acompañante
     }
   } catch (error) {
     console.error('Error al ver detalles:', error);
   }
 };
 
-window.editarAcompanante = async function(id) {
+window.editarAcompanante = async function(id) { // Verificar si el acompañante existe
   try {
     const acompanante = await dbManager.verificarAcompanante(id);
     if (acompanante) {
-      mostrarModalEdicion(acompanante, 'acompanante');
+      mostrarModalEdicion(acompanante, 'acompanante'); // Mostrar modal de edición
     }
   } catch (error) {
     console.error('Error al editar:', error);
   }
 };
 
-window.eliminarAcompanante = async function(id) {
+window.eliminarAcompanante = async function(id) { // Eliminar un acompañante
   if (confirm('¿Estás seguro de que quieres liberar este Pokémon?')) {
     try {
-      await dbManager.eliminarAcompanante(id);
+      await dbManager.eliminarAcompanante(id); // Eliminar el acompañante
       alert('Pokémon liberado exitosamente');
-      await mostrarAcompanantes();
+      await mostrarAcompanantes(); // Actualizar la lista de acompañantes
     } catch (error) {
       console.error('Error al eliminar:', error);
       alert('Error al liberar Pokémon');
@@ -429,9 +429,9 @@ window.eliminarAcompanante = async function(id) {
   }
 };
 
-window.verPokemonesEntrenador = async function(idEntrenador) {
+window.verPokemonesEntrenador = async function(idEntrenador) { //Ver los Pokémon de un entrenador
   try {
-    const entrenador = entrenadoresCache.find(e => e.id === idEntrenador);
+    const entrenador = entrenadoresCache.find(e => e.id === idEntrenador); // Buscar el entrenador en caché
     if (!entrenador) {
       alert('Entrenador no encontrado');
       return;
