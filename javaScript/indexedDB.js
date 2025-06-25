@@ -131,37 +131,37 @@ class IndexedDBManager { // Clase para manejar IndexedDB
         });
     }
 
-    async verificarAcompanante(id) {
+    async verificarAcompanante(id) { // Método para verificar si un acompañante existe por su ID
         const db = await this.waitForDB();
         const transaction = db.transaction([ACCOMPANANTS_STORE], 'readonly');
         const store = transaction.objectStore(ACCOMPANANTS_STORE);
 
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => { // Retornar una promesa para manejar la operación asíncrona
             const request = store.get(id);
             request.onsuccess = () => resolve(request.result);
             request.onerror = () => reject('Error al verificar acompañante');
         });
     }
 
-    async contarAcompanantes() {
-        const acompanantes = await this.obtenerAcompanantes();
-        return acompanantes.length;
+    async contarAcompanantes() { // Método para contar el número de acompañantes
+        const acompanantes = await this.obtenerAcompanantes(); // Obtener todos los acompañantes
+        return acompanantes.length; // Retornar la cantidad de acompañantes
     }
 
     // CRUD para Entrenadores
     async obtenerEntrenadores() {
-        const db = await this.waitForDB();
-        const transaction = db.transaction([TRAINERS_STORE], 'readonly');
-        const store = transaction.objectStore(TRAINERS_STORE);
+        const db = await this.waitForDB(); // Esperar a que la base de datos esté lista
+        const transaction = db.transaction([TRAINERS_STORE], 'readonly'); // Iniciar una transacción de solo lectura
+        const store = transaction.objectStore(TRAINERS_STORE); // Obtener el ObjectStore de entrenadores
 
-        return new Promise((resolve, reject) => {
-            const request = store.getAll();
+        return new Promise((resolve, reject) => { // Retornar una promesa para manejar la operación asíncrona
+            const request = store.getAll(); // Obtener todos los entrenadores
             request.onsuccess = () => {
                 const entrenadores = request.result;
                 // Si no hay entrenadores, crear los por defecto
-                if (entrenadores.length === 0) {
-                    this.crearEntrenadoresPorDefecto().then(() => {
-                        this.obtenerEntrenadores().then(resolve).catch(reject);
+                if (entrenadores.length === 0) { // Si no hay entrenadores, crear los por defecto
+                    this.crearEntrenadoresPorDefecto().then(() => {// Esperar a que se creen los entrenadores por defecto
+                        this.obtenerEntrenadores().then(resolve).catch(reject); // Volver a obtener los entrenadores después de crearlos
                     }).catch(reject);
                 } else {
                     resolve(entrenadores);
@@ -171,8 +171,8 @@ class IndexedDBManager { // Clase para manejar IndexedDB
         });
     }
 
-    async crearEntrenadoresPorDefecto() {
-        const db = await this.waitForDB();
+    async crearEntrenadoresPorDefecto() { // Método para crear entrenadores por defecto
+        const db = await this.waitForDB(); 
         const transaction = db.transaction([TRAINERS_STORE], 'readwrite');
         const store = transaction.objectStore(TRAINERS_STORE);
         
@@ -180,10 +180,10 @@ class IndexedDBManager { // Clase para manejar IndexedDB
             // Crear entrenadores por defecto si no existen
             const getAllRequest = store.getAll();
             getAllRequest.onsuccess = () => {
-                const entrenadoresExistentes = getAllRequest.result;
+                const entrenadoresExistentes = getAllRequest.result; // Obtener todos los entrenadores existentes
                 if (entrenadoresExistentes.length === 0) {
                     const entrenadoresPorDefecto = [
-                        {
+                        { // Crear entrenadores por defecto
                             id: 1,
                             nombre: "Isabel",
                             imagen: "https://avatars.githubusercontent.com/u/139247973?s=96&v=4",
@@ -215,14 +215,14 @@ class IndexedDBManager { // Clase para manejar IndexedDB
                         }
                     ];
 
-                    let completed = 0;
-                    let hasError = false;
+                    let completed = 0; // Contador de entrenadores creados
+                    let hasError = false; // Bandera para manejar errores
 
-                    entrenadoresPorDefecto.forEach(entrenador => {
-                        const addRequest = store.add(entrenador);
+                    entrenadoresPorDefecto.forEach(entrenador => { // Iterar sobre los entrenadores por defecto
+                        const addRequest = store.add(entrenador); // Agregar cada entrenador al ObjectStore
                         addRequest.onsuccess = () => {
                             completed++;
-                            if (completed === entrenadoresPorDefecto.length && !hasError) {
+                            if (completed === entrenadoresPorDefecto.length && !hasError) { // Si todos los entrenadores se han creado sin errores
                                 console.log('Entrenadores por defecto creados');
                                 resolve();
                             }
@@ -236,10 +236,10 @@ class IndexedDBManager { // Clase para manejar IndexedDB
                     });
                 } else {
                     // Verificar si los entrenadores existentes tienen las imágenes antiguas y actualizarlas automáticamente
-                    const primerEntrenador = entrenadoresExistentes[0];
+                    const primerEntrenador = entrenadoresExistentes[0]; // Obtener el primer entrenador existente
                     if (primerEntrenador && primerEntrenador.imagen && primerEntrenador.imagen.includes('../img/Ash.png')) {
                         console.log('Detectadas imágenes antiguas, actualizando automáticamente...');
-                        this.limpiarYRecrearEntrenadores()
+                        this.limpiarYRecrearEntrenadores() // Llamar a la función para limpiar y recrear entrenadores con las nuevas imágenes
                             .then(() => resolve())
                             .catch(error => reject(error));
                     } else {
@@ -253,25 +253,25 @@ class IndexedDBManager { // Clase para manejar IndexedDB
         });
     }
 
-    async agregarEntrenador(entrenador) {
+    async agregarEntrenador(entrenador) { // Método para agregar un nuevo entrenador
         const db = await this.waitForDB();
         const transaction = db.transaction([TRAINERS_STORE], 'readwrite');
         const store = transaction.objectStore(TRAINERS_STORE);
 
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => { // Retornar una promesa para manejar la operación asíncrona
             const request = store.add(entrenador);
             request.onsuccess = () => resolve(true);
             request.onerror = () => reject('Error al agregar entrenador');
         });
     }
 
-    async eliminarEntrenador(id) {
+    async eliminarEntrenador(id) { // Método para eliminar un entrenador por su ID
         const db = await this.waitForDB();
         const transaction = db.transaction([TRAINERS_STORE], 'readwrite');
         const store = transaction.objectStore(TRAINERS_STORE);
 
-        return new Promise((resolve, reject) => {
-            const request = store.delete(id);
+        return new Promise((resolve, reject) => { // Retornar una promesa para manejar la operación asíncrona
+            const request = store.delete(id); // Eliminar el entrenador por su ID
             request.onsuccess = () => {
                 console.log('Entrenador eliminado:', id);
                 resolve(true);
@@ -280,12 +280,12 @@ class IndexedDBManager { // Clase para manejar IndexedDB
         });
     }
 
-    async actualizarEntrenador(entrenador) {
+    async actualizarEntrenador(entrenador) { // Método para actualizar un entrenador
         const db = await this.waitForDB();
         const transaction = db.transaction([TRAINERS_STORE], 'readwrite');
         const store = transaction.objectStore(TRAINERS_STORE);
 
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => { // Retornar una promesa para manejar la operación asíncrona
             const request = store.put(entrenador);
             request.onsuccess = () => resolve(true);
             request.onerror = () => reject('Error al actualizar entrenador');
@@ -293,25 +293,25 @@ class IndexedDBManager { // Clase para manejar IndexedDB
     }
 
     // Nueva función: asignar pokémon a un entrenador
-    async asignarPokemonAEntrenador(idEntrenador, idPokemon) {
-        const db = await this.waitForDB();
-        const transaction = db.transaction([TRAINERS_STORE], 'readwrite');
-        const store = transaction.objectStore(TRAINERS_STORE);
-        return new Promise((resolve, reject) => {
-            const getRequest = store.get(idEntrenador);
+    async asignarPokemonAEntrenador(idEntrenador, idPokemon) { 
+        const db = await this.waitForDB(); // Esperar a que la base de datos esté lista
+        const transaction = db.transaction([TRAINERS_STORE], 'readwrite'); // Iniciar una transacción de escritura
+        const store = transaction.objectStore(TRAINERS_STORE); // Obtener el ObjectStore de entrenadores
+        return new Promise((resolve, reject) => { // Retornar una promesa para manejar la operación asíncrona
+            const getRequest = store.get(idEntrenador); // Obtener el entrenador por su ID
             getRequest.onsuccess = () => {
                 const entrenador = getRequest.result;
                 if (!entrenador) return reject('Entrenador no encontrado');
-                if (!entrenador.pokemones) entrenador.pokemones = [];
+                if (!entrenador.pokemones) entrenador.pokemones = []; // Inicializar el array de pokemones si no existe
                 if (entrenador.pokemones.includes(idPokemon)) {
                     return reject('Este Pokémon ya está asignado a este entrenador');
                 }
-                if (entrenador.pokemones.length >= 6) {
+                if (entrenador.pokemones.length >= 6) { // Verificar si el entrenador ya tiene 6 Pokémon
                     return reject('Este entrenador ya tiene 6 Pokémon');
                 }
-                entrenador.pokemones.push(idPokemon);
-                const updateRequest = store.put(entrenador);
-                updateRequest.onsuccess = () => resolve(true);
+                entrenador.pokemones.push(idPokemon); // Asignar el Pokémon al entrenador
+                const updateRequest = store.put(entrenador); // Actualizar el entrenador en la base de datos
+                updateRequest.onsuccess = () => resolve(true); // Si la operación es exitosa, resolver la promesa
                 updateRequest.onerror = () => reject('Error al asignar Pokémon');
             };
             getRequest.onerror = () => reject('Error al buscar entrenador');
@@ -323,14 +323,14 @@ class IndexedDBManager { // Clase para manejar IndexedDB
         const db = await this.waitForDB();
         const transaction = db.transaction([TRAINERS_STORE], 'readwrite');
         const store = transaction.objectStore(TRAINERS_STORE);
-        return new Promise((resolve, reject) => {
-            const getRequest = store.get(idEntrenador);
+        return new Promise((resolve, reject) => { // Retornar una promesa para manejar la operación asíncrona
+            const getRequest = store.get(idEntrenador); // Obtener el entrenador por su ID
             getRequest.onsuccess = () => {
                 const entrenador = getRequest.result;
                 if (!entrenador) return reject('Entrenador no encontrado');
-                if (!entrenador.pokemones) entrenador.pokemones = [];
-                entrenador.pokemones = entrenador.pokemones.filter(id => id !== idPokemon);
-                const updateRequest = store.put(entrenador);
+                if (!entrenador.pokemones) entrenador.pokemones = []; // Inicializar el array de pokemones si no existe
+                entrenador.pokemones = entrenador.pokemones.filter(id => id !== idPokemon); // Desasignar el Pokémon del entrenador
+                const updateRequest = store.put(entrenador); // Actualizar el entrenador en la base de datos
                 updateRequest.onsuccess = () => resolve(true);
                 updateRequest.onerror = () => reject('Error al desasignar Pokémon');
             };
@@ -343,18 +343,18 @@ class IndexedDBManager { // Clase para manejar IndexedDB
         return this.obtenerEntrenadores();
     }
 
-    // Función para limpiar y recrear entrenadores (útil para actualizaciones)
+    // Función para limpiar y recrear entrenadores 
     async limpiarYRecrearEntrenadores() {
         const db = await this.waitForDB();
         const transaction = db.transaction([TRAINERS_STORE], 'readwrite');
         const store = transaction.objectStore(TRAINERS_STORE);
         
         return new Promise((resolve, reject) => {
-            // Limpiar todos los entrenadores existentes
+            // Limpiar todos los entrenadores existentes // Limpiar el ObjectStore de entrenadores
             const clearRequest = store.clear();
             clearRequest.onsuccess = () => {
                 // Crear entrenadores con las nuevas imágenes de GitHub
-                const entrenadoresPorDefecto = [
+                const entrenadoresPorDefecto = [ // Lista de entrenadores por defecto con imágenes actualizadas
                     {
                         id: 1,
                         nombre: "Isabel",
@@ -390,11 +390,11 @@ class IndexedDBManager { // Clase para manejar IndexedDB
                 let completed = 0;
                 let hasError = false;
 
-                entrenadoresPorDefecto.forEach(entrenador => {
-                    const addRequest = store.add(entrenador);
+                entrenadoresPorDefecto.forEach(entrenador => { // Iterar sobre los entrenadores por defecto
+                    const addRequest = store.add(entrenador); // Agregar cada entrenador al ObjectStore
                     addRequest.onsuccess = () => {
                         completed++;
-                        if (completed === entrenadoresPorDefecto.length && !hasError) {
+                        if (completed === entrenadoresPorDefecto.length && !hasError) { // Si todos los entrenadores se han creado sin errores
                             console.log('Entrenadores recreados con imágenes de GitHub');
                             resolve();
                         }
