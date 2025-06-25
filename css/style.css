@@ -1064,8 +1064,8 @@
 }
 
 .spinner {
-  border: 6px solid #ffffff;
-  border-top: 6px solid #19405f;
+  border: 6px solid #ce0808;
+  border-top: 6px solid #ffffff;
   border-radius: 50%;
   width: 50px;
   height: 50px;

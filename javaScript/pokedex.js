@@ -1,4 +1,3 @@
-pokedex.js
 import { obtenerPokemones } from './pokemonService.js';
 import { tarjetaPokemon } from './html.js';
 
@@ -51,7 +50,6 @@ export class Pokedex {
             return;
         }
         
-        contenedor.innerHTML = "<div class='spinner'></div>";
         await new Promise(res => setTimeout(res, 300));
         //esta es lista recibida sino existe la lista completa es almacenada
         const pokemones = lista ?? this.#pokemones;

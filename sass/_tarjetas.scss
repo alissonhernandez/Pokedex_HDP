@@ -113,7 +113,7 @@
   }
 }
 
-// 🎨 Animación global para el fondo rejilla giratoria
+// Animación global para el fondo rejilla giratoria
 @keyframes tarjeta-brillo {
   0% {
     transform: rotate(0deg);
@@ -123,7 +123,7 @@
   }
 }
 
-// 🧠 Tarjetas con fondo animado según tipo Pokémon
+// Tarjetas con fondo animado según tipo Pokémon
 @each $tipo, $color in $colores-tipos {
   .tarjeta-pokedex.tipo-#{$tipo} {
     background-color: $color;
