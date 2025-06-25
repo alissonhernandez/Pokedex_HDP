@@ -46,7 +46,7 @@ export async function agregarAcompanante(pokemon) {
     // Verificar si ya existe
     const existente = await dbManager.verificarAcompanante(pokemon.getId());
     if (existente) {
-    alert("Este Pokémon ya es un acompañante.");
+    alert("Este Pokémon ya fue seleccionado como acompañante.");
     return false;
   }
 
