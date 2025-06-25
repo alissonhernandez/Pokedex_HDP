@@ -133,7 +133,7 @@ export async function mostrarAcompanantes() {
       <div class="info-container">
         <p><strong>Sistema de Acompañantes:</strong></p>
         <ul>
-          <li>Puedes atrapar tantos Pokémon como quieras</li>
+          <li>Puedes atrapar solo 6 Pokémon a la vez</li>
           <li>Cada entrenador puede tener máximo 6 Pokémon</li>
           <li>Asigna tus Pokémon a los entrenadores disponibles</li>
           <li>Los entrenadores llenos no aparecerán en la lista de asignación</li>
