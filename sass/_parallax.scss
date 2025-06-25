@@ -227,11 +227,14 @@
   margin: 0;
 }
 
+.marca{
+  display: none;
+}
 .arbol{
   display: none;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
   #pokemon1, #pokemon6, #cielo, #bola{
     width: 100%;
     height: 100%;
@@ -264,6 +267,7 @@
 
   .contenedor-parallax {
     flex-direction: column;
+    margin-top: 0;
   }
 
   .contenedor-bienvenida h1,
