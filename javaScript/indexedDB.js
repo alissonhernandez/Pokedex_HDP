@@ -6,74 +6,74 @@ const DB_VERSION = 1;
 const ACCOMPANANTS_STORE = 'acompanantes';
 const TRAINERS_STORE = 'entrenadores';
 
-class IndexedDBManager {
+class IndexedDBManager { // Clase para manejar IndexedDB
     constructor() {
-        this.db = null;
-        this.initPromise = null;
+        this.db = null; // Base de datos
+        this.initPromise = null; // Promesa de inicialización
     }
 
-    async init() {
+    async init() { // Inicializar IndexedDB
         // Evitar múltiples inicializaciones simultáneas
-        if (this.initPromise) {
-            return this.initPromise;
+        if (this.initPromise) { // Si ya hay una promesa de inicialización en curso, esperar a que se resuelva
+            return this.initPromise; // Esperar a que la promesa se resuelva
         }
 
-        this.initPromise = new Promise((resolve, reject) => {
-            const request = indexedDB.open(DB_NAME, DB_VERSION);
+        this.initPromise = new Promise((resolve, reject) => { // Crear una nueva promesa para la inicialización
+            const request = indexedDB.open(DB_NAME, DB_VERSION); // Abrir la base de datos
 
-            request.onerror = () => {
+            request.onerror = () => { // Manejar errores al abrir la base de datos
                 console.error('Error al abrir IndexedDB:', request.error);
                 reject('Error al abrir la base de datos');
             };
 
-            request.onsuccess = (event) => {
+            request.onsuccess = (event) => { // Manejar éxito al abrir la base de datos
                 this.db = event.target.result;
                 console.log('IndexedDB inicializada correctamente');
                 resolve();
             };
 
-            request.onupgradeneeded = (event) => {
+            request.onupgradeneeded = (event) => { // Manejar actualizaciones de la base de datos
                 const db = event.target.result;
                 console.log('Actualizando IndexedDB...');
 
                 // Crear ObjectStore para acompañantes
-                if (!db.objectStoreNames.contains(ACCOMPANANTS_STORE)) {
+                if (!db.objectStoreNames.contains(ACCOMPANANTS_STORE)) { // Verificar si el ObjectStore ya existe
                     const acompanantesStore = db.createObjectStore(ACCOMPANANTS_STORE, { keyPath: 'id' });
                     acompanantesStore.createIndex('nombre', 'nombre', { unique: false });
                     console.log('ObjectStore acompañantes creado');
                 }
 
                 // Crear ObjectStore para entrenadores
-                if (!db.objectStoreNames.contains(TRAINERS_STORE)) {
+                if (!db.objectStoreNames.contains(TRAINERS_STORE)) { // Verificar si ObjectStore ya existe
                     const entrenadoresStore = db.createObjectStore(TRAINERS_STORE, { keyPath: 'id' });
                     entrenadoresStore.createIndex('nombre', 'nombre', { unique: false });
                     console.log('ObjectStore entrenadores creado');
                 }
             };
 
-            request.onblocked = () => {
+            request.onblocked = () => { // Manejar el caso en que la base de datos está bloqueada
                 console.warn('IndexedDB bloqueada, esperando...');
             };
         });
 
-        return this.initPromise;
+        return this.initPromise; // Retornar la promesa de inicialización
     }
 
     // Esperar a que la base de datos esté lista
-    async waitForDB() {
-        if (!this.db) {
-            await this.init();
+    async waitForDB() { // Método para esperar a que la base de datos esté lista
+        if (!this.db) { // Si la base de datos no está inicializada, llamar al método init
+            await this.init(); // Esperar a que la base de datos se inicialice
         }
-        return this.db;
+        return this.db; // Retornar la base de datos
     }
 
     // CRUD para Acompañantes
     async agregarAcompanante(pokemon) {
-        const db = await this.waitForDB();
-        const transaction = db.transaction([ACCOMPANANTS_STORE], 'readwrite');
-        const store = transaction.objectStore(ACCOMPANANTS_STORE);
+        const db = await this.waitForDB(); // Esperar a que la base de datos esté lista
+        const transaction = db.transaction([ACCOMPANANTS_STORE], 'readwrite'); // Iniciar una transacción de escritura
+        const store = transaction.objectStore(ACCOMPANANTS_STORE); // Obtener el ObjectStore de acompañantes
 
-        const acompanante = {
+        const acompanante = { // Crear un objeto acompañante a partir del Pokémon
             id: pokemon.getId(),
             nombre: pokemon.getNombre(),
             especie: pokemon.getEspecie(),
@@ -88,43 +88,43 @@ class IndexedDBManager {
             fechaCaptura: new Date().toISOString()
         };
 
-        return new Promise((resolve, reject) => {
-            const request = store.add(acompanante);
-            request.onsuccess = () => resolve(true);
+        return new Promise((resolve, reject) => { // Retornar una promesa para manejar la operación asíncrona
+            const request = store.add(acompanante); // Agregar el acompañante al ObjectStore
+            request.onsuccess = () => resolve(true); // Si la operación es exitosa, resolver la promesa
             request.onerror = () => reject('Error al agregar acompañante');
         });
     }
 
-    async obtenerAcompanantes() {
-        const db = await this.waitForDB();
-        const transaction = db.transaction([ACCOMPANANTS_STORE], 'readonly');
-        const store = transaction.objectStore(ACCOMPANANTS_STORE);
+    async obtenerAcompanantes() { // Método para obtener todos los acompañantes
+        const db = await this.waitForDB(); // Esperar a que la base de datos esté lista
+        const transaction = db.transaction([ACCOMPANANTS_STORE], 'readonly'); // Iniciar una transacción de solo lectura
+        const store = transaction.objectStore(ACCOMPANANTS_STORE); // Obtener el ObjectStore de acompañantes
 
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => { // Retornar una promesa para manejar la operación asíncrona
             const request = store.getAll();
             request.onsuccess = () => resolve(request.result);
             request.onerror = () => reject('Error al obtener acompañantes');
         });
     }
 
-    async eliminarAcompanante(id) {
+    async eliminarAcompanante(id) { // Método para eliminar un acompañante por su ID
         const db = await this.waitForDB();
         const transaction = db.transaction([ACCOMPANANTS_STORE], 'readwrite');
         const store = transaction.objectStore(ACCOMPANANTS_STORE);
 
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => { // Retornar una promesa para manejar la operación asíncrona
             const request = store.delete(id);
             request.onsuccess = () => resolve(true);
             request.onerror = () => reject('Error al eliminar acompañante');
         });
     }
 
-    async actualizarAcompanante(acompanante) {
-        const db = await this.waitForDB();
-        const transaction = db.transaction([ACCOMPANANTS_STORE], 'readwrite');
-        const store = transaction.objectStore(ACCOMPANANTS_STORE);
+    async actualizarAcompanante(acompanante) {// Método para actualizar un acompañante
+        const db = await this.waitForDB(); // Esperar a que la base de datos esté lista
+        const transaction = db.transaction([ACCOMPANANTS_STORE], 'readwrite'); // Iniciar una transacción de escritura
+        const store = transaction.objectStore(ACCOMPANANTS_STORE); // Obtener el ObjectStore de acompañantes
 
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => { // Retornar una promesa para manejar la operación asíncrona
             const request = store.put(acompanante);
             request.onsuccess = () => resolve(true);
             request.onerror = () => reject('Error al actualizar acompañante');
