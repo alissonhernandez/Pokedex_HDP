@@ -1,17 +1,19 @@
 import { dbManager } from './indexedDB.js';
 
+//declaramos las variables a usar
 const STORAGE_KEY = "pokemonesAcompanantes";
 let entrenadoresCache = [];
 
+// Función para obtener los acompañantes desde el almacenamiento local
 export function obtenerAcompanantes() {
   const data = localStorage.getItem(STORAGE_KEY);
   return data ? JSON.parse(data) : [];
 }
-
+// Función para guardar la lista de acompañantes en el almacenamiento local
 export function guardarAcompanantes(lista) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(lista));
 }
-
+// Función para mostrar el GIF de la Pokébola al atrapar un Pokémon
 function mostrarPokebolaGif() {
   const gif = document.createElement("img");
   gif.src = "../gif/atrapar.gif"; 
@@ -41,6 +43,7 @@ function mostrarPokebolaGif() {
   }, 2000);
 }
 
+// Función para agregar un acompañante
 export async function agregarAcompanante(pokemon) {
   try {
     // Verificar si ya existe
@@ -82,7 +85,7 @@ export async function agregarAcompanante(pokemon) {
     return false;
   }
 }
-
+// Función para mostrar los acompañantes
 export async function mostrarAcompanantes() {
   const contenedor = document.getElementById("acompanantes");
   if (!contenedor) {
@@ -90,7 +93,7 @@ export async function mostrarAcompanantes() {
     return;
   }
   contenedor.innerHTML = "";
-
+// Limpiar el contenedor antes de mostrar los acompañantes
   try {
     const lista = await dbManager.obtenerAcompanantes();
     // Actualizar el cache de entrenadores para tener la información más reciente
@@ -102,7 +105,7 @@ export async function mostrarAcompanantes() {
         entrenador.pokemones && entrenador.pokemones.includes(acompanante.id)
       );
     });
-
+ // Si no hay acompañantes no asignados, mostrar mensaje
     if (pokemonesNoAsignados.length === 0) {
       contenedor.innerHTML = `
         <div class="mensaje-vacio">
@@ -142,12 +145,12 @@ export async function mostrarAcompanantes() {
     // Contenedor de tarjetas
     const contenedorTarjetas = document.createElement("div");
     contenedorTarjetas.classList.add("contenedor-tarjetas");
-
+    // Crear tarjetas para cada acompañante no asignado
     pokemonesNoAsignados.forEach(acompanante => {
       const tarjeta = crearTarjetaAcompanante(acompanante);
       contenedorTarjetas.appendChild(tarjeta);
     });
-
+   // Agregar las tarjetas al contenedor principal
     contenedorPrincipal.appendChild(contenedorTarjetas);
     contenedor.appendChild(contenedorPrincipal);
   } catch (error) {
@@ -155,7 +158,7 @@ export async function mostrarAcompanantes() {
     contenedor.innerHTML = '<p>Error al cargar acompañantes</p>';
   }
 }
-
+// Función para crear una tarjeta de un acompañante
 function crearTarjetaAcompanante(acompanante) {
   const tarjeta = document.createElement("div");
   tarjeta.classList.add("tarjeta-acompanante");
@@ -207,12 +210,12 @@ function crearTarjetaAcompanante(acompanante) {
 
   return tarjeta;
 }
-
+// Función para mostrar el modal de asignación de entrenador
 function mostrarModalAsignarEntrenador(acompanante) {
   // Modal para elegir entrenador
   const modal = document.createElement('div');
   modal.classList.add('fondo-modal');
-
+// Contenido del modal
   const contenido = document.createElement('div');
   contenido.classList.add('modal-edicion');
   contenido.innerHTML = `
@@ -246,12 +249,14 @@ function mostrarModalAsignarEntrenador(acompanante) {
   const form = modal.querySelector('#form-asignar-entrenador');
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    // Obtener el ID del entrenador seleccionado
     const idEntrenador = parseInt(document.getElementById('select-entrenador').value);
     if (!idEntrenador || idEntrenador === 'loading') return;
-    try {
+    try { // Intentar asignar el Pokémon al entrenador
       await dbManager.asignarPokemonAEntrenador(idEntrenador, acompanante.id);
       alert('Pokémon asignado correctamente');
-      modal.remove();
+      modal.remove(); // Cerrar el modal
+      // Actualizar la lista de acompañantes y entrenadores
       await mostrarAcompanantes();
       await mostrarEntrenadores(); // Actualizar entrenadores
     } catch (error) {
@@ -262,10 +267,10 @@ function mostrarModalAsignarEntrenador(acompanante) {
 
 // Función para cargar entrenadores en el select
 async function cargarEntrenadoresEnSelect() {
-  try {
+  try { // Obtener la lista de entrenadores desde IndexedDB
     const entrenadores = await dbManager.obtenerEntrenadores();
     const select = document.getElementById('select-entrenador');
-    
+    // Limpiar opciones anteriores
     if (select) {
       select.innerHTML = '<option value="">-- Selecciona --</option>';
       
@@ -286,7 +291,7 @@ async function cargarEntrenadoresEnSelect() {
       if (select.children.length === 1) {
         select.innerHTML = '<option value="">No hay entrenadores disponibles (todos llenos)</option>';
       }
-    }
+    } // Si no se encuentra el select, mostrar mensaje de error
   } catch (error) {
     console.error('Error al cargar entrenadores en select:', error);
     const select = document.getElementById('select-entrenador');
@@ -295,14 +300,14 @@ async function cargarEntrenadoresEnSelect() {
     }
   }
 }
-
+// Función para eliminar un acompañante
 export async function mostrarEntrenadores() {
   const contenedor = document.getElementById("entrenadores");
   if (!contenedor) {
     console.warn('Elemento #entrenadores no encontrado');
     return;
   }
-
+// Limpiar el contenedor antes de mostrar los entrenadores
   contenedor.innerHTML = "";
 
   try {
