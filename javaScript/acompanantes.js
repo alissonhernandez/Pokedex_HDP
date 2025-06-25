@@ -437,35 +437,35 @@ window.verPokemonesEntrenador = async function(idEntrenador) { //Ver los Pokémo
       return;
     }
 
-    if (!entrenador.pokemones || entrenador.pokemones.length === 0) {
+    if (!entrenador.pokemones || entrenador.pokemones.length === 0) { // Verificar si el entrenador tiene Pokémon asignados
       alert(`${entrenador.nombre} no tiene pokémon acompañantes asignados.`);
       return;
     }
 
     // Obtener detalles de los pokémon asignados
     const pokemonesAsignados = [];
-    for (const idPokemon of entrenador.pokemones) {
-      try {
+    for (const idPokemon of entrenador.pokemones) { 
+      try { // Verificar si el Pokémon existe
         const pokemon = await dbManager.verificarAcompanante(idPokemon);
         if (pokemon) {
-          pokemonesAsignados.push(pokemon);
+          pokemonesAsignados.push(pokemon); // Agregar Pokémon a la lista
         }
       } catch (error) {
         console.error(`Error al obtener pokémon ${idPokemon}:`, error);
       }
     }
 
-    mostrarModalPokemonesEntrenador(entrenador, pokemonesAsignados);
+    mostrarModalPokemonesEntrenador(entrenador, pokemonesAsignados); // Mostrar modal con los Pokémon del entrenador
   } catch (error) {
     console.error('Error al ver pokémon del entrenador:', error);
     alert('Error al cargar los pokémon del entrenador');
   }
 };
 
-function mostrarModalPokemonesEntrenador(entrenador, pokemones) {
+function mostrarModalPokemonesEntrenador(entrenador, pokemones) { // Crear el modal para mostrar los Pokémon del entrenador
   const modal = document.createElement('div');
-  modal.classList.add('fondo-modal');
-
+  modal.classList.add('fondo-modal'); // Fondo del modal
+ // Contenido del modal
   const contenido = document.createElement('div');
   contenido.classList.add('modal-detalles');
   contenido.innerHTML = `
@@ -498,14 +498,14 @@ function mostrarModalPokemonesEntrenador(entrenador, pokemones) {
   modal.appendChild(contenido);
   document.body.appendChild(modal);
 }
-
-window.desasignarPokemon = async function(idEntrenador, idPokemon) {
+ //funcion para desasignar un Pokémon de un entrenador
+window.desasignarPokemon = async function(idEntrenador, idPokemon) { // Verificar si el entrenador y Pokémon existen
   if (confirm('¿Estás seguro de que quieres desasignar este pokémon?')) {
     try {
-      await dbManager.desasignarPokemonDeEntrenador(idEntrenador, idPokemon);
+      await dbManager.desasignarPokemonDeEntrenador(idEntrenador, idPokemon); // Desasignar el Pokémon del entrenador
       alert('Pokémon desasignado correctamente');
       await mostrarAcompanantes();
-      await mostrarEntrenadores();
+      await mostrarEntrenadores(); // Actualizar las listas de acompañantes y entrenadores
       // Cerrar el modal actual
       const modal = document.querySelector('.fondo-modal');
       if (modal) modal.remove();
@@ -515,7 +515,7 @@ window.desasignarPokemon = async function(idEntrenador, idPokemon) {
   }
 };
 
-function mostrarModalDetalles(item, tipo) {
+function mostrarModalDetalles(item, tipo) { // Mostrar detalles de un acompañante
   const modal = document.createElement("div");
   modal.classList.add("fondo-modal");
   
@@ -549,7 +549,7 @@ function mostrarModalDetalles(item, tipo) {
   document.body.appendChild(modal);
 }
 
-function mostrarModalEdicion(item, tipo) {
+function mostrarModalEdicion(item, tipo) { // Mostrar modal de edición
   const modal = document.createElement("div");
   modal.classList.add("fondo-modal");
   
@@ -637,11 +637,11 @@ function mostrarModalEdicion(item, tipo) {
   document.body.appendChild(modal);
   
   // Manejar el formulario
-  const form = modal.querySelector('#form-edicion');
-  form.addEventListener('submit', async (e) => {
+  const form = modal.querySelector('#form-edicion'); // Seleccionar el formulario de edición
+  form.addEventListener('submit', async (e) => { // Manejar el envío del formulario
     e.preventDefault();
     
-    try {
+    try { // Verificar el tipo de item para determinar cómo guardar los cambios
       if (tipo === 'acompanante') {
         // Obtener todos los valores del formulario
         const nombre = document.getElementById('edit-nombre').value.trim();
@@ -710,6 +710,7 @@ function mostrarModalEdicion(item, tipo) {
 }
 
 // Función auxiliar para capitalizar
+// Capitaliza la primera letra de una cadena
 function letra(ltr) {
   return ltr.charAt(0).toUpperCase() + ltr.slice(1);
 }
@@ -866,8 +867,8 @@ window.mostrarModalNuevoEntrenador = function() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const nombre = document.getElementById('nombre-entrenador').value.trim();
-    const imagenUrl = document.getElementById('imagen-github').value.trim();
+    const nombre = document.getElementById('nombre-entrenador').value.trim(); // Obtener el nombre del entrenador
+    const imagenUrl = document.getElementById('imagen-github').value.trim(); // Obtener la URL de la imagen
     let rol = 'Entrenador Pokémon';
 
     if (!nombre) {
@@ -878,8 +879,8 @@ window.mostrarModalNuevoEntrenador = function() {
     // Si no hay imagen, usar la de Ash por defecto
     const imagenFinal = imagenUrl || '../img/Ash.png';
 
-    try {
-      await dbManager.crearNuevoEntrenador(nombre, imagenFinal, rol);
+    try { // Intentar crear un nuevo entrenador
+      await dbManager.crearNuevoEntrenador(nombre, imagenFinal, rol); // Crear el nuevo entrenador en IndexedDB
       alert('¡Entrenador creado exitosamente!');
       modal.remove();
       // Actualizar el cache y las vistas
@@ -893,9 +894,9 @@ window.mostrarModalNuevoEntrenador = function() {
 };
 
 // Función para eliminar entrenador
-window.eliminarEntrenador = async function(id) {
+window.eliminarEntrenador = async function(id) { // Verificar si el entrenador existe en el cache
   try {
-    const entrenador = entrenadoresCache.find(e => e.id === id);
+    const entrenador = entrenadoresCache.find(e => e.id === id); // Buscar el entrenador en caché
     if (!entrenador) {
       alert('Entrenador no encontrado');
       return;
@@ -911,8 +912,8 @@ window.eliminarEntrenador = async function(id) {
         return;
       }
     }
-
-    await dbManager.eliminarEntrenador(id);
+ // Eliminar el entrenador de IndexedDB
+    await dbManager.eliminarEntrenador(id); // Eliminar el entrenador de IndexedDB
     alert('Entrenador eliminado correctamente');
     // Actualizar el cache y las vistas
     await mostrarEntrenadores();
