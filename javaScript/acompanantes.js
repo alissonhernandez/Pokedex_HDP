@@ -61,6 +61,13 @@ export async function agregarAcompanante(pokemon) {
         entrenador.pokemones && entrenador.pokemones.includes(acompanante.id)
       );
   });
+
+     // Verificar el límite de 6 acompañantes NO ASIGNADOS
+      if (pokemonesNoAsignados.length >= 6) {
+        alert("Solo puedes tener hasta 6 acompañantes no asignados. Por favor, asigna tus acompañantes actuales a un entrenador para poder agregar más.");
+         return false;
+    }
+
     // Agregar a IndexedDB
     await dbManager.agregarAcompanante(pokemon);
     alert(`${pokemon.getNombre()} fue atrapado como acompañante.`);
