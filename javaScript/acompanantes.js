@@ -49,11 +49,12 @@ export async function agregarAcompanante(pokemon) {
     alert("Este Pokémon ya fue seleccionado como acompañante.");
     return false;
   }
-  const acompanantes = await dbManager.obtenerAcompanantes();
-    if (acompanantes.length >= 6) {
-      alert("Solo puedes tener hasta 6 acompañantes.");
-      return false;
-    }
+     // Obtener la lista COMPLETA de acompañantes para luego filtrar los no asignados
+    const todosAcompanantes = await dbManager.obtenerAcompanantes();
+     // Actualizar el cache de entrenadores para tener la información más reciente
+    entrenadoresCache = await dbManager.obtenerEntrenadores();
+
+
     // Agregar a IndexedDB
     await dbManager.agregarAcompanante(pokemon);
     alert(`${pokemon.getNombre()} fue atrapado como acompañante.`);
