@@ -54,7 +54,13 @@ export async function agregarAcompanante(pokemon) {
      // Actualizar el cache de entrenadores para tener la información más reciente
     entrenadoresCache = await dbManager.obtenerEntrenadores();
 
-
+    
+    // Filtrar los Pokémon que NO están asignados a ningún entrenador
+    const pokemonesNoAsignados = todosAcompanantes.filter(acompanante => {
+    return !entrenadoresCache.some(entrenador =>
+        entrenador.pokemones && entrenador.pokemones.includes(acompanante.id)
+      );
+  });
     // Agregar a IndexedDB
     await dbManager.agregarAcompanante(pokemon);
     alert(`${pokemon.getNombre()} fue atrapado como acompañante.`);
