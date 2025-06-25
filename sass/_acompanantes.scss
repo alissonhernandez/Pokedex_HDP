@@ -1,9 +1,11 @@
-// Estilos para la página de acompañantes y entrenadores
-
+//estilos para la página de acompañantes y entrenadores
+@use 'paleta' as *;
+@use 'margen' as *;
+@use 'texto' as *;
 .contenido-principal {
-  min-height: 100vh;
+  min-height: 1200px;
   padding: 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, $azul-claro 0%, $morado 100%);
 }
 
 .seccion-acompanantes,
@@ -22,10 +24,10 @@
 
 .titulo-seccion {
   text-align: center;
-  color: #333;
-  font-size: 2.5rem;
+  color: $gris;
+  font-size: $font-size-xxl;
   margin-bottom: 2rem;
-  font-weight: bold;
+  font-weight: $font-weight-bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -37,13 +39,13 @@
 }
 
 .boton-nuevo-entrenador {
-  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-  color: white;
+  background: linear-gradient(135deg, $verde-oscuro 10%, $verde-oscuro 90%);
+  color: $blanco;
   border: none;
   padding: 0.8rem 1.5rem;
   border-radius: 10px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: $font-weight-light;
   font-size: 1rem;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
@@ -52,9 +54,32 @@
   gap: 0.5rem;
 }
 
-// Tarjetas de Acompañantes
+.fondo-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-edicion, .modal-detalles {
+  background: $blanco;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+//tarjetas de Acompañantes
 .tarjeta-acompanante {
-  background: white;
+  background: $blanco;
   border-radius: 15px;
   padding: 1.5rem;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -75,7 +100,7 @@
     left: 0;
     right: 0;
     height: 5px;
-    background: var(--tipo-color, #666);
+    background: var(--tipo-color, $gris);
   }
 }
 
@@ -87,18 +112,18 @@
 
   h3 {
     font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
+    font-weight: $font-weight-bold;
+    color: $gris;
     margin: 0;
   }
 
   .numero-id {
-    background: #f0f0f0;
-    color: #666;
+    background: $blanco;
+    color: $gris;
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: bold;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
   }
 }
 
@@ -114,7 +139,7 @@
     transform: translate(-50%, -50%);
     width: 120px;
     height: 120px;
-    background: var(--tipo-color, #666);
+    background: var(--tipo-color, $gris);
     border-radius: 50%;
     opacity: 0.1;
     z-index: 1;
@@ -136,11 +161,11 @@
   p {
     margin: 0.5rem 0;
     font-size: 0.95rem;
-    color: #555;
+    color: $gris;
 
     strong {
-      color: #333;
-      font-weight: 600;
+      color: $gris;
+      font-weight: $font-weight-bold;
     }
   }
 
@@ -148,9 +173,9 @@
     display: inline-block;
     padding: 0.2rem 0.6rem;
     border-radius: 12px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: white;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    color: $blanco;
     margin: 0.1rem;
     text-transform: capitalize;
   }
@@ -168,10 +193,10 @@
     padding: 0.6rem 1rem;
     border: none;
     border-radius: 8px;
-    font-weight: bold;
+    font-weight: $font-weight-bold;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 0.9rem;
+    font-size: $font-size-sm;
 
     &:hover {
       transform: translateY(-2px);
@@ -180,39 +205,39 @@
   }
 
   .boton-ver {
-    background: #4CAF50;
-    color: white;
+    background: $verde;
+    color: $blanco;
 
     &:hover {
-      background: #45a049;
+      background: $verde-oscuro;
     }
   }
 
   .boton-editar {
-    background: #2196F3;
-    color: white;
+    background: $azul-claro;
+    color: $blanco;
 
     &:hover {
-      background: #1976D2;
+      background: $azul;
     }
   }
 
   .boton-eliminar {
-    background: #f44336;
-    color: white;
+    background: $rojo-intenso;
+    color: $blanco;
 
     &:hover {
-      background: #d32f2f;
+      background: $rojo;
     }
   }
 }
 
-// Tarjetas de Entrenadores
+//tarjetas de entrenadores
 .tarjeta-entrenador {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, $azul-claro 0%, $morado 100%);
   border-radius: 20px;
   padding: 2rem;
-  color: white;
+  color: $blanco;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
   position: relative;
@@ -239,19 +264,19 @@
 }
 
   .tarjeta-header h3 {
-    color: white;
+    color: $blanco;
   }
 
   .numero-id {
     background: rgba(255, 255, 255, 0.2);
-    color: white;
+    color: $blanco;
   }
 
   .tarjeta-info p {
     color: rgba(255, 255, 255, 0.9);
 
     strong {
-      color: white;
+      color: $blanco;
     }
   }
 
@@ -260,42 +285,54 @@
   }
 }
 
-// Mensajes
+//mensajes
 .mensaje-vacio,
 .mensaje-error {
   text-align: center;
   padding: 3rem;
-  background: white;
+  background: $blanco;
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 
   h3 {
-    color: #333;
+    color: $gris;
     margin-bottom: 1rem;
   }
 
   p {
-    color: #666;
-    font-size: 1.1rem;
+    color: $gris;
+    font-size: $font-size-lg;
   }
 }
 
 .mensaje-error {
-  border-left: 5px solid #f44336;
+  border-left: 5px solid $rojo-intenso;
 
   h3 {
-    color: #f44336;
+    color: $rojo-intenso;
   }
 }
 
-// Modales
-.modal-detalles,
-.modal-edicion {
-  background: white;
+//modales
+.modal-header-asignar {
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  position: relative;
+  background: linear-gradient(90deg, $azul-claro 0%, $aqua 100%);
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  color: $blanco;
+  box-shadow: 0 2px 12px rgba(79, 140, 255, 0.08);
+  display: flex;
+  min-height: 70px;
+}
+
+.modal-detalles, .modal-edicion {
+  padding: 0;
+  background: $blanco;
   border-radius: 15px;
   max-width: 600px;
   width: 90%;
-  max-height: 80vh;
+  max-height: 600px;
   overflow-y: auto;
   position: relative;
 }
@@ -306,27 +343,27 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid $blanco;
 
 
   .h2 {
     margin: 0;
-    color: #333;
+    color: $gris;
   }
 
-  .cerrar-modal {
+  .modal-cerrar {
     font-size: 2rem;
     cursor: pointer;
-    color: #666;
+    color: $gris;
     transition: color 0.3s ease;
 
     &:hover {
-      color: #333;
+      color: $gris;
     }
   }
 }
 
-.modal-body-asignar {
+.modal-cuerpo {
   padding: 1.5rem;
 }
 
@@ -342,38 +379,38 @@
 .detalles-info {
   p {
     margin: 0.8rem 0;
-    font-size: 1rem;
-    color: #555;
+    font-size: $font-size-base;
+    color: $gris;
 
     strong {
-      color: #333;
-      font-weight: 600;
+      color: $gris;
+      font-weight: $font-weight-bold;
     }
   }
 }
 
-// Formularios
+//formularios
 .form-grupo {
   margin-bottom: 1.5rem;
 
   label {
     display: block;
     margin-bottom: 0.5rem;
-    font-weight: bold;
-    color: #333;
+    font-weight: $font-weight-bold;
+    color: $gris;
   }
 
   input {
     width: 100%;
     padding: 0.8rem;
-    border: 2px solid #ddd;
+    border: 2px solid $cielo;
     border-radius: 8px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
 
     &:focus {
       outline: none;
-      border-color: #667eea;
+      border-color: $azul-claro;
     }
   }
 }
@@ -388,34 +425,89 @@
     padding: 0.8rem 1.5rem;
     border: none;
     border-radius: 8px;
-    font-weight: bold;
+    font-weight: $font-weight-bold;
     cursor: pointer;
     transition: all 0.3s ease;
   }
 
   .boton-guardar {
-    background: #4CAF50;
-    color: white;
+    background: $verde-claro;
+    color: $blanco;
 
     &:hover {
-      background: #45a049;
+      background: $verde-oscuro;
     }
   }
 
   .boton-cancelar {
-    background: #f44336;
-    color: white;
+    background: $rojo-intenso;
+    color: $blanco;
 
     &:hover {
-      background: #d32f2f;
+      background: $rojo;
     }
   }
 }
 
-// Responsive
+.pokemon-item {
+  display: flex;
+  align-items: center;
+  background: $blanco;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(79, 140, 255, 0.07);
+  padding: 0.7rem 1rem;
+  gap: 1.1rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+  border: 1px solid $cielo;
+}
+
+.pokemon-mini {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: $blanco-cielo;
+  border: 2px solid $blanco-cielo;
+  box-shadow: 0 1px 4px rgba(79, 140, 255, 0.08);
+}
+
+.pokemon-info h4 {
+  margin: 0 0 0.2rem 0;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $azul;
+}
+
+.boton-desasignar {
+  background: linear-gradient(90deg, $rojo-intenso 0%, $anaranjado 100%);
+  color: $blanco;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.1rem;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-base;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(255, 79, 79, 0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.boton-asignar {
+  background: $naranja;
+  color: $blanco;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: $font-size-base;
+}
+
+//responsive
 @media (max-width: 768px) {
   .contenido-principal {
     padding: 1rem;
+    margin-top: 20px;
   }
 
   .contenedor-principal {
@@ -423,7 +515,7 @@
   }
 
   .titulo-seccion {
-    font-size: 2rem;
+    font-size: $font-size-xxl;
   }
 
   .contenedor-tarjetas {

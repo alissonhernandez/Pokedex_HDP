@@ -1,4 +1,3 @@
-import { tarjetaPokemon } from './html.js'; 
 import { dbManager } from './indexedDB.js';
 
 const STORAGE_KEY = "pokemonesAcompanantes";
@@ -194,16 +193,16 @@ function crearTarjetaAcompanante(acompanante) {
 function mostrarModalAsignarEntrenador(acompanante) {
   // Modal para elegir entrenador
   const modal = document.createElement('div');
-  modal.classList.add('modal-fondo');
+  modal.classList.add('fondo-modal');
 
   const contenido = document.createElement('div');
   contenido.classList.add('modal-edicion');
   contenido.innerHTML = `
     <div class="modal-header-asignar">
       <h2>Asignar a entrenador</h2>
-      <span class="cerrar-modal" onclick="this.closest('.modal-fondo').remove()">&times;</span>
+      <span class="modal-cerrar" onclick="this.closest('.fondo-modal').remove()">&times;</span>
     </div>
-    <div class="modal-body-asignar">
+    <div class="modal-cuerpo">
       <form id="form-asignar-entrenador">
         <div class="form-grupo">
           <label>Selecciona un entrenador:</label>
@@ -214,7 +213,7 @@ function mostrarModalAsignarEntrenador(acompanante) {
         </div>
         <div class="form-acciones">
           <button type="submit" class="boton-guardar">Asignar</button>
-          <button type="button" class="boton-cancelar" onclick="this.closest('.modal-fondo').remove()">Cancelar</button>
+          <button type="button" class="boton-cancelar" onclick="this.closest('.fondo-modal').remove()">Cancelar</button>
         </div>
       </form>
     </div>
@@ -442,16 +441,16 @@ window.verPokemonesEntrenador = async function(idEntrenador) {
 
 function mostrarModalPokemonesEntrenador(entrenador, pokemones) {
   const modal = document.createElement('div');
-  modal.classList.add('modal-fondo');
+  modal.classList.add('fondo-modal');
 
   const contenido = document.createElement('div');
   contenido.classList.add('modal-detalles');
   contenido.innerHTML = `
-    <div class="modal-header">
+    <div class="modal-header-asignar">
       <h2>Acompañantes de ${entrenador.nombre}</h2>
-      <span class="cerrar-modal" onclick="this.closest('.modal-fondo').remove()">&times;</span>
+      <span class="modal-cerrar" onclick="this.closest('.fondo-modal').remove()">&times;</span>
     </div>
-    <div class="modal-body">
+    <div class="modal-cuerpo">
       <div class="pokemones-entrenador">
         ${pokemones.map(pokemon => `
           <div class="pokemon-item">
@@ -485,7 +484,7 @@ window.desasignarPokemon = async function(idEntrenador, idPokemon) {
       await mostrarAcompanantes();
       await mostrarEntrenadores();
       // Cerrar el modal actual
-      const modal = document.querySelector('.modal-fondo');
+      const modal = document.querySelector('.fondo-modal');
       if (modal) modal.remove();
     } catch (error) {
       alert('Error al desasignar pokémon: ' + error);
@@ -495,18 +494,18 @@ window.desasignarPokemon = async function(idEntrenador, idPokemon) {
 
 function mostrarModalDetalles(item, tipo) {
   const modal = document.createElement("div");
-  modal.classList.add("modal-fondo");
+  modal.classList.add("fondo-modal");
   
   const contenido = document.createElement("div");
   contenido.classList.add("modal-detalles");
   
   if (tipo === 'acompanante') {
     contenido.innerHTML = `
-      <div class="modal-header">
+      <div class="modal-header-asignar">
         <h2>${letra(item.nombre)}</h2>
-        <span class="cerrar-modal" onclick="this.closest('.modal-fondo').remove()">&times;</span>
+        <span class="modal-cerrar" onclick="this.closest('.fondo-modal').remove()">&times;</span>
       </div>
-      <div class="modal-body">
+      <div class="modal-cuerpo">
         <img src="${item.sprite}" alt="${item.nombre}" class="modal-imagen">
         <div class="detalles-info">
           <p><strong>Especie:</strong> ${letra(item.especie)}</p>
@@ -529,18 +528,18 @@ function mostrarModalDetalles(item, tipo) {
 
 function mostrarModalEdicion(item, tipo) {
   const modal = document.createElement("div");
-  modal.classList.add("modal-fondo");
+  modal.classList.add("fondo-modal");
   
   const contenido = document.createElement("div");
   contenido.classList.add("modal-edicion");
   
   if (tipo === 'acompanante') {
     contenido.innerHTML = `
-      <div class="modal-header">
+      <div class="modal-header-asignar">
         <h2>Editar Acompañante</h2>
-        <span class="cerrar-modal" onclick="this.closest('.modal-fondo').remove()">&times;</span>
+        <span class="modal-cerrar" onclick="this.closest('.fondo-modal').remove()">&times;</span>
       </div>
-      <div class="modal-body">
+      <div class="modal-cuerpo">
         <div class="preview-pokemon">
           <img src="${item.sprite}" alt="${item.nombre}" class="pokemon-preview">
           <div class="pokemon-info-preview">
@@ -580,7 +579,7 @@ function mostrarModalEdicion(item, tipo) {
           </div>
           <div class="form-acciones">
             <button type="submit" class="boton-guardar">Guardar Cambios</button>
-            <button type="button" class="boton-cancelar" onclick="this.closest('.modal-fondo').remove()">Cancelar</button>
+            <button type="button" class="boton-cancelar" onclick="this.closest('.fondo-modal').remove()">Cancelar</button>
           </div>
         </form>
       </div>
@@ -588,11 +587,11 @@ function mostrarModalEdicion(item, tipo) {
   } else {
     // Para entrenadores (mantener la implementación original)
     contenido.innerHTML = `
-      <div class="modal-header">
+      <div class="modal-header-asignar">
         <h2>Editar Entrenador</h2>
-        <span class="cerrar-modal" onclick="this.closest('.modal-fondo').remove()">&times;</span>
+        <span class="modal-cerrar" onclick="this.closest('.fondo-modal').remove()">&times;</span>
       </div>
-      <div class="modal-body">
+      <div class="modal-cuerpo">
         <form id="form-edicion">
           <div class="form-grupo">
             <label>Nombre:</label>
@@ -604,7 +603,7 @@ function mostrarModalEdicion(item, tipo) {
           </div>
           <div class="form-acciones">
             <button type="submit" class="boton-guardar">Guardar</button>
-            <button type="button" class="boton-cancelar" onclick="this.closest('.modal-fondo').remove()">Cancelar</button>
+            <button type="button" class="boton-cancelar" onclick="this.closest('.fondo-modal').remove()">Cancelar</button>
           </div>
         </form>
       </div>
@@ -712,17 +711,17 @@ window.editarEntrenador = async function(id) {
 // Función específica para mostrar modal de edición de entrenador
 function mostrarModalEdicionEntrenador(entrenador) {
   const modal = document.createElement('div');
-  modal.classList.add('modal-fondo');
+  modal.classList.add('fondo-modal');
   
   const contenido = document.createElement('div');
   contenido.classList.add('modal-edicion');
   
   contenido.innerHTML = `
-    <div class="modal-header">
+    <div class="modal-header-asignar">
       <h2>Editar Entrenador</h2>
-      <span class="cerrar-modal" onclick="this.closest('.modal-fondo').remove()">&times;</span>
+      <span class="modal-cerrar" onclick="this.closest('.fondo-modal').remove()">&times;</span>
     </div>
-    <div class="modal-body">
+    <div class="modal-cuerpo">
       <div class="preview-entrenador">
         <img src="${entrenador.imagen}" alt="${entrenador.nombre}" class="entrenador-preview" onerror="this.src='../img/Ash.png'">
         <div class="entrenador-info-preview">
@@ -751,7 +750,7 @@ function mostrarModalEdicionEntrenador(entrenador) {
         </div>
         <div class="form-acciones">
           <button type="submit" class="boton-guardar">Guardar Cambios</button>
-          <button type="button" class="boton-cancelar" onclick="this.closest('.modal-fondo').remove()">Cancelar</button>
+          <button type="button" class="boton-cancelar" onclick="this.closest('.fondo-modal').remove()">Cancelar</button>
         </div>
       </form>
     </div>
@@ -806,16 +805,16 @@ function mostrarModalEdicionEntrenador(entrenador) {
 // Función para mostrar modal de nuevo entrenador
 window.mostrarModalNuevoEntrenador = function() {
   const modal = document.createElement('div');
-  modal.classList.add('modal-fondo');
+  modal.classList.add('fondo-modal');
 
   const contenido = document.createElement('div');
   contenido.classList.add('modal-edicion');
   contenido.innerHTML = `
-    <div class="modal-header">
+    <div class="modal-header-asignar">
       <h2>Crear Nuevo Entrenador</h2>
-      <span class="cerrar-modal" onclick="this.closest('.modal-fondo').remove()">&times;</span>
+      <span class="modal-cerrar" onclick="this.closest('.fondo-modal').remove()">&times;</span>
     </div>
-    <div class="modal-body">
+    <div class="modal-cuerpo">
       <form id="form-nuevo-entrenador">
         <div class="form-grupo">
           <label>Nombre del Entrenador: <span class="requerido">*</span></label>
@@ -831,7 +830,7 @@ window.mostrarModalNuevoEntrenador = function() {
         </div>
         <div class="form-acciones">
           <button type="submit" class="boton-guardar">Crear Entrenador</button>
-          <button type="button" class="boton-cancelar" onclick="this.closest('.modal-fondo').remove()">Cancelar</button>
+          <button type="button" class="boton-cancelar" onclick="this.closest('.fondo-modal').remove()">Cancelar</button>
         </div>
       </form>
     </div>
@@ -900,4 +899,3 @@ window.eliminarEntrenador = async function(id) {
     alert('Error al eliminar el entrenador: ' + error.message);
   }
 };
-
