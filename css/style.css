@@ -2607,7 +2607,6 @@ footer .footer-contenido .copyright p {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  border: 5px solid var(--tipo-color, rgba(68, 68, 68, 0.4980392157));
   object-fit: contain;
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
 }
