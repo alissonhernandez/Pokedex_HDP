@@ -3095,29 +3095,32 @@ footer .footer-contenido .copyright p {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
   gap: 12px;
   margin: 2.5rem auto;
-  max-width: 600px;
   padding: 0 1rem;
+  max-width: 600px;
+  width: 100%;
 }
 .contenedor-busqueda input {
-  flex: 1;
+  width: 100%;
+  max-width: 500px;
   padding: 14px 24px;
   font-size: 18px;
-  background: linear-gradient(to right, #ffffff, #f2f2f2);
-  border: 3px solid #ef5350;
+  background: linear-gradient(to right, #ffffff, #ffffff);
+  border: 3px solid #f44336;
   border-radius: 40px;
   outline: none;
-  box-shadow: 0 0 10px rgba(255, 203, 5, 0.6666666667);
-  color: #333;
+  box-shadow: 0 0 10px #ffcb05;
+  color: #222;
   transition: all 0.3s ease;
 }
 .contenedor-busqueda input:focus {
   border-color: #ffcb05;
-  box-shadow: 0 0 15px rgba(255, 203, 5, 0.8);
+  box-shadow: 0 0 15px #ffcb05;
 }
 .contenedor-busqueda input::placeholder {
-  color: #999;
+  color: #444;
   font-style: italic;
 }
 .contenedor-busqueda button {
@@ -3125,14 +3128,13 @@ footer .footer-contenido .copyright p {
   height: 60px;
   border: none;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #ef5350, #b71c1c);
+  background: radial-gradient(circle at 35% 35%, #f44336, #ce0808);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  position: relative;
   cursor: pointer;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   transition: all 0.3s ease;
 }
 .contenedor-busqueda button::before {
@@ -3140,9 +3142,9 @@ footer .footer-contenido .copyright p {
   position: absolute;
   top: 50%;
   left: 0;
-  height: 6px;
   width: 100%;
-  background-color: white;
+  height: 6px;
+  background: #ffffff;
   transform: translateY(-50%);
   z-index: 1;
   border-radius: 3px;
@@ -3150,11 +3152,10 @@ footer .footer-contenido .copyright p {
 .contenedor-busqueda button svg {
   width: 28px;
   height: 28px;
-  fill: white;
+  fill: #ffffff;
   z-index: 2;
-  transform: scale(1);
-  transition: transform 0.2s ease;
   filter: drop-shadow(0 0 3px #000);
+  transition: transform 0.2s ease;
 }
 .contenedor-busqueda button:hover {
   transform: scale(1.1);
@@ -3162,10 +3163,29 @@ footer .footer-contenido .copyright p {
 }
 .contenedor-busqueda button:hover svg {
   transform: scale(1.2);
-  fill: #ffeb3b;
+  fill: #fff176;
 }
 .contenedor-busqueda button:active {
   transform: scale(0.95);
+}
+@media (max-width: 480px) {
+  .contenedor-busqueda {
+    flex-direction: column;
+  }
+  .contenedor-busqueda input {
+    width: 100%;
+    max-width: 100%;
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+  .contenedor-busqueda button {
+    width: 50px;
+    height: 50px;
+  }
+  .contenedor-busqueda button svg {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
