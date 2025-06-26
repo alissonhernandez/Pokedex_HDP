@@ -1,6 +1,5 @@
 @use 'paleta' as *;
 @use 'texto' as *;
-@use 'breakpoints' as *;
 
 // Mixin para botones de tipo
 @mixin boton-tipo($tipo) {

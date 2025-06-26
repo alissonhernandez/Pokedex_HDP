@@ -1,4 +1,3 @@
-@use 'breakpoints' as *;
 @use 'paleta' as *;
 @use 'texto' as *;
 
@@ -12,70 +11,3 @@ body{
     margin: 0;
     width: 100%;
 }
-.container {
-    width: 100%;
-    max-width: 628px;
-    margin: 0 auto;
-}
-
-
-$grid-columns: 12;
-$grid-gutter-width: 1rem;
-
-.row{
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: calc(-1 * #{$grid-gutter-width} / 2);
-    margin-right: calc(-1 * #{$grid-gutter-width} / 2);
-}
-
-.col{
-    flex: 1 0 0%;
-    padding-left: calc(#{$grid-gutter-width} / 2);
-    padding-right: calc(#{$grid-gutter-width} / 2);
-}
-
-@for $i from 1 through $grid-columns {
-    $percentage: calc(100% / #{$grid-columns} * #{$i});
-    .col-#{$i} {
-        flex: 0 0 #{$percentage};
-        max-width: #{$percentage};
-        padding-left: calc(#{$grid-gutter-width} / 2);;
-        padding-right: calc(#{$grid-gutter-width} / 2);
-    }
-}
-
-@each $breakpoint, $min-width in $breakpoints {
-    @media (min-width: $min-width) {
-        @for $i from 1 through $grid-columns {
-          $percentage: calc(100% / #{$grid-columns} * #{$i});
-          .col-#{$breakpoint}-#{$i} {
-            flex: 0 0 #{$percentage};
-            max-width: #{$percentage};
-            padding-left: calc(#{$grid-gutter-width} / 2);
-            padding-right: calc(#{$grid-gutter-width} / 2);
-          }
-        }
-    }
-}
-
-.row > .col > .row {
-    margin-left: calc(-1 * #{$grid-gutter-width} / 2);
-    margin-right: calc(-1 * #{$grid-gutter-width} / 2);
-}
-  
-.row > .col > .row > .col {
-    padding-left: calc(#{$grid-gutter-width} / 2);
-    padding-right: calc(#{$grid-gutter-width} / 2);
-}
-
-@mixin gutter-x($size) {
-    .gx-#{$size} {
-      > .col,
-      > [class*='col-'] {
-            padding-left: $size;
-            padding-right: $size;
-        }
-    }
-}
-
