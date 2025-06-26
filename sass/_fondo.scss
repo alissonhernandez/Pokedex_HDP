@@ -11,6 +11,7 @@ $fondo-img: "../img/fondo.jpg";
   height: 50px;
   animation: girar 1s linear infinite;
   margin: $spacing-xl auto;
+  display: none;
 }
 
 @keyframes girar {

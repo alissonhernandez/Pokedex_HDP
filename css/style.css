@@ -1071,6 +1071,7 @@
   height: 50px;
   animation: girar 1s linear infinite;
   margin: 3rem auto;
+  display: none;
 }
 
 @keyframes girar {
