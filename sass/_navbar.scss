@@ -72,15 +72,18 @@
         transform: scale(1.3);
       }
     }
-    label[for="toggler"] {
+    label{
+      align-items: center;
+      margin: 0 auto;
       display: inline-flex;
-      position: fixed;
-      left: 4rem; 
-      top: 0.5rem;
-      z-index: 1000;
+      align-self: flex-end;
       padding: 1rem;
       cursor: pointer;
-      background-color: transparent;
+      position: absolute;
+      right: -180px;
+      top: 1rem;
+      z-index: 500;
+      color: $blanco;
     }
     .menu_opciones{
       position: absolute;
@@ -95,7 +98,8 @@
       transition: max-height 0.3s ease-in-out;
       z-index: 9;
       align-items: center;
-      overflow-x: hidden
+      overflow-x: hidden;
+      gap: 10px;
     }
     .opcion{
         padding: 1rem;
