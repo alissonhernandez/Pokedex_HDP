@@ -73,15 +73,15 @@
       }
     }
     label[for="toggler"] {
-  display: inline-flex;
-  position: fixed;
-  left: 4rem; 
-  top: 0.5rem;
-  z-index: 1000;
-  padding: 1rem;
-  cursor: pointer;
-  background-color: transparent;
-}
+      display: inline-flex;
+      position: fixed;
+      left: 4rem; 
+      top: 0.5rem;
+      z-index: 1000;
+      padding: 1rem;
+      cursor: pointer;
+      background-color: transparent;
+    }
     .menu_opciones{
       position: absolute;
       top: 100%;
