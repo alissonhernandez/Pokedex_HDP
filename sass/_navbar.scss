@@ -73,17 +73,23 @@
       }
     }
     label{
-      align-items: center;
-      margin: 0 auto;
-      display: inline-flex;
-      align-self: flex-end;
-      padding: 1rem;
-      cursor: pointer;
-      position: absolute;
-      right: -180px;
-      top: 1rem;
-      z-index: 500;
-      color: $blanco;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    right: 0;
+    top: auto;
+    grid-column: 2;
+    width: 50px;
+    height: 50px;
+    z-index: 995;
+    svg.icon {
+        width: 28px;
+        height: 28px;
+    }
     }
     .menu_opciones{
       position: absolute;
